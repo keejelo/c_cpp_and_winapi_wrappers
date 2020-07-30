@@ -24,9 +24,6 @@ std::string XOR_Encrypt(char inpString[], char xorKey)
 		inpString[i] += i;      // Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
 	}
 
-	//printf("%c", inpString);
-	//MessageBox(0, inpString, "", 0);
-
 	return inpString;
 };
 //---------------------------------------------------------------------------------------------
