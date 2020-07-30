@@ -12,15 +12,15 @@
 //---------------------------------------------------------------------------------------------
 // ** Caesar Cipher Encrypt 
 //---------------------------------------------------------------------------------------------
-std::string CC_Encrypt(std::string text, int key)
+std::string CC_Encrypt(std::string strIn, int key)
 {
-    std::string output = text;
+    std::string strOut = strIn;
 
-    for (size_t i = 0; i < text.size(); i++)
+    for (size_t i = 0; i < strIn.size(); i++)
     {
-        output[i] += key;
+        strOut[i] += key;
     }
-    return output;
+    return strOut;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Caesar Cipher Encrypt 
@@ -30,15 +30,15 @@ std::string CC_Encrypt(std::string text, int key)
 //---------------------------------------------------------------------------------------------
 // ** Caesar Cipher Decrypt
 //---------------------------------------------------------------------------------------------
-std::string CC_Decrypt(std::string text, int key)
+std::string CC_Decrypt(std::string strIn, int key)
 {
-    std::string output = text;
+    std::string strOut = strIn;
 
-    for (size_t i = 0; i < text.size(); i++)
+    for (size_t i = 0; i < strIn.size(); i++)
     {
-        output[i] -= key;
+        strOut[i] -= key;
     }
-    return output;
+    return strOut;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Caesar Cipher Decrypt
