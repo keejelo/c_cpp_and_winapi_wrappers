@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------------------------
 unsigned int FindBytePattern(unsigned char *pattern, unsigned char *fileBuffer, unsigned int fileSize, unsigned int patternSize)
 {	
-// ** Create strings
+    // ** Create strings
     std::string needle(pattern, pattern + patternSize);
     std::string haystack(fileBuffer, fileBuffer + fileSize);
     
