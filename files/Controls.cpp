@@ -25,10 +25,10 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
 		"static",		// Predefined system class
 		szText,			// Window name, or control captiontext
 		dwStyle,		// Window style
-		x,				// Horizontal position
-		y,				// Vertical position
-		w,				// Width
-		h,				// Height
+		x,              // Horizontal position
+		y,              // Vertical position
+		w,              // Width
+		h,              // Height
 		hParentWnd,		// Handle to parent window
 		(HMENU)-1,		// Handle to a menu
 		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
