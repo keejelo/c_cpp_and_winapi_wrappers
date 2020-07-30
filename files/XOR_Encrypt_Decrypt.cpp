@@ -21,7 +21,7 @@ std::string XOR_Encrypt(char inpString[], char xorKey)
 	for (int i = 0; i < len; i++)
 	{		
 		inpString[i] ^= xorKey;	// Do the XOR'ing
-		inpString[i] += i;		// Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
+		inpString[i] += i;      // Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
 	}
 
 	//printf("%c", inpString);
