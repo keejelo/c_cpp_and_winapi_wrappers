@@ -16,8 +16,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-std::string CC_Encrypt(std::string str, int key);
-std::string CC_Decrypt(std::string str, int key);
+std::string CC_Encrypt(std::string strIn, int key);
+std::string CC_Decrypt(std::string strIn, int key);
 
 
 //---------------------------------------------------------------------------------------------
