@@ -1,2 +1,2 @@
-# c_cpp_wrappers
-C and C++ wrappers
+# C and C++ wrappers
+Some simple C and C++ wrappers
