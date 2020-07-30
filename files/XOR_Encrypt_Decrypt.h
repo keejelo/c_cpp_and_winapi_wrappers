@@ -16,8 +16,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-std::string XOR_Encrypt(char inpString[], char xorKey = 'W');
-std::string XOR_Decrypt(char inpString[], char xorKey = 'W');
+std::string XOR_Encrypt(char inpString[], char xorKey);
+std::string XOR_Decrypt(char inpString[], char xorKey);
 
 
 //---------------------------------------------------------------------------------------------
