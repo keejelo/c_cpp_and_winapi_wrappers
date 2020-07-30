@@ -18,7 +18,7 @@
 //    If pattern is not found it returns: std::string::npos
 //    which is the size of an "unsigned int" or "size_t", in other words "end of file".
 //
-//    Should works for files up to 4GB  (size of "unsigned int" in Microsoft C++ compilers)
+//    Should work for files up to 4GB  (size of "unsigned int" in Microsoft C++ compilers)
 //
 //    Tip: to get "patternSize" you can do: int patternSize = sizeof(pattern) / sizeof(pattern[0]);
 //         And then supply it to the function before calling it.
