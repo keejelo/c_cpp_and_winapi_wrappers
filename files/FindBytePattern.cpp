@@ -22,7 +22,7 @@
 //
 //    Tip: to get "patternSize" you can do: int patternSize = sizeof(pattern) / sizeof(pattern[0]);
 //         And then supply it to the function before calling it.
-//         We cannot do it in the function because we lose its value when passing it ..
+//         We cannot do it in the function because we lose its size value when passing it ..
 //         Same goes for "fileSize" needs to be supplied before calling function ..
 //---------------------------------------------------------------------------------------------
 
