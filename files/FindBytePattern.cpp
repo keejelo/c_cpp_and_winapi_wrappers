@@ -35,7 +35,7 @@
 unsigned int FindBytePattern(unsigned char *pattern, unsigned char *fileBuffer, unsigned int fileSize, unsigned int patternSize)
 {	
 // ** Create strings
-	std::string needle(pattern, pattern + patternSize);
+    std::string needle(pattern, pattern + patternSize);
     std::string haystack(fileBuffer, fileBuffer + fileSize);
     
     unsigned int offsetPos = haystack.find(needle);                                                             
@@ -44,90 +44,3 @@ unsigned int FindBytePattern(unsigned char *pattern, unsigned char *fileBuffer, 
 //---------------------------------------------------------------------------------------------
 // ** END: Search for byte pattern
 //---------------------------------------------------------------------------------------------
-
-
-
-/*
-//---------------------------------------------------------------------------------------------
-// ** EXAMPLE USAGE
-//---------------------------------------------------------------------------------------------
-
-#include <stdio.h>
-#include <string>
-#include "FindBytePattern.h"
-
-
-int main()
-{	
-	// ** String containing filename
-	std::string strFileName = "myfile.bin";
-
-	// ** Try to open file for reading (binary)
-	FILE *pFile = NULL;
-	errno_t errorCode = fopen_s(&pFile, strFileName.c_str(), "rb");
-
-	if (pFile != NULL)
-	{
-		fseek(pFile, 0, SEEK_END);
-		unsigned int uFileSize = ftell(pFile);
-		rewind(pFile);
-
-		unsigned char *cBuf = (unsigned char*)malloc(uFileSize * sizeof(unsigned char*));
-
-		if (cBuf != NULL)
-		{
-			fread(cBuf, 1, uFileSize, pFile); // Read file into buffer 1 byte at a time
-			fclose(pFile);
-			pFile = NULL;
-		}
-
-		// ** Byte pattern to search for
-		unsigned char hexstr[] = { 0x00, 0x48, 0x65, 0x61, 0x6C, 0x74, 0x68, 0x00, 
-								   0x0C, 0x00, 0x00, 0x00, 0x49, 0x6E, 0x74, 0x50,
-								   0x72, 0x6F, 0x70, 0x65, 0x72, 0x74, 0x79, 0x00 };
-
-		// ** Get the size of array
-		int patternSize = sizeof(hexstr) / sizeof(hexstr[0]);
-
-		// ** Search for hexstring in buffer
-		unsigned int nOffsetPos = FindBytePattern(hexstr, cBuf, uFileSize, patternSize);
-
-		// ** Check if we found pattern or not
-		if(nOffsetPos != std::string::npos)
-		{
-			// ** OffsetPos is starting position of found pattern
-			printf("Pattern found at offset: %d ( 0x%x )\n", nOffsetPos, nOffsetPos);
-
-			// ** Get the value and put into integer
-			unsigned int hexValue[5];
-
-			hexValue[0] = cBuf[nOffsetPos + 33]; // Get byte value that is offset by 33 from nOffsetPos
-			hexValue[1] = cBuf[nOffsetPos + 34]; // Get byte value that is offset by 34 from nOffsetPos
-			hexValue[2] = cBuf[nOffsetPos + 35]; // Get byte value that is offset by 35 from nOffsetPos
-
-			printf("%x%x%x\n", hexValue[0], hexValue[1], hexValue[2]);
-		}
-		else if (nOffsetPos == std::string::npos)
-		{
-			printf("Pattern not found!\nReturn value: %d ( 0x%x )\n", nOffsetPos, nOffsetPos);
-		}
-
-		// ** Clean up
-		free(cBuf);
-    }
-	else
-	{
-		printf("Error opening file!\nErrorcode: %d", errorCode);
-	}
-
-	// ** Pause before exit
-	getchar();
-
-	return 0;
-};
-
-//---------------------------------------------------------------------------------------------
-// ** END: EXAMPLE USAGE
-//---------------------------------------------------------------------------------------------
-
-*/
