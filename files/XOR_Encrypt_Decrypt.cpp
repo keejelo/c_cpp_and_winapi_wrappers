@@ -65,22 +65,22 @@ std::string XOR_Decrypt(char inpString[], char xorKey)
 
 int main() 
 { 
-	// ** String when it is decrypted.
-	char strIn[] = "hello"; 
+    // ** String when it is decrypted.
+    char strIn[] = "hello"; 
 
-	// ** Key character used as XOR, can be any character
-	char key = 'A';
-    
+    // ** Key character used as XOR, can be any character
+    char key = 'A';
+
     // ** Encrypt the string 
-	std::string strEncrypted;
+    std::string strEncrypted;
     strEncrypted = XOR_Encrypt(strIn, key);
     printf("%s\n, strEncrypted"); 
-  
+
     // ** Decrypt the string
-	std::string strDecrypted;
+    std::string strDecrypted;
     strDecrypted = XOR_Decrypt(strEncrypted, key);
-	printf("%s\n, strDecrypted");
-  
+    printf("%s\n, strDecrypted");
+
     return 0; 
 };
 
