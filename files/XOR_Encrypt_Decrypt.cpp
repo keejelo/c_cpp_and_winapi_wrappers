@@ -45,8 +45,8 @@ std::string XOR_Decrypt(char inpString[], char xorKey)
 	// ** Perform XOR operation of key with every caracter in string 
 	for (int i = 0; i < len; i++)
 	{
-		inpString[i] -= i;		// Decrementing (-i) since we incremented during encryption
-		inpString[i] ^= xorKey;	// Do the XOR'ing
+		inpString[i] -= i;      // Decrementing (-i) since we incremented during encryption
+		inpString[i] ^= xorKey; // Do the XOR'ing
 	}
 
 	//printf("%c", inpString);
@@ -72,7 +72,7 @@ int main()
 	char strIn[] = "hello"; 
 
 	// ** Key character used as XOR, can be any character
-	char key = 'J';
+	char key = 'A';
     
     // ** Encrypt the string 
 	std::string strEncrypted;
