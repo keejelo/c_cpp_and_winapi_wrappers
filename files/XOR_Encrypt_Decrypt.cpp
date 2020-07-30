@@ -49,9 +49,6 @@ std::string XOR_Decrypt(char inpString[], char xorKey)
 		inpString[i] ^= xorKey; // Do the XOR'ing
 	}
 
-	//printf("%c", inpString);
-	//MessageBox(0, inpString, "", 0);
-
 	return inpString;
 };
 //---------------------------------------------------------------------------------------------
