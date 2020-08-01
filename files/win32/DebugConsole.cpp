@@ -21,7 +21,7 @@ const bool DBGCON = 1;  // comment out this line if putting it in other file
 //---------------------------------------------------------------------------------------------
 // ** DEBUG log - output text to console when: DBGCON = true (bool true)
 //---------------------------------------------------------------------------------------------
-int log(const char* format, ...)
+int dlog(const char* format, ...)
 {
     if (DBGCON)
     {
