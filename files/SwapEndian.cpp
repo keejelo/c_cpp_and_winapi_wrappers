@@ -5,7 +5,6 @@
 */
 
 
-
 // ** Swap endianess
 int SwapEndian(int i)
 {
