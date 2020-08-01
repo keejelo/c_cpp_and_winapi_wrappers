@@ -21,7 +21,7 @@ extern const bool DBGCON;  // extern to be able to put it elsewhere
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-int log(const char* format, ...);   // Wrapper for "printf", only outputs when DBGCON = true
+int dlog(const char* format, ...);  // Wrapper for "printf", only outputs when DBGCON = true
 bool EnableConsole();               // Call it once from another function to start it
 
 
