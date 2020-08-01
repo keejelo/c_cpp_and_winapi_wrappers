@@ -37,8 +37,8 @@ int hex2dec(const char *hex)
     else
     {
         puts("Error converting from hex to decimal");
-        return NULL;
     }
+    return 0;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: HEX to Decimal
