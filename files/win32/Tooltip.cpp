@@ -85,10 +85,10 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hCtrl, PTSTR pszText)
 
 void OnCreate(HWND hWnd)
 {
-    // ** First create a control that you want to put the tooltip to
+    // ** First create a control
     HWND myBtn = CreateWindow( ...blablabla );
 
-    // ** Then create a tooltip for the control you just created
+    // ** Then create a tooltip and attach it to the control you just created
     HWND hTooltip = CreateToolTip(hWnd, myBtn, (PTSTR)"This is a button");
 
     // Done!
