@@ -52,11 +52,9 @@ bool EnableConsole()
         {
             FILE *fp = NULL;
             freopen_s(&fp, "CONOUT$", "w", stdout);
-        }
-        
+        }        
         return true;
     }
-
     return false;
 };
 //---------------------------------------------------------------------------------------------
