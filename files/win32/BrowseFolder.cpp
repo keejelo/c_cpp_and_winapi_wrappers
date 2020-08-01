@@ -10,6 +10,50 @@
 
 
 //---------------------------------------------------------------------------------------------
+// ** Browse for folder and return its path as string
+//---------------------------------------------------------------------------------------------
+std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
+{
+    // ** Create a buffer to store the path
+    char path[MAX_PATH];
+
+    const char *path_param = strInitialDir.c_str();
+
+    // ** Create BROWSEINFO structure
+    BROWSEINFO bi = { 0 };
+    bi.hwndOwner = hWnd;
+    //bi.lpszTitle = "Some text here";
+    bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+    bi.lParam = (LPARAM)path_param;
+    bi.lpfn = BrowseCallbackProc;
+
+    // ** Show the dialog and get the itemIDList for the selected folder.
+    LPITEMIDLIST pIDL = SHBrowseForFolder(&bi);
+
+    if (pIDL != NULL)
+    {
+        SHGetPathFromIDList(pIDL, path);
+
+        // ** Free memory used
+        IMalloc *imalloc = 0;
+        if (SUCCEEDED(SHGetMalloc(&imalloc)))
+        {
+            imalloc->Free(pIDL);
+            imalloc->Release();
+        }
+
+        // ** Return the string
+        return path;
+    }
+
+    return "";
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Browse for folder and return its path as string
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
 // ** EnumCallback - Callback function for EnumWindows 
 //---------------------------------------------------------------------------------------------
 static BOOL CALLBACK EnumCallback(HWND hWndChild, LPARAM lParam)
@@ -61,48 +105,6 @@ static int CALLBACK BrowseCallbackProc(HWND hWnd, UINT uMsg, LPARAM lParam, LPAR
 //---------------------------------------------------------------------------------------------
 
 
-//---------------------------------------------------------------------------------------------
-// ** Browse for folder and return its path as string
-//---------------------------------------------------------------------------------------------
-std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
-{
-    // ** Create a buffer to store the path
-    char path[MAX_PATH];
-
-    const char *path_param = strInitialDir.c_str();
-
-    // ** Create BROWSEINFO structure
-    BROWSEINFO bi = { 0 };
-    bi.hwndOwner = hWnd;
-    //bi.lpszTitle = "Some text here";
-    bi.ulFlags = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-    bi.lParam = (LPARAM)path_param;
-    bi.lpfn = BrowseCallbackProc;
-
-    // ** Show the dialog and get the itemIDList for the selected folder.
-    LPITEMIDLIST pIDL = SHBrowseForFolder(&bi);
-
-    if (pIDL != NULL)
-    {
-        SHGetPathFromIDList(pIDL, path);
-
-        // ** Free memory used
-        IMalloc *imalloc = 0;
-        if (SUCCEEDED(SHGetMalloc(&imalloc)))
-        {
-            imalloc->Free(pIDL);
-            imalloc->Release();
-        }
-
-        // ** Return the string
-        return path;
-    }
-
-    return "";
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Browse for folder and return its path as string
-//---------------------------------------------------------------------------------------------
 
 
 /*
