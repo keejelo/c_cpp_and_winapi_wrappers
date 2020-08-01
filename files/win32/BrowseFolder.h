@@ -17,6 +17,8 @@
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 std::string BrowseFolder(HWND hWnd, std::string strInitialDir = "");
+static BOOL CALLBACK EnumCallback(HWND hWndChild, LPARAM lParam);
+static int CALLBACK BrowseCallbackProc(HWND hWnd, UINT uMsg, LPARAM lParam, LPARAM lpData);
 
 
 //---------------------------------------------------------------------------------------------
