@@ -26,6 +26,9 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hCtrl, PTSTR pszText)
 {
+    // ** Delay time (seconds) before the tooltip disappears
+    int DELAYTIME = 2;
+    
     // ** Get the control to set the tooltip to
     HWND hWndTool = hCtrl;  /* HWND hWndTool = GetDlgItem(hParentWnd, toolID); */
 
@@ -58,6 +61,9 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hCtrl, PTSTR pszText)
     toolInfo.uId = (UINT_PTR)hWndTool;
     toolInfo.lpszText = pszText;
     SendMessage(hWndTip, TTM_ADDTOOL, 0, (LPARAM)&toolInfo);
+    
+    // ** Set the default delay time
+    SendMessage(hWndTip, TTM_SETDELAYTIME, TTDT_AUTOPOP, MAKELPARAM((DELAYTIME*1000), (0)));
 
     // ** Can help if tooltip disappear under other windows when hovering etc.
     SetWindowPos(hWndTip, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
