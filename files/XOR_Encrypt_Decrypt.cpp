@@ -23,9 +23,6 @@ std::string XOR_Encrypt(char strIn[], char xorKey)
         strIn[i] += i;      // Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
     }
 
-    //printf("%c", strIn);
-    //MessageBox(0, strIn, "", 0);
-
     return strIn;
 };
 //---------------------------------------------------------------------------------------------
@@ -50,9 +47,6 @@ std::string XOR_Decrypt(char strIn[], char xorKey)
         strIn[i] -= i;      // Decrementing (-i) since we incremented during encryption
         strIn[i] ^= xorKey; // Do the XOR'ing
     }
-
-    //printf("%c", strIn);
-    //MessageBox(0, strIn, "", 0);
 
     return strIn;
 };
