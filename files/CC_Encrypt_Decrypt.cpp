@@ -36,7 +36,6 @@ std::string CC_Decrypt(std::string text, int key)
     for (size_t i = 0; i < text.size(); i++)
     {
         output[i] -= key;
-
     }
     return output;
 };
