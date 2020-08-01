@@ -12,11 +12,9 @@
 //---------------------------------------------------------------------------------------------
 // ** HOW-TO: DEBUG Console (on/off)
 //---------------------------------------------------------------------------------------------
-//    Place below line in other files to control it from there, if so then comment it out here.
-//    Or use it from here, whatever you like.
+//    Place below line in another file to control it from there instead
 //---------------------------------------------------------------------------------------------
-
-// const bool DBGCON = 1;
+const bool DBGCON = 1;  // comment out this line if putting it in other file
 
 
 
