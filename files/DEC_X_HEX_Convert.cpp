@@ -43,3 +43,36 @@ int hex2dec(const char *hex)
 //---------------------------------------------------------------------------------------------
 // ** END: HEX to Decimal
 //---------------------------------------------------------------------------------------------
+
+
+
+/*
+// EXAMPLE:
+
+#include <stdio.h>
+#include "DEC_X_HEX_Convert.h"
+
+int main()
+{
+    int num = 255;
+
+    string str = dec2hex(num);
+    printf("Decimal: %d converted to Hex = %s\n\n", num, str.c_str());
+
+    num = hex2dec(str.c_str());
+    printf("Hex: %s converted to Decimal = %d\n", str.c_str(), num);
+
+    return 0;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
