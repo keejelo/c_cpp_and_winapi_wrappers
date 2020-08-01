@@ -10,7 +10,7 @@
 // ** The number of elements in the array 
 #define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0])
 
-// The above is reported buggy, so it is recommended using assert for safety, source: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94746)
+// The above is reported buggy, so it is recommended adding assert for safety, source: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94746)
 // #define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0]) + Static_assert_eval0_array(arr))
 
 // ** The size of the elements of the array
