@@ -15,8 +15,8 @@
 //---------------------------------------------------------------------------------------------
 std::string dec2hex(int num)
 {
-	char hex[100];
-	sprintf_s(hex, "%x", num);
+    char hex[100];
+    sprintf_s(hex, "%x", num);
     return hex;
 };
 //---------------------------------------------------------------------------------------------
@@ -29,16 +29,16 @@ std::string dec2hex(int num)
 //---------------------------------------------------------------------------------------------
 int hex2dec(const char *hex)
 {
-	unsigned int n;
-	if (sscanf_s(hex, "%x", &n) == 1)
+    unsigned int n;
+    if (sscanf_s(hex, "%x", &n) == 1)
     {
         return n;
     }
     else
-	{
-		puts("Error converting from hex to decimal");
-		return NULL;
-	}
+    {
+        puts("Error converting from hex to decimal");
+        return NULL;
+    }
 };
 //---------------------------------------------------------------------------------------------
 // ** END: HEX to Decimal
