@@ -114,11 +114,11 @@ std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
 
 int main()
 {
-	std::string folder = BrowseFolder(hWnd, "c:\\windows");
+    std::string folder = BrowseFolder(hWnd, "c:\\windows");
 
-	printf("%s\n", folder.c_str());
+    printf("%s\n", folder.c_str());
 
-	return 0;
+    return 0;
 };
 
 */
