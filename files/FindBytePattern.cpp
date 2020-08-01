@@ -10,7 +10,6 @@
 //---------------------------------------------------------------------------------------------
 
 
-
 //---------------------------------------------------------------------------------------------
 // ** Search for byte pattern inside a bigger byte array (loaded from a file into a buffer)
 //---------------------------------------------------------------------------------------------
@@ -34,10 +33,10 @@
 //---------------------------------------------------------------------------------------------
 unsigned int FindBytePattern(unsigned char *pattern, unsigned char *fileBuffer, unsigned int fileSize, unsigned int patternSize)
 {	
-	// ** Create strings
-	std::string needle(pattern, pattern + patternSize);
+    // ** Create strings
+    std::string needle(pattern, pattern + patternSize);
     std::string haystack(fileBuffer, fileBuffer + fileSize);
-    
+
     unsigned int offsetPos = haystack.find(needle);                                                             
     return offsetPos;
 };
