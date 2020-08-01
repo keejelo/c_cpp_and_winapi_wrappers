@@ -16,63 +16,63 @@
 //---------------------------------------------------------------------------------------------
 std::string BrowseFile(HWND hWnd, std::string strInitialDir)
 {
-	// ** Create string, default full path
-	std::string strFullPath = "";
+    // ** Create string, default full path
+    std::string strFullPath = "";
 
-	// ** Transform the string to lowercase before search, makes search "case-insensitive"
-	std::transform( strInitialDir.begin(), strInitialDir.end(), strInitialDir.begin(), [](unsigned char c) { return std::tolower(c); } );
+    // ** Transform the string to lowercase before search, makes search "case-insensitive"
+    std::transform( strInitialDir.begin(), strInitialDir.end(), strInitialDir.begin(), [](unsigned char c) { return std::tolower(c); } );
 
-	// ** Search for %userprofile% in string
-	std::size_t found = strInitialDir.find("%userprofile%");
+    // ** Search for %userprofile% in string
+    std::size_t found = strInitialDir.find("%userprofile%");
 
-	// ** If found then make path with %userprofile%
-	if (found != std::string::npos)
-	{
-		//puts("%userprofile% was found!\n");
+    // ** If found then make path with %userprofile%
+    if (found != std::string::npos)
+    {
+        //puts("%userprofile% was found!\n");
 
-		// ** Get %UserProfile% path string
-		char szProfilePath[MAX_PATH] = { 0 };
-		HRESULT result = SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, 0, szProfilePath);
+        // ** Get %UserProfile% path string
+        char szProfilePath[MAX_PATH] = { 0 };
+        HRESULT result = SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, 0, szProfilePath);
 
-		if (result == S_OK)
-		{
-			strInitialDir.replace(0, 14, "\\"); // Remove %userprofile% from the string since it was just a search symbol
-			strFullPath = szProfilePath;		// Add the proper userprofile from the CSIDL format list
-			strFullPath += strInitialDir;		// Add rest of the string to complete the full path
-		}
-	}
-	else
-	{
-		//puts("%userprofile% not found!\n");
-		strFullPath = strInitialDir;
-	}
+        if (result == S_OK)
+        {
+        strInitialDir.replace(0, 14, "\\"); // Remove %userprofile% from the string since it was just a search symbol
+        strFullPath = szProfilePath;		// Add the proper userprofile from the CSIDL format list
+        strFullPath += strInitialDir;		// Add rest of the string to complete the full path
+        }
+    }
+    else
+    {
+        //puts("%userprofile% not found!\n");
+        strFullPath = strInitialDir;
+    }
 
-	// ** Buffer for file name
-	char szFile[MAX_PATH] = { 0 };
+    // ** Buffer for file name
+    char szFile[MAX_PATH] = { 0 };
 
-	// ** Create common dialog box structure
-	OPENFILENAME ofn = { 0 };
+    // ** Create common dialog box structure
+    OPENFILENAME ofn = { 0 };
 
-	// ** Initialize OPENFILENAME
-	ZeroMemory(&ofn, sizeof(ofn));
-	ofn.lStructSize = sizeof(ofn);
-	ofn.hwndOwner = hWnd;
-	ofn.lpstrFile = szFile;
-	ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not use the contents of szFile to initialize itself.
-	ofn.nMaxFile = MAX_PATH;
-	ofn.lpstrFilter = "All files (*.*)\0*.*\0";
-	ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
-	ofn.lpstrDefExt = "";
-	ofn.lpstrInitialDir = strFullPath.c_str();
+    // ** Initialize OPENFILENAME
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hWnd;
+    ofn.lpstrFile = szFile;
+    ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not use the contents of szFile to initialize itself.
+    ofn.nMaxFile = MAX_PATH;
+    ofn.lpstrFilter = "All files (*.*)\0*.*\0";
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+    ofn.lpstrDefExt = "";
+    ofn.lpstrInitialDir = strFullPath.c_str();
 
-	// ** Open file dialog
-	if (GetOpenFileName(&ofn))
-	{
-		// .. we just want to return filename so we do nothing here
-	}
+    // ** Open file dialog
+    if (GetOpenFileName(&ofn))
+    {
+        // .. we just want to return filename so we do nothing here
+    }
 
-	// ** Return
-	return ofn.lpstrFile;
+    // ** Return
+    return ofn.lpstrFile;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Browse file and return its path to string
