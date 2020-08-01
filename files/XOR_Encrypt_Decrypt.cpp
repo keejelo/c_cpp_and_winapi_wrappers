@@ -11,22 +11,22 @@
 //---------------------------------------------------------------------------------------------
 // ** XOR - Encrypt
 //---------------------------------------------------------------------------------------------
-std::string XOR_Encrypt(char inpString[], char xorKey)
+std::string XOR_Encrypt(char strIn[], char xorKey)
 {
     // ** Calculate length of input string 
-    int len = strlen(inpString);
+    int len = strlen(strIn);
 
     // ** Perform XOR operation of key with every caracter in string 
     for (int i = 0; i < len; i++)
     {		
-        inpString[i] ^= xorKey; // Do the XOR'ing
-        inpString[i] += i;      // Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
+        strIn[i] ^= xorKey; // Do the XOR'ing
+        strIn[i] += i;      // Incrementing (+i) to break pattern and make it harder to read, same characters side by side won't look like: aaaaaaaaaa
     }
 
-    //printf("%c", inpString);
-    //MessageBox(0, inpString, "", 0);
+    //printf("%c", strIn);
+    //MessageBox(0, strIn, "", 0);
 
-    return inpString;
+    return strIn;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: XOR - Encrypt
@@ -36,25 +36,25 @@ std::string XOR_Encrypt(char inpString[], char xorKey)
 //---------------------------------------------------------------------------------------------
 // ** XOR - Decrypt (reverse the encryption)
 //---------------------------------------------------------------------------------------------
-std::string XOR_Decrypt(char inpString[], char xorKey)
+std::string XOR_Decrypt(char strIn[], char xorKey)
 {
     // ** Define XOR key, any character value will work 
     //char xorKey = 'W'; //W
 
     // ** Calculate length of input string 
-    int len = strlen(inpString);
+    int len = strlen(strIn);
 
     // ** Perform XOR operation of key with every caracter in string 
     for (int i = 0; i < len; i++)
     {
-        inpString[i] -= i;      // Decrementing (-i) since we incremented during encryption
-        inpString[i] ^= xorKey; // Do the XOR'ing
+        strIn[i] -= i;      // Decrementing (-i) since we incremented during encryption
+        strIn[i] ^= xorKey; // Do the XOR'ing
     }
 
     //printf("%c", inpString);
     //MessageBox(0, inpString, "", 0);
 
-    return inpString;
+    return strIn;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: XOR - Decrypt
