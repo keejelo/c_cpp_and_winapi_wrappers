@@ -1,46 +1,60 @@
 //---------------------------------------------------------------------------------------------
-// ** CC_Encrypt_Decrypt.cpp
+// ** DebugConsole.cpp
 //---------------------------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------------------------
-// ** Include files
-//---------------------------------------------------------------------------------------------
-#include "CC_Encrypt_Decrypt.h"
-
+#include "DebugConsole.h"
+#include <windows.h>
 
 
 //---------------------------------------------------------------------------------------------
-// ** Caesar Cipher Encrypt 
+//** DEBUG Console - on/off
+//
+//   Place below line in other files to control it from there, if so then comment it out here.
+//   Or use it from here, whatever you like.
 //---------------------------------------------------------------------------------------------
-std::string CC_Encrypt(std::string text, int key)
+
+// const bool DBGCON = 1;
+
+
+
+//---------------------------------------------------------------------------------------------
+//** DEBUG log - Use this to only output when DBGCON = true (bool true)
+//---------------------------------------------------------------------------------------------
+int log(const char* format, ...)
 {
-	std::string output = text;
-
-	for (size_t i = 0; i < text.size(); i++)
+	if (DBGCON)
 	{
-		output[i] += key;
+		 return printf(format);
 	}
-	return output;
+	return 0;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Caesar Cipher Encrypt 
+//** END: DEBUG log
 //---------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------
-// ** Caesar Cipher Decrypt
+// ** Add Console to application
 //---------------------------------------------------------------------------------------------
-std::string CC_Decrypt(std::string text, int key)
+bool EnableConsole()
 {
-	std::string output = text;
-
-	for (size_t i = 0; i < text.size(); i++)
+	if (DBGCON)
 	{
-		output[i] -= key;
-
+		if (!AllocConsole())
+		{
+			MessageBox(NULL, "Console window failed to open!", "Error", MB_ICONEXCLAMATION | MB_OK);
+			return false;
+		}
+		else
+		{
+			FILE *fp = NULL;
+			freopen_s(&fp, "CONOUT$", "w", stdout);
+		}
+		return true;
 	}
-	return output;
+
+	return false;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Caesar Cipher Decrypt
+// ** END: Add Console to application
 //---------------------------------------------------------------------------------------------
+
