@@ -6,30 +6,30 @@
 
 // ** Define: byte
 #ifdef byte
-#warning "byte : already defined"
+  #warning "byte : already defined"
 #else
-typedef unsigned char byte;
+  typedef unsigned char byte;
 #endif
 
 // ** Define: BYTE
 #ifdef BYTE
-#warning "BYTE : already defined"
+  #warning "BYTE : already defined"
 #else
-typedef unsigned char BYTE;
+  typedef unsigned char BYTE;
 #endif
 
 // ** Define: uint
 #ifdef uint
-#warning "uint : already defined"
+  #warning "uint : already defined"
 #else
-typedef unsigned int uint;
+  typedef unsigned int uint;
 #endif
 
 // ** Define: UINT
 #ifdef UINT
-#warning "UINT : already defined"
+  #warning "UINT : already defined"
 #else
-typedef unsigned int UINT;
+  typedef unsigned int UINT;
 #endif
 
 
