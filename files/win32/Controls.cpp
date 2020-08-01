@@ -2,7 +2,7 @@
 // ** Controls.cpp
 //---------------------------------------------------------------------------------------------
 
-// TODO: add more controls
+// TODO: Add more controls, the plan is to have an easy wrapper for each standard control.
 
 //---------------------------------------------------------------------------------------------
 // ** Include files
