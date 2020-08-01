@@ -7,8 +7,11 @@
 //---------------------------------------------------------------------------------------------
 
 
-// ** The number of elements in the array (reported buggy, using assert for safety, source: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94746)
-#define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0]) + Static_assert_eval0_array(arr))
+// ** The number of elements in the array 
+#define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0])
+
+// The above is reported buggy, so it is recommended using assert for safety, source: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=94746)
+// #define ARRAY_SIZE(arr)     (sizeof(arr) / sizeof((arr)[0]) + Static_assert_eval0_array(arr))
 
 // ** The size of the elements of the array
 #define ARRAY_SSIZE(arr)    ((ptrdiff_t)ARRAY_SIZE(arr))
