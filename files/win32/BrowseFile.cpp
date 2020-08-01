@@ -36,9 +36,9 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir)
 
         if (result == S_OK)
         {
-        strInitialDir.replace(0, 14, "\\"); // Remove %userprofile% from the string since it was just a search symbol
-        strFullPath = szProfilePath;		// Add the proper userprofile from the CSIDL format list
-        strFullPath += strInitialDir;		// Add rest of the string to complete the full path
+            strInitialDir.replace(0, 14, "\\"); // Remove %userprofile% from the string since it was just a search symbol
+            strFullPath = szProfilePath;	    // Add the proper userprofile from the CSIDL format list
+            strFullPath += strInitialDir;	    // Add rest of the string to complete the full path
         }
     }
     else
