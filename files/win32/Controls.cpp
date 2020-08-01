@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------
 
 // TODO: Add more controls, the plan is to have a simple wrapper for each standard control in
-//       Microsoft Visual Studio, for easy creation of controls at runtime.
+//       Microsoft Visual Studio, for easy creation at runtime.
 
 //---------------------------------------------------------------------------------------------
 // ** Include files
