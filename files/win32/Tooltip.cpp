@@ -7,7 +7,7 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "Tooltip.h"
-#include "CommCtrl.h"
+#include <CommCtrl.h>
 
 
 
