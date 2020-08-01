@@ -26,8 +26,8 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 char g_szWinTitle[] = "Window title";
 int g_iPosX = 0;
 int g_iPosY = 0;
-int g_iWidth  = 450;
-int g_iHeight = 330;
+int g_iWidth  = 800;
+int g_iHeight = 600;
 
 
 //---------------------------------------------------------------------------------------------
