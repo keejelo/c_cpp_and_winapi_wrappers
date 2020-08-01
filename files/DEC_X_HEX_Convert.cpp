@@ -29,7 +29,7 @@ std::string dec2hex(int num)
 //---------------------------------------------------------------------------------------------
 int hex2dec(const char *hex)
 {
-    unsigned int n;
+    int n = 0;
     if (sscanf_s(hex, "%x", &n) == 1)
     {
         return n;
