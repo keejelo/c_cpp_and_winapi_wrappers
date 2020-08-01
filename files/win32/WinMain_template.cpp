@@ -64,7 +64,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.lpszClassName = szAppName;                       // Set window classname
 
     // ** Window background color set to native OS dialogbox backgroundcolor
-    wc.hbrBackground    = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);
+    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);
 
     // ** Register the window class
     if (!RegisterClassEx(&wc))
