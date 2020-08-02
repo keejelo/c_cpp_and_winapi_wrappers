@@ -182,7 +182,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdown control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, int x, int y, int w, int h)
+HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -201,9 +201,9 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, int x, int y, int w, int h)
         y,              // Y position 
         w,              // Width
         h,              // Height
-        hParnetWnd,     // Parent window
+        hParentWnd,     // Parent window
         NULL,           // No menu
-        (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
         NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, int x, int y, int w, int h)
 //---------------------------------------------------------------------------------------------
 // ** Create combobox simple control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, int x, int y, int w, int h)
+HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -233,9 +233,9 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, int x, int y, int w, int h)
         y,              // Y position 
         w,              // Width
         h,              // Height
-        hParnetWnd,     // Parent window
+        hParentWnd,     // Parent window
         NULL,           // No menu
-        (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
         NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
@@ -246,7 +246,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, int x, int y, int w, int h)
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdownlist control
 //---------------------------------------------------------------------------------------------
-HWND CreateDropDownListCtrl(HWND hParnetWnd, int x, int y, int w, int h)
+HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -265,9 +265,9 @@ HWND CreateDropDownListCtrl(HWND hParnetWnd, int x, int y, int w, int h)
         y,              // Y position 
         w,              // Width
         h,              // Height
-        hParnetWnd,     // Parent window
+        hParentWnd,     // Parent window
         NULL,           // No menu
-        (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
         NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
