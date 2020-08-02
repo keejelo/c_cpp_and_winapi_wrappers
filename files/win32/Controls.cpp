@@ -23,18 +23,18 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
     dwStyle |= WS_CHILD | WS_VISIBLE;
 
     return CreateWindowEx(
-        NULL,       // Extended window style
-        "static",   // Predefined system class
-        szText,     // Window name, or control captiontext
-        dwStyle,    // Window style
-        x,          // Horizontal position
-        y,          // Vertical position
-        w,          // Width
-        h,          // Height
-        hParentWnd, // Handle to parent window
-        (HMENU)-1,  // Handle to a menu
+        NULL,           // Extended window style
+        "static",       // Predefined system class
+        szText,         // Window name, or control captiontext
+        dwStyle,        // Window style
+        x,              // Horizontal position
+        y,              // Vertical position
+        w,              // Width
+        h,              // Height
+        hParentWnd,     // Handle to parent window
+        NULL,           // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
-        NULL);      // No pointer
+        NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create static text control
@@ -62,7 +62,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, const char szText[], int x, int y, i
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)-1,      // Handle to a menu
+        NULL,           // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
@@ -92,7 +92,7 @@ HWND CreateStaticLineVert(HWND hWndParent, const char szText[], int x, int y, in
         w,              // Width
         h,              // Height
         hWndParent,     // Handle to parent window
-        (HMENU)-1,      // Handle to a menu
+        NULL,           // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
@@ -122,7 +122,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)-1,      // Handle to a menu
+        NULL,           // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
@@ -160,7 +160,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)-1,      // Handle to a menu
+        NULL,           // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
