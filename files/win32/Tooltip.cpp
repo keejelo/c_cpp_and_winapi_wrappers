@@ -50,7 +50,7 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszTe
         CW_USEDEFAULT, CW_USEDEFAULT,
         hParentWnd,
         NULL, 
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), // Handle to the instance of the module
         NULL);
 
     if (!hWndTool || !hWndTip)
