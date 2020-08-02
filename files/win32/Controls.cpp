@@ -2,8 +2,8 @@
 // ** Controls.cpp
 //---------------------------------------------------------------------------------------------
 
-// TODO: Add more controls, the plan is to have a simple wrapper for each standard control in
-//       Microsoft Visual Studio, for easy creation at runtime.
+// TODO: Add more controls, the goal is to have a simple wrapper for each standard control for
+//       easy creation at runtime.
 
 //---------------------------------------------------------------------------------------------
 // ** Include files
