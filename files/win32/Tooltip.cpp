@@ -24,17 +24,17 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 // ** Create a tooltip for a control
 //---------------------------------------------------------------------------------------------
-HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hCtrl, PTSTR pszText)
+HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText)
 {
     // ** Delay time (seconds) before the tooltip disappears
     int DELAYTIME = 2;
     
     // ** Get the control to set the tooltip to
-    HWND hWndTool = hCtrl;  /* HWND hWndTool = GetDlgItem(hParentWnd, toolID); */
+    HWND hWndTool = hWndCtrl;  /* HWND hWndTool = GetDlgItem(hParentWnd, toolID); */
 
-    // ** Create the tooltip
+    // ** Create tooltip
     HWND hWndTip = NULL;
-
+    
     hWndTip = CreateWindowEx(
         NULL, 
         TOOLTIPS_CLASS,
