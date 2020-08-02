@@ -10,6 +10,7 @@
 #include <CommCtrl.h>
 
 
+/*
 //---------------------------------------------------------------------------------------------
 // ** Enable visual style on controls (initialize common controls)
 //---------------------------------------------------------------------------------------------
@@ -17,6 +18,7 @@
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
 processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
+*/
 
 
 //---------------------------------------------------------------------------------------------
@@ -24,9 +26,12 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText)
 {
+    // ** Max-width (pixels) before newline occurs
+    int iMaxWidth = 200;
+
     // ** Delay time (seconds) before the tooltip disappears
-    int DELAYTIME = 2;
-    
+    int iDelayTime = 2;
+        
     // ** Get the control to set the tooltip to
     HWND hWndTool = hWndCtrl;  /* HWND hWndTool = GetDlgItem(hParentWnd, toolID); */
 
@@ -60,8 +65,11 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText
     toolInfo.lpszText = pszText;
     SendMessage(hWndTip, TTM_ADDTOOL, 0, (LPARAM)&toolInfo);
     
+    // ** Set the default max-width
+    SendMessage(hWndTip, TTM_SETMAXTIPWIDTH, 0, iMaxWidth);
+
     // ** Set the default delay time
-    SendMessage(hWndTip, TTM_SETDELAYTIME, TTDT_AUTOPOP, MAKELPARAM((DELAYTIME*1000), (0)));
+    SendMessage(hWndTip, TTM_SETDELAYTIME, TTDT_AUTOPOP, MAKELPARAM((iDelayTime * 1000), (0)));
 
     // ** Can help if tooltip disappear under other windows when hovering etc.
     SetWindowPos(hWndTip, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
