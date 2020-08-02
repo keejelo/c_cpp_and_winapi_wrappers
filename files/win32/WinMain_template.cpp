@@ -50,21 +50,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     WNDCLASSEX wc;                                      // Structure to hold window's attributes
 
     // ** Define window class
-    wc.cbSize        = sizeof(WNDCLASSEX);              // Set size of structure
-    wc.style         = CS_HREDRAW | CS_VREDRAW;         // Redraw if size changes
-    wc.lpfnWndProc   = WndProc;                         // Window function
-    wc.cbClsExtra    = 0;                               // No extra bytes after the window class-
-    wc.cbWndExtra    = 0;                               // structure or the window instance
-    wc.hInstance     = hInstance;                       // Handle to this instance
-    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION); // Large icon
+    wc.cbSize        = sizeof(WNDCLASSEX);                      // Set size of structure
+    wc.style         = CS_HREDRAW | CS_VREDRAW;                 // Redraw if size changes
+    wc.lpfnWndProc   = WndProc;                                 // Window function
+    wc.cbClsExtra    = 0;                                       // No extra bytes after the window class-
+    wc.cbWndExtra    = 0;                                       // structure or the window instance
+    wc.hInstance     = hInstance;                               // Handle to this instance
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);         // Large icon
     //wc.hIcon       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
-    wc.hIconSm       = NULL;                            // Small icon
-    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);     // Cursor style
-    wc.lpszMenuName  = NULL;                            // Name of menu resource (if any)
-    wc.lpszClassName = szAppName;                       // Set window classname
+    wc.hIconSm       = NULL;                                    // Small icon
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);             // Cursor style
+    wc.lpszMenuName  = NULL;                                    // Name of menu resource (if any)
+    wc.lpszClassName = szAppName;                               // Set window classname
 
-    // ** Window background color set to native OS dialogbox backgroundcolor
-    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);
+    // ** Window background color
+    //wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);    // Default background-color
+    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);   // Set to native OS Dialogbox background-color    
 
     // ** Register the window class
     if (!RegisterClassEx(&wc))
