@@ -25,7 +25,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText)
 {
     // ** Max-width (pixels) before newline occurs
-    int iMaxWidth = 200;
+    int iMaxWidth = 300;
 
     // ** Delay time (seconds) before the tooltip disappears
     int iDelayTime = 2;
