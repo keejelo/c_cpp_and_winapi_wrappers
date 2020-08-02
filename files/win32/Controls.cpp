@@ -182,7 +182,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdown control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -195,7 +195,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Window name, or control captiontext
+        "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
@@ -214,7 +214,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int
 //---------------------------------------------------------------------------------------------
 // ** Create combobox simple control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -227,7 +227,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Window name, or control captiontext
+        "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
@@ -246,7 +246,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdownlist control
 //---------------------------------------------------------------------------------------------
-HWND CreateDropDownListCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+HWND CreateDropDownListCtrl(HWND hParnetWnd, int x, int y, int w, int h)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -259,7 +259,7 @@ HWND CreateDropDownListCtrl(HWND hParnetWnd, const char szText[], int x, int y, 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Window name, or control captiontext
+        "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
