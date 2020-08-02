@@ -54,6 +54,31 @@ std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
 
 
 //---------------------------------------------------------------------------------------------
+// ** Callback to show initial dir specified in the calling functions parameter
+//---------------------------------------------------------------------------------------------
+static int CALLBACK BrowseCallbackProc(HWND hWnd, UINT uMsg, LPARAM lParam, LPARAM lpData)
+{
+    switch (uMsg)
+    {
+        case BFFM_INITIALIZED:
+            // ** Expand the tree view
+            SendMessage(hWnd, BFFM_SETEXPANDED, TRUE, lpData);
+            // ** Select the item
+            SendMessage(hWnd, BFFM_SETSELECTION, TRUE, lpData);
+            break;
+
+        case BFFM_SELCHANGED:
+            EnumChildWindows(hWnd, EnumCallback, 0);
+            break;
+    }
+    return 0;
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Callback to show initial dir ...
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
 // ** EnumCallback - Callback function for EnumWindows (search and expands)
 //---------------------------------------------------------------------------------------------
 static BOOL CALLBACK EnumCallback(HWND hWndChild, LPARAM lParam)
@@ -77,31 +102,6 @@ static BOOL CALLBACK EnumCallback(HWND hWndChild, LPARAM lParam)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: EnumCallback - Callback function for EnumWindows 
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-// ** Callback to show initial dir specified in the calling functions parameter
-//---------------------------------------------------------------------------------------------
-static int CALLBACK BrowseCallbackProc(HWND hWnd, UINT uMsg, LPARAM lParam, LPARAM lpData)
-{
-    switch (uMsg)
-    {
-        case BFFM_INITIALIZED:
-            // ** Expand the tree view
-            SendMessage(hWnd, BFFM_SETEXPANDED, TRUE, lpData);
-            // ** Select the item
-            SendMessage(hWnd, BFFM_SETSELECTION, TRUE, lpData);
-            break;
-
-        case BFFM_SELCHANGED:
-            EnumChildWindows(hWnd, EnumCallback, 0);
-            break;
-    }
-    return 0;
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Callback to show initial dir ...
 //---------------------------------------------------------------------------------------------
 
 
