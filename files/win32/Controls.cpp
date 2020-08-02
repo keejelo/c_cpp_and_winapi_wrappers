@@ -55,7 +55,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, DWORD dw
     return CreateWindowEx(
         NULL,           // Extended window style
         "static",       // Predefined system class
-        "static",       // Window name, or control captiontext
+        "",             // Window name, or control captiontext
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
@@ -85,7 +85,7 @@ HWND CreateStaticLineVert(HWND hWndParent, int x, int y, int h, int w, DWORD dwS
     return CreateWindowEx(
         NULL,           // Extended window style
         "static",       // Predefined system class
-        "static",       // Window name, or control captiontext
+        "",             // Window name, or control captiontext
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
