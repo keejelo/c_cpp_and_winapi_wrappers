@@ -101,6 +101,7 @@ int main()
             hexValue[2] = pFileBuf[nOffsetPos + 8]; // Get byte value that is offset by 8 from nOffsetPos
             printf("%x%x%x\n", hexValue[0], hexValue[1], hexValue[2]);
             */
+            /*
         }
         else if (nOffsetPos == std::string::npos)
         {
