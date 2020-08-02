@@ -68,11 +68,10 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir)
     // ** Open file dialog
     if (GetOpenFileName(&ofn))
     {
-        // .. we just want to return filename so we do nothing here
+        return ofn.lpstrFile; // return filename
     }
 
-    // ** Return
-    return ofn.lpstrFile;
+    return "";
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Browse file and return its path to string
