@@ -128,8 +128,8 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
 
     // ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
 
-    // ** add an icon to the button
-    //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // ** large icon
+    // ** Add an icon to the button (optional)
+    //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // IDI_APPLICATION used as example (default application icon)
     //SendMessage(ID_BTN_OK, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
 };
 //---------------------------------------------------------------------------------------------
