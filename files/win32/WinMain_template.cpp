@@ -12,7 +12,7 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Enable visual style on controls (initialize common controls)
+// ** Initialize common controls (Enables visual-styles on controls among other things)
 //---------------------------------------------------------------------------------------------
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
