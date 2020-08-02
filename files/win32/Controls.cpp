@@ -191,18 +191,18 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int
     DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_DROPDOWN;    
 
     return CreateWindowEx(
-        dwExStyle,		// Extended window style
-        "combobox",	    // Predefined class in "windows.h"
-        szText,		    // Text to display in editbox, can be blank ""
+        dwExStyle,      // Extended window style
+        "combobox",     // Predefined class in "windows.h"
+        szText,         // Text to display in editbox, can be blank ""
         dwStyle,        // Styles
-        x,			    // X position 
-        y,			    // Y position 
-        w,			    // Width
-        h,			    // Height
-        hParnetWnd,	    // Parent window
-        NULL,		    // No menu
+        x,              // X position 
+        y,              // Y position 
+        w,              // Width
+        h,              // Height
+        hParnetWnd,     // Parent window
+        NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
-        NULL);		    // Pointer not needed
+        NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox control
@@ -223,18 +223,18 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y
     DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_SIMPLE;
 
     return CreateWindowEx(
-        dwExStyle,		// Extended window style
-        "combobox",	    // Predefined class in "windows.h"
-        szText,		    // Caption, can be blank ""
+        dwExStyle,      // Extended window style
+        "combobox",     // Predefined class in "windows.h"
+        szText,         // Caption, can be blank ""
         dwStyle,        // Styles
-        x,			    // X position 
-        y,			    // Y position 
-        w,			    // Width
-        h,			    // Height
-        hParnetWnd,	    // Parent window
-        NULL,		    // No menu
+        x,              // X position 
+        y,              // Y position 
+        w,              // Width
+        h,              // Height
+        hParnetWnd,     // Parent window
+        NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
-        NULL);		    // Pointer not needed
+        NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox simple control
@@ -255,18 +255,18 @@ HWND CreateDropDownListCtrl(HWND hParnetWnd, const char szText[], int x, int y, 
     DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_DROPDOWNLIST;
 
     return CreateWindowEx(
-        dwExStyle,		// Extended window style
-        "combobox",	    // Predefined class in "windows.h"
-        szText,		    // Text to display in editbox, can be blank ""
+        dwExStyle,      // Extended window style
+        "combobox",     // Predefined class in "windows.h"
+        szText,         // Text to display in editbox, can be blank ""
         dwStyle,        // Styles
-        x,			    // X position 
-        y,			    // Y position 
-        w,			    // Width
-        h,			    // Height
-        hParnetWnd,	    // Parent window
-        NULL,		    // No menu
+        x,              // X position 
+        y,              // Y position 
+        w,              // Width
+        h,              // Height
+        hParnetWnd,     // Parent window
+        NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
-        NULL);		    // Pointer not needed
+        NULL);          // Pointer not needed
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox simple control
