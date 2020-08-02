@@ -44,7 +44,7 @@ void CenterWindow(HWND hWnd);
 //---------------------------------------------------------------------------------------------
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {    
-    static char szAppName[] = "WindowClassName";               // Window class name
+    static char szAppName[] = "WindowClassName";               // Window classname (custom)
     HWND hWnd;                                                 // Window handle
     MSG msg;                                                   // Window message structure
     WNDCLASSEX wc;                                             // Structure to hold window's attributes
