@@ -34,7 +34,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
         hParentWnd, // Handle to parent window
         (HMENU)-1,  // Handle to a menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
-        NULL);  // No pointer
+        NULL);      // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create static text control
