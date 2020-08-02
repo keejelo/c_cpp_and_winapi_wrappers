@@ -15,7 +15,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hCtrl = NULL, PTSTR pszText = NULL);
+HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl = NULL, PTSTR pszText = NULL);
 
 
 
