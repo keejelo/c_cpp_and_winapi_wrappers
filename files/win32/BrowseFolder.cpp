@@ -27,7 +27,7 @@ std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
     bi.lParam = (LPARAM)path_param;
     bi.lpfn = BrowseCallbackProc;
 
-    // ** Show the dialog and get the itemIDList for the selected folder.
+    // ** Show the dialog and get the itemIDList for the selected folder
     LPITEMIDLIST pIDL = SHBrowseForFolder(&bi);
 
     if (pIDL != NULL)
@@ -54,7 +54,7 @@ std::string BrowseFolder(HWND hWnd, std::string strInitialDir)
 
 
 //---------------------------------------------------------------------------------------------
-// ** EnumCallback - Callback function for EnumWindows 
+// ** EnumCallback - Callback function for EnumWindows (search and expands)
 //---------------------------------------------------------------------------------------------
 static BOOL CALLBACK EnumCallback(HWND hWndChild, LPARAM lParam)
 {
