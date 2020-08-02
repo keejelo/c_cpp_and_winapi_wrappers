@@ -23,7 +23,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 // ** Variables
 //---------------------------------------------------------------------------------------------
-char g_szWinTitle[] = "Window title";
+char g_szWinTitle[] = "Window title here";
 int g_iPosX = 0;
 int g_iPosY = 0;
 int g_iWidth  = 800;
