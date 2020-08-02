@@ -84,7 +84,7 @@ int main()
         // ** Get the size of array
         int patternSize = sizeof(hexstr) / sizeof(hexstr[0]);
 
-        // ** Search for hexstring in buffer
+        // ** Search for hexstring in buffer, returns starting offset of pattern if found
         unsigned int nOffsetPos = FindBytePattern(hexstr, pFileBuf, uFileSize, patternSize);
 
         // ** Check if we found pattern or not
