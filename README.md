@@ -1,2 +1,2 @@
-# C/C++ and Win32 API wrappers
+# C/C++ wrappers
 Simple wrappers for C/C++ and Win32 API
