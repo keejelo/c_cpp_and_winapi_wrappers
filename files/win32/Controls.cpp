@@ -2,8 +2,9 @@
 // ** Controls.cpp
 //---------------------------------------------------------------------------------------------
 
-// TODO: Add more controls, the goal is to have a simple wrapper for each standard control for
-//       easier creation at runtime.
+// TODO: Add more controls.
+//       The goal is to have a simple wrapper for each standard control for easier creation at 
+//       runtime.
 
 //---------------------------------------------------------------------------------------------
 // ** Include files
