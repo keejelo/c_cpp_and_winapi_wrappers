@@ -152,7 +152,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
     DWORD dwExStyle = WS_EX_CLIENTEDGE;
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD;
 
-    HWND ctrl = CreateWindowEx(
+    HWND hWndEditCtrl = CreateWindowEx(
         dwExStyle,      // Extended window style, this makes border native 3D or if manifested then OS colors and response
         "edit",         // Predefined system class
         szText,         // Window name, or control captiontext
@@ -169,10 +169,10 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
     // ** Set max limit if specified
     if (iMaxLength != NULL)
     {
-        SendMessage(ctrl, EM_SETLIMITTEXT, iMaxLength, NULL);
+        SendMessage(hWndEditCtrl, EM_SETLIMITTEXT, iMaxLength, NULL);
     }
 
-    return ctrl;
+    return hWndEditCtrl;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create edit control
