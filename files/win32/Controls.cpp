@@ -194,7 +194,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h)
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
-        "combobox",     // Predefined class in "windows.h"
+        "combobox",     // Predefined system class
         "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
@@ -204,7 +204,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h)
         hParentWnd,     // Parent window
         NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
-        NULL);          // Pointer not needed
+        NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox control
@@ -226,7 +226,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h)
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
-        "combobox",     // Predefined class in "windows.h"
+        "combobox",     // Predefined system class
         "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
@@ -236,7 +236,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h)
         hParentWnd,     // Parent window
         NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
-        NULL);          // Pointer not needed
+        NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox simple control
@@ -258,7 +258,7 @@ HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h)
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
-        "combobox",     // Predefined class in "windows.h"
+        "combobox",     // Predefined system class
         "",             // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
@@ -268,7 +268,7 @@ HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h)
         hParentWnd,     // Parent window
         NULL,           // No menu
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),
-        NULL);          // Pointer not needed
+        NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create combobox simple control
