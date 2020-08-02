@@ -23,18 +23,18 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
 	dwStyle |= WS_CHILD | WS_VISIBLE;
 
 	return CreateWindowEx(
-		NULL,			// Extended window style
-		"static",		// Predefined system class
-		szText,			// Window name, or control captiontext
-		dwStyle,		// Window style
-		x,				// Horizontal position
-		y,				// Vertical position
-		w,				// Width
-		h,				// Height
-		hParentWnd,		// Handle to parent window
-		(HMENU)-1,		// Handle to a menu
-		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
-		NULL);			// No pointer
+		NULL,       // Extended window style
+		"static",   // Predefined system class
+		szText,     // Window name, or control captiontext
+		dwStyle,    // Window style
+		x,          // Horizontal position
+		y,          // Vertical position
+		w,          // Width
+		h,          // Height
+		hParentWnd, // Handle to parent window
+		(HMENU)-1,  // Handle to a menu
+		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+		NULL);  // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create static text control
@@ -53,21 +53,51 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, const char szText[], int x, int y, i
 	dwStyle |= WS_CHILD | WS_VISIBLE | SS_ETCHEDHORZ;
 
 	return CreateWindowEx(
-		NULL,			// Extended window style
-		"static",		// Predefined system class
-		szText,			// Window name, or control captiontext
-		dwStyle,		// Window style
-		x,				// Horizontal position
-		y,				// Vertical position
-		w,				// Width
-		h,				// Height
-		hParentWnd,		// Handle to parent window
-		(HMENU)-1,		// Handle to a menu
-		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
-		NULL);			// No pointer
+		NULL,           // Extended window style
+		"static",       // Predefined system class
+		szText,         // Window name, or control captiontext
+		dwStyle,        // Window style
+		x,              // Horizontal position
+		y,              // Vertical position
+		w,              // Width
+		h,              // Height
+		hParentWnd,     // Handle to parent window
+		(HMENU)-1,      // Handle to a menu
+		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+		NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create static line horizontal
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Create static line vertical
+//---------------------------------------------------------------------------------------------
+HWND CreateStaticLineVert(HWND hWndParent, const char szText[], int x, int y, int h, int w, DWORD dwStyle)
+{
+	LONG units = GetDialogBaseUnits();
+	w = MulDiv(LOWORD(units), w, 4);
+	h = MulDiv(HIWORD(units), h, 8);
+
+	dwStyle |= WS_CHILD | WS_VISIBLE | SS_ETCHEDVERT;
+
+	return CreateWindowEx(
+		NULL,           // Extended window style
+		"static",       // Predefined system class
+		szText,         // Window name, or control captiontext
+		dwStyle,        // Window style
+		x,              // Horizontal position
+		y,              // Vertical position
+		w,              // Width
+		h,              // Height
+		hWndParent,     // Handle to parent window
+		(HMENU)-1,      // Handle to a menu
+		(HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
+		NULL);          // No pointer
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create static line vertical
 //---------------------------------------------------------------------------------------------
 
 
@@ -83,24 +113,24 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
 	dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON;
 
 	return CreateWindowEx(
-		NULL,			// Extended window style
-		"button",		// Predefined system class
-		szText,			// Window name, or control captiontext
-		dwStyle,		// Window style
-		x,				// Horizontal position
-		y,				// Vertical position
-		w,				// Width
-		h,				// Height
-		hParentWnd,		// Handle to parent window
-		(HMENU)-1,		// Handle to a menu
-		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
-		NULL);			// No pointer
+		NULL,           // Extended window style
+		"button",       // Predefined system class
+		szText,         // Window name, or control captiontext
+		dwStyle,        // Window style
+		x,              // Horizontal position
+		y,              // Vertical position
+		w,              // Width
+		h,              // Height
+		hParentWnd,     // Handle to parent window
+		(HMENU)-1,      // Handle to a menu
+		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+		NULL);          // No pointer
 
-	// ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
+    // ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
 
-	// ** add an icon to the button
-	//HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // ** large icon
-	//SendMessage(ID_BTN_OK, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
+    // ** add an icon to the button
+    //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // ** large icon
+    //SendMessage(ID_BTN_OK, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create pushbutton control
@@ -121,18 +151,18 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
 	dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD;
 	
 	HWND ctrl = CreateWindowEx(
-		dwExStyle,		// Extended window style, this makes border native 3D or if manifested then OS colors and response
-		"edit",			// Predefined system class
-		szText,			// Window name, or control captiontext
-		dwStyle,		// Window style
-		x,				// Horizontal position
-		y,				// Vertical position
-		w,				// Width
-		h,				// Height
-		hParentWnd,		// Handle to parent window
-		(HMENU)-1,		// Handle to a menu
-		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),	// Handle to the instance of the module
-		NULL);			// No pointer
+		dwExStyle,      // Extended window style, this makes border native 3D or if manifested then OS colors and response
+		"edit",         // Predefined system class
+		szText,         // Window name, or control captiontext
+		dwStyle,        // Window style
+		x,              // Horizontal position
+		y,              // Vertical position
+		w,              // Width
+		h,              // Height
+		hParentWnd,     // Handle to parent window
+		(HMENU)-1,      // Handle to a menu
+		(HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+		NULL);          // No pointer
 
 	// ** Set max limit if specified
 	if (iMaxLength != NULL)
