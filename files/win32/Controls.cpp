@@ -131,6 +131,8 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
     // ** Add an icon to the button (optional)
     //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // IDI_APPLICATION used as example (default application icon)
     //SendMessage(ID_BTN_OK, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
+    // ..or
+    //SendMessage(hWndCtrl, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create pushbutton control
