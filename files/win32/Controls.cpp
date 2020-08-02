@@ -44,7 +44,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
 //---------------------------------------------------------------------------------------------
 // ** Create static line horizontal
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineHoriz(HWND hParentWnd, const char szText[], int x, int y, int w, int h, DWORD dwStyle)
+HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, DWORD dwStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -55,7 +55,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, const char szText[], int x, int y, i
     return CreateWindowEx(
         NULL,           // Extended window style
         "static",       // Predefined system class
-        szText,         // Window name, or control captiontext
+        "static",       // Window name, or control captiontext
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
@@ -74,7 +74,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, const char szText[], int x, int y, i
 //---------------------------------------------------------------------------------------------
 // ** Create static line vertical
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineVert(HWND hWndParent, const char szText[], int x, int y, int h, int w, DWORD dwStyle)
+HWND CreateStaticLineVert(HWND hWndParent, int x, int y, int h, int w, DWORD dwStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -85,7 +85,7 @@ HWND CreateStaticLineVert(HWND hWndParent, const char szText[], int x, int y, in
     return CreateWindowEx(
         NULL,           // Extended window style
         "static",       // Predefined system class
-        szText,         // Window name, or control captiontext
+        "static",       // Window name, or control captiontext
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
