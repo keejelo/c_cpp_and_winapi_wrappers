@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------
 
 // TODO: Add more controls, the goal is to have a simple wrapper for each standard control for
-//       easy creation at runtime.
+//       easy creation at runtime, create controls programtically.
 
 //---------------------------------------------------------------------------------------------
 // ** Include files
