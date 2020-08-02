@@ -25,7 +25,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
     return CreateWindowEx(
         NULL,           // Extended window style
         "static",       // Predefined system class
-        szText,         // Window name, or control captiontext
+        szText,         // Text to display
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
@@ -115,7 +115,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
     HWND hWndBtnCtrl = CreateWindowEx(
         NULL,           // Extended window style
         "button",       // Predefined system class
-        szText,         // Window name, or control captiontext
+        szText,         // Buttontext
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
@@ -155,7 +155,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
     HWND hWndEditCtrl = CreateWindowEx(
         dwExStyle,      // Extended window style, this makes border native 3D or if manifested then OS colors and response
         "edit",         // Predefined system class
-        szText,         // Window name, or control captiontext
+        szText,         // Text to display
         dwStyle,        // Window style
         x,              // Horizontal position
         y,              // Vertical position
@@ -195,7 +195,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Text to display in editbox, can be blank ""
+        szText,         // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
@@ -227,7 +227,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Caption, can be blank ""
+        szText,         // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
@@ -259,7 +259,7 @@ HWND CreateDropDownListCtrl(HWND hParnetWnd, const char szText[], int x, int y, 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
         "combobox",     // Predefined class in "windows.h"
-        szText,         // Text to display in editbox, can be blank ""
+        szText,         // Window name, or control captiontext
         dwStyle,        // Styles
         x,              // X position 
         y,              // Y position 
