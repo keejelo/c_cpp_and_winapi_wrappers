@@ -86,7 +86,7 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszTe
 
 #include "Tooltip.h"
 
-    // ... 
+ // ... 
 
 void OnCreate(HWND hWnd)
 {
