@@ -27,7 +27,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 // ** Create a tooltip for a control
 //---------------------------------------------------------------------------------------------
-HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText)
+HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszText)
 {
     // ** Max-width (pixels) before newline occurs
     int iMaxWidth = 300;
@@ -64,7 +64,7 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText
     toolInfo.hwnd = hParentWnd;
     toolInfo.uFlags = TTF_IDISHWND | TTF_SUBCLASS;
     toolInfo.uId = (UINT_PTR)hWndTool;
-    toolInfo.lpszText = pszText;
+    toolInfo.lpszText = lpszText;
     SendMessage(hWndTip, TTM_ADDTOOL, 0, (LPARAM)&toolInfo);
     
     // ** Set the default max-width
@@ -94,7 +94,7 @@ void OnCreate(HWND hWnd)
     HWND myBtn = CreateWindow( ...blablabla );
 
     // ** Then create a tooltip and attach it to the control you just created
-    HWND hTooltip = CreateToolTip(hWnd, myBtn, (PTSTR)"This is a button");
+    HWND hTooltip = CreateToolTip(hWnd, myBtn, (LPTSTR)"This is a button");
 
     // Done!
 };
