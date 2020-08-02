@@ -176,3 +176,113 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
 // ** END: Create edit control
 //---------------------------------------------------------------------------------------------
 
+
+//---------------------------------------------------------------------------------------------
+// ** Create combobox dropdown control
+//---------------------------------------------------------------------------------------------
+HWND CreateComboBoxDropDownCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+{
+	LONG units = GetDialogBaseUnits();
+	w = MulDiv(LOWORD(units), w, 4);  // 50
+	h = MulDiv(HIWORD(units), h, 10); // 12
+    
+    // ** Add styles
+    DWORD dwExStyle = NULL;
+	DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_DROPDOWN;    
+
+	return CreateWindowEx(
+        dwExStyle,		// Extended window style
+		"combobox",	    // Predefined class in "windows.h"
+		szText,		    // Text to display in editbox, can be blank ""
+		dwStyle,        // Styles
+		x,			    // X position 
+		y,			    // Y position 
+		w,			    // Width
+		h,			    // Height
+		hParnetWnd,	    // Parent window
+		NULL,		    // No menu
+		(HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+		NULL);		    // Pointer not needed
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create combobox control
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Create combobox simple control
+//---------------------------------------------------------------------------------------------
+HWND CreateComboBoxSimpleCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+{
+	LONG units = GetDialogBaseUnits();
+	w = MulDiv(LOWORD(units), w, 4);  // 50
+	h = MulDiv(HIWORD(units), h, 10); // 12
+
+    // ** Add styles
+    DWORD dwExStyle = NULL;
+	DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_SIMPLE;
+    
+	return CreateWindowEx(
+        dwExStyle,		// Extended window style
+		"combobox",	    // Predefined class in "windows.h"
+		szText,		    // Caption, can be blank ""
+		dwStyle,        // Styles
+		x,			    // X position 
+		y,			    // Y position 
+		w,			    // Width
+		h,			    // Height
+		hParnetWnd,	    // Parent window
+		NULL,		    // No menu
+		(HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+		NULL);		    // Pointer not needed
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create combobox simple control
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Create combobox dropdownlist control
+//---------------------------------------------------------------------------------------------
+HWND CreateDropDownListCtrl(HWND hParnetWnd, const char szText[], int x, int y, int w, int h)
+{
+	LONG units = GetDialogBaseUnits();
+	w = MulDiv(LOWORD(units), w, 4);   // 50
+	h = MulDiv(HIWORD(units), h, 10);  // 12
+    
+    // ** Add styles
+    DWORD dwExStyle = NULL;
+	DWORD dwStyle = WS_VISIBLE | WS_CHILD | CBS_DROPDOWNLIST;
+
+	return CreateWindowEx(
+        dwExStyle,		// Extended window style
+		"combobox",	    // Predefined class in "windows.h"
+		szText,		    // Text to display in editbox, can be blank ""
+		dwStyle,        // Styles
+		x,			    // X position 
+		y,			    // Y position 
+		w,			    // Width
+		h,			    // Height
+		hParnetWnd,	    // Parent window
+		NULL,		    // No menu
+		(HINSTANCE)GetWindowLongPtr(hParnetWnd, GWLP_HINSTANCE),
+		NULL);		    // Pointer not needed
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create combobox simple control
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+//** Add string to combobox
+//---------------------------------------------------------------------------------------------
+UINT AddStringCombo(const HWND hCombo, const char szText[])
+{
+	return static_cast<UINT>(SendMessage(hCombo, CB_ADDSTRING, 0, reinterpret_cast<LPARAM>(szText)));
+};
+//---------------------------------------------------------------------------------------------
+//** END: Add string to combobox
+//---------------------------------------------------------------------------------------------
+
+
+
