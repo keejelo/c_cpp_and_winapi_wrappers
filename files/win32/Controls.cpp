@@ -112,7 +112,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
 
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON;
 
-    return CreateWindowEx(
+    HWND hWndBtnCtrl = CreateWindowEx(
         NULL,           // Extended window style
         "button",       // Predefined system class
         szText,         // Window name, or control captiontext
@@ -130,9 +130,9 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
 
     // ** Add an icon to the button (optional)
     //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // IDI_APPLICATION used as example (default application icon)
-    //SendMessage(ID_BTN_OK, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
-    // ..or
-    //SendMessage(hWndCtrl, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
+    //SendMessage(hWndBtnCtrl, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
+    
+    return hWndBtnCtrl;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create pushbutton control
