@@ -44,10 +44,10 @@ void CenterWindow(HWND hWnd);
 //---------------------------------------------------------------------------------------------
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {    
-    static char szAppName[] = "WindowClassName";        // Define window class name
-    HWND hWnd;                                          // Window handle
-    MSG msg;                                            // Window message structure
-    WNDCLASSEX wc;                                      // Structure to hold window's attributes
+    static char szAppName[] = "WindowClassName";                // Define window class name
+    HWND hWnd;                                                  // Window handle
+    MSG msg;                                                    // Window message structure
+    WNDCLASSEX wc;                                              // Structure to hold window's attributes
 
     // ** Define window class
     wc.cbSize        = sizeof(WNDCLASSEX);                      // Set size of structure
@@ -65,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     // ** Window background color
     //wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);    // Default background-color
-    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);   // Set to native OS Dialogbox background-color    
+    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);   // Native Windows Dialogbox background-color    
 
     // ** Register the window class
     if (!RegisterClassEx(&wc))
