@@ -93,7 +93,7 @@ int main()
             // ** OffsetPos is starting position of found pattern
             printf("Pattern found at offset: %d ( 0x%x )\n", nOffsetPos, nOffsetPos);
 
-            // ** Here we could get the next byte values offset by N from nOffsetPos
+            // ** Here we could get the next byte values if we wanted to
             // unsigned int hexValue[5];
             // hexValue[0] = pFileBuf[nOffsetPos + 6]; // Get byte value that is offset by 6 from nOffsetPos
             // hexValue[1] = pFileBuf[nOffsetPos + 7]; // Get byte value that is offset by 7 from nOffsetPos
