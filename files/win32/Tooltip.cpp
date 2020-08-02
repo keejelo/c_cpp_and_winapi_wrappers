@@ -10,7 +10,7 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Might need to import library (Common Controls) try it first witout, else uncomment line
+// ** Might need to import library (Common Controls) try it first without, else uncomment line
 //---------------------------------------------------------------------------------------------
 // #pragma comment(lib,"comctl32.lib")
 
