@@ -69,7 +69,7 @@ int main()
         unsigned int uFileSize = ftell(pFile);
         rewind(pFile);
 
-        unsigned char *pFileBuf = (unsigned char*)malloc(uFileSize * sizeof(char));
+        unsigned char *pFileBuf = (unsigned char*)malloc(uFileSize * sizeof(unsigned char));
 
         if (pFileBuf != NULL)
         {
