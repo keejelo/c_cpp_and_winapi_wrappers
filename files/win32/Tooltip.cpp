@@ -37,7 +37,7 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText
     HWND hWndTip = NULL;
     
     hWndTip = CreateWindowEx(
-        NULL, 
+        WS_EX_TOPMOST, 
         TOOLTIPS_CLASS,
         NULL,
         WS_POPUP | TTS_NOPREFIX | TTS_ALWAYSTIP, // | TTS_BALLOON,
@@ -67,9 +67,6 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, PTSTR pszText
 
     // ** Set the default delay time
     SendMessage(hWndTip, TTM_SETDELAYTIME, TTDT_AUTOPOP, MAKELPARAM((iDelayTime * 1000), (0)));
-
-    // ** Can help if tooltip disappear under other windows when hovering etc.
-    SetWindowPos(hWndTip, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
 
     // ** Return
     return hWndTip;
