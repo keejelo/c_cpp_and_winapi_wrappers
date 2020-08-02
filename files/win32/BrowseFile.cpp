@@ -22,15 +22,15 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir)
     // ** Transform the string to lowercase before search, makes search "case-insensitive"
     std::transform( strInitialDir.begin(), strInitialDir.end(), strInitialDir.begin(), [](unsigned char c) { return std::tolower(c); } );
 
-    // ** Search for %userprofile% in string
+    // ** Search for %userprofile% in string (in case the string contains it)
     std::size_t found = strInitialDir.find("%userprofile%");
 
-    // ** If found then make path with %userprofile%
+    // ** If found then make path with %userprofile% (only if string contains it, else we skip this)
     if (found != std::string::npos)
     {
         //puts("%userprofile% was found!\n");
 
-        // ** Get %UserProfile% path string
+        // ** Get %UserProfile% path string (expand the environment variable and build final string)
         char szProfilePath[MAX_PATH] = { 0 };
         HRESULT result = SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, 0, szProfilePath);
 
@@ -60,7 +60,7 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir)
     ofn.lpstrFile = szFile;
     ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not use the contents of szFile to initialize itself.
     ofn.nMaxFile = MAX_PATH;
-    ofn.lpstrFilter = "All files (*.*)\0*.*\0";
+    ofn.lpstrFilter = "All files (*.*)\0*.*\0"; // "All files (*.*)\0*.*\0Text files (*.txt)\0*.txt\0";
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
     ofn.lpstrDefExt = "";
     ofn.lpstrInitialDir = strFullPath.c_str();
