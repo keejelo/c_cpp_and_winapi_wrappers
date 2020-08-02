@@ -10,13 +10,13 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Might need to import library (common controls) try it first witout, else uncomment line
+// ** Might need to import library (Common Controls) try it first witout, else uncomment line
 //---------------------------------------------------------------------------------------------
 // #pragma comment(lib,"comctl32.lib")
 
 
 //---------------------------------------------------------------------------------------------
-// ** Initialize common controls
+// ** Initialize Common Controls
 //---------------------------------------------------------------------------------------------
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
