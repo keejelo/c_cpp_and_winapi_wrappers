@@ -143,7 +143,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (HIWORD(wParam))
             {
                 case BN_CLICKED:
-                    //OnMouseButtonClick(hWnd, (HWND)lParam);  // defined in "MyProgram.h"
+                    //OnMouseButtonClick(hWnd, (HWND)lParam);  // Declared in "MyProgram.h"
                     break;
             }
             break;
