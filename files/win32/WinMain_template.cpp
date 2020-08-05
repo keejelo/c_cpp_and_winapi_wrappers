@@ -58,7 +58,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.cbWndExtra    = 0;                                      // structure or the window instance
     wc.hInstance     = hInstance;                              // Handle to this instance
     wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);        // Large icon
-    //wc.hIcon       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));  // Defined in "resource.h"
+    //wc.hIcon       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));  // Declared in "resource.h"
     wc.hIconSm       = NULL;                                   // Small icon
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);            // Cursor style
     wc.lpszMenuName  = NULL;                                   // Name of menu resource (if any)
@@ -124,7 +124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (msg)
     {
         case WM_CREATE:
-            //OnCreate(hWnd);  // Defined in "MyProgram.h"
+            //OnCreate(hWnd);  // Declared in "MyProgram.h"
             CenterWindow(hWnd);
             EnumChildWindows(hWnd, EnumChildProc, 0);
             break;
@@ -134,7 +134,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             HDC hDC;
             PAINTSTRUCT ps;
             hDC = BeginPaint(hWnd, &ps);
-            //OnPaint(hWnd);  // Defined in "MyProgram.h"
+            //OnPaint(hWnd);  // Declared in "MyProgram.h"
             EndPaint(hWnd, &ps);
             break; 
         }
@@ -149,7 +149,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
         
         case WM_CLOSE:
-            //OnQuit();  // Defined in "MyProgram.h"
+            //OnQuit();  // Declared in "MyProgram.h"
             DestroyWindow(hWnd);
             break;
 
