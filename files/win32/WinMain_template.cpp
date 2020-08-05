@@ -9,6 +9,7 @@
 //---------------------------------------------------------------------------------------------
 #include <windows.h>
 //#include "resource.h"
+//#include "MyProgram.h"
 
 
 //---------------------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.cbWndExtra    = 0;                                      // structure or the window instance
     wc.hInstance     = hInstance;                              // Handle to this instance
     wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);        // Large icon
-    //wc.hIcon       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
+    //wc.hIcon       = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));  // Defined in "resource.h"
     wc.hIconSm       = NULL;                                   // Small icon
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);            // Cursor style
     wc.lpszMenuName  = NULL;                                   // Name of menu resource (if any)
@@ -123,7 +124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (msg)
     {
         case WM_CREATE:
-            //OnCreate(hWnd);
+            //OnCreate(hWnd);  // Defined in "MyProgram.h"
             CenterWindow(hWnd);
             EnumChildWindows(hWnd, EnumChildProc, 0);
             break;
@@ -133,7 +134,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             HDC hDC;
             PAINTSTRUCT ps;
             hDC = BeginPaint(hWnd, &ps);
-            //OnPaint(hWnd);
+            //OnPaint(hWnd);  // Defined in "MyProgram.h"
             EndPaint(hWnd, &ps);
             break; 
         }
@@ -142,13 +143,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (HIWORD(wParam))
             {
                 case BN_CLICKED:
-                    //OnMouseButtonClick(hWnd, (HWND)lParam);
+                    //OnMouseButtonClick(hWnd, (HWND)lParam);  // defined in "MyProgram.h"
                     break;
             }
             break;
         
         case WM_CLOSE:
-            //OnQuit();
+            //OnQuit();  // Defined in "MyProgram.h"
             DestroyWindow(hWnd);
             break;
 
