@@ -207,7 +207,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h)
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Create combobox control
+// ** END: Create combobox dropdown control
 //---------------------------------------------------------------------------------------------
 
 
@@ -271,7 +271,7 @@ HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h)
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Create combobox simple control
+// ** END: Create combobox dropdownlist control
 //---------------------------------------------------------------------------------------------
 
 
@@ -326,7 +326,7 @@ UINT AddStringListBox(const HWND hListBox, const char szText[])
     return static_cast<UINT>(SendMessage(hListBox, LB_ADDSTRING, 0, reinterpret_cast<LPARAM>(szText)));
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Add items to listbox
+// ** END: Add string to listbox
 //---------------------------------------------------------------------------------------------
 
 
