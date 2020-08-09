@@ -24,9 +24,14 @@ HWND CreateEditCtrl(HWND hWnd, const char szText[], int x, int y, int w = 100, i
 HWND CreateComboBoxDropDownCtrl(HWND hWnd, int x, int y, int w = 50, int h = 12);
 HWND CreateComboBoxSimpleCtrl(HWND hWnd, int x, int y, int w = 50, int h = 50);
 HWND CreateDropDownListCtrl(HWND hWnd, int x, int y, int w = 50, int h = 12);
+HWND CreateListBoxCtrl(HWND hParentWnd, int x, int y, int w = 50, int h = 50, DWORD dwExStyle = NULL);
+HWND CreateCheckBoxCtrl(HWND hWndParent, const char szText[], int x, int y, int w = 50, int h = 12, DWORD dwStyle = NULL);
+HWND CreateRadioButtonCtrl(HWND hWndParent, const char szText[], int x, int y, int w = 50, int h = 12, DWORD dwStyle = NULL);
+HWND CreateGroupBoxCtrl(HWND hWndParent, const char szText[], int x, int y, int w = 100, int h = 50);
 
 // ** Control helpers
 UINT AddStringCombo(const HWND hComboCtrl, const char szText[]);
+UINT AddStringListBox(const HWND hListBox, const char szText[]);
 
 
 
