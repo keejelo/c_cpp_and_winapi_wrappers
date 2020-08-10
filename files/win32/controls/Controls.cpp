@@ -187,7 +187,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h, DWO
     w = MulDiv(LOWORD(units), w, 4);  // 50
     h = MulDiv(HIWORD(units), h, 10); // 12
 
-    dwStyle |= WS_VISIBLE | WS_CHILD | CBS_DROPDOWN;
+    dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | CBS_DROPDOWN;
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
@@ -217,7 +217,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h, DWORD
     w = MulDiv(LOWORD(units), w, 4);  // 50
     h = MulDiv(HIWORD(units), h, 10); // 12
 
-    dwStyle |= WS_VISIBLE | WS_CHILD | CBS_SIMPLE;
+    dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | CBS_SIMPLE;
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
@@ -247,7 +247,7 @@ HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h, DWORD d
     w = MulDiv(LOWORD(units), w, 4);   // 50
     h = MulDiv(HIWORD(units), h, 10);  // 12
 
-    dwStyle |= WS_VISIBLE | WS_CHILD | CBS_DROPDOWNLIST;
+    dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | CBS_DROPDOWNLIST;
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
@@ -289,7 +289,7 @@ HWND CreateListBoxCtrl(HWND hParentWnd, int x, int y, int w, int h, DWORD dwStyl
     w = MulDiv(LOWORD(units), w, 4);   // 50
     h = MulDiv(HIWORD(units), h, 10);  // 12
 
-    dwStyle |= WS_VISIBLE | WS_CHILD | LBS_STANDARD;
+    dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | LBS_STANDARD;
 
     return CreateWindowEx(
         dwExStyle,      // Extended window style
