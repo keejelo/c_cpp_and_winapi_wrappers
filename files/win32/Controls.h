@@ -31,7 +31,7 @@ HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int 
 
 // ** Control helpers
 UINT AddStringCombo(const HWND hComboCtrl, const char szText[]);
-UINT AddStringListBox(const HWND hListBox, const char szText[]);
+UINT AddStringListBox(const HWND hListBoxCtrl, const char szText[]);
 
 
 
