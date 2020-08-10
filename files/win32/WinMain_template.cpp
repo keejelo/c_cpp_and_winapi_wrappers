@@ -30,6 +30,11 @@ int g_iPosY = 0;
 int g_iWidth  = 800;
 int g_iHeight = 600;
 
+// ** Window background-color
+HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // dialog bgcolor
+//HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
+//HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
+
 
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
@@ -65,8 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.lpszClassName = szAppName;                              // Set window classname
 
     // ** Window background color
-    //wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);  // Default background-color
-    wc.hbrBackground = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // Native Windows Dialogbox background-color
+    wc.hbrBackground = g_bgColor;
 
     // ** Register the window class
     if (!RegisterClassEx(&wc))
@@ -142,14 +146,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         // ** Set background-color of static controls 
         case WM_CTLCOLORSTATIC:
         {
-            // ** Choose a color to set as background
-            HBRUSH bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // dialog bgcolor
-            //HBRUSH bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
-            //HBRUSH bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
-
             HDC hdcStatic = (HDC)wParam;
             SetBkMode(hdcStatic, TRANSPARENT);
-            return (INT_PTR)bgColor;
+            return (INT_PTR)g_bgColor;
         }
             
         case WM_COMMAND:
