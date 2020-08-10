@@ -138,7 +138,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
             break; 
         }
+         
+        // ** Set background-color of static controls 
+        case WM_CTLCOLORSTATIC:
+        {
+            // ** Choose a color to set as background
+            HBRUSH bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // dialog bgcolor
+            //HBRUSH bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
+            //HBRUSH bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
 
+            HDC hdcStatic = (HDC)wParam;
+            SetBkMode(hdcStatic, TRANSPARENT);
+            return (INT_PTR)bgColor;
+        }
+            
         case WM_COMMAND:
             switch (HIWORD(wParam))
             {
