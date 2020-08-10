@@ -321,7 +321,7 @@ HWND CreateListBoxCtrl(HWND hParentWnd, int x, int y, int w, int h, DWORD dwExSt
 //---------------------------------------------------------------------------------------------
 // ** Add string to listbox
 //---------------------------------------------------------------------------------------------
-UINT AddStringListBox(const HWND hListBox, const char szText[])
+UINT AddStringListBox(const HWND hListBoxCtrl, const char szText[])
 {
     return static_cast<UINT>(SendMessage(hListBox, LB_ADDSTRING, 0, reinterpret_cast<LPARAM>(szText)));
 };
