@@ -20,10 +20,11 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_CHILD | WS_VISIBLE;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "static",       // Predefined system class
         szText,         // Text to display
         dwStyle,        // Window style
@@ -50,10 +51,11 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, DWORD dw
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_CHILD | WS_VISIBLE | SS_ETCHEDHORZ;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "static",       // Predefined system class
         "",             // Window name, or control captiontext
         dwStyle,        // Window style
@@ -80,10 +82,11 @@ HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, DWORD dwS
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_CHILD | WS_VISIBLE | SS_ETCHEDVERT;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "static",       // Predefined system class
         "",             // Window name, or control captiontext
         dwStyle,        // Window style
@@ -110,10 +113,11 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON;
 
     HWND hWndBtnCtrl = CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "button",       // Predefined system class
         szText,         // Buttontext
         dwStyle,        // Window style
@@ -339,10 +343,11 @@ HWND CreateCheckBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int 
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_AUTOCHECKBOX;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "button",       // Predefined system class
         szText,         // Window name, or control captiontext
         dwStyle,        // Window style
@@ -369,10 +374,11 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, i
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD /*| WS_GROUP */ | BS_AUTORADIOBUTTON;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExStyle,      // Extended window style
         "button",       // Predefined system class
         szText,         // Window name, or control captiontext
         dwStyle,        // Window style
@@ -405,10 +411,11 @@ HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int 
     w = MulDiv(LOWORD(units), w, 4);
     h = MulDiv(HIWORD(units), h, 8);
 
+    DWORD dwExStyle = NULL;
     DWORD dwStyle = WS_VISIBLE | WS_CHILD | BS_GROUPBOX;
 
     return CreateWindowEx(
-        NULL,           // Extended window style
+        dwExstyle,      // Extended window style
         "button",       // Predefined system class
         szText,         // Window name, or control captiontext
         dwStyle,        // Window style
