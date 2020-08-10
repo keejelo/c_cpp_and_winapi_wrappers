@@ -61,7 +61,7 @@ std::string BrowseFileOpen(HWND hWnd, std::string strInitialDir)
     ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not use the contents of szFile to initialize itself.
     ofn.nMaxFile = MAX_PATH;
     ofn.lpstrFilter = "All files (*.*)\0*.*\0"; // "Text files (*.txt)\0*.txt\0All files (*.*)\0*.*\0";
-    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+    ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
     ofn.lpstrDefExt = "";
     ofn.lpstrInitialDir = strFullPath.c_str();
 
@@ -128,7 +128,7 @@ std::string BrowseFileSave(HWND hWnd, std::string strInitialDir)
     ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetSaveFileName does not use the contents of szFile to initialize itself.
     ofn.nMaxFile = MAX_PATH;
     ofn.lpstrFilter = "All files (*.*)\0*.*\0"; // "Text files (*.txt)\0*.txt\0All files (*.*)\0*.*\0";
-    ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;
+    ofn.Flags = OFN_EXPLORER | OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;
     ofn.lpstrDefExt = "";
     ofn.lpstrInitialDir = strFullPath.c_str();
 
