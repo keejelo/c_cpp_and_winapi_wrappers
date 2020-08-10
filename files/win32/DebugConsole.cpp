@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 //    Place below line in another file to control it from there instead
 //---------------------------------------------------------------------------------------------
-const bool DBGCON = 1;  // comment out this line if putting it in other file
+const bool DBGCON = true;  // comment out this line if putting it in other file
 
 
 
