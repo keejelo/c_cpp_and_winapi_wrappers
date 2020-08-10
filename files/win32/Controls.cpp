@@ -167,7 +167,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
         NULL);          // No pointer
 
     // ** Set max limit if specified
-    if (iMaxLength != 0)
+    if (iMaxLength > 0)
     {
         SendMessage(hWndEditCtrl, EM_SETLIMITTEXT, iMaxLength, NULL);
     }
