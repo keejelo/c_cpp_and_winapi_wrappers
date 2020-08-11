@@ -136,9 +136,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case WM_PAINT:
         {
-            HDC hDC;
+            HDC hdc;
             PAINTSTRUCT ps;
-            hDC = BeginPaint(hWnd, &ps);
+            hdc = BeginPaint(hWnd, &ps);
             //OnPaint(hWnd);  // Declared in "MyProgram.h"
             EndPaint(hWnd, &ps);
             break; 
@@ -147,8 +147,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         // ** Set background-color of static controls to match window
         case WM_CTLCOLORSTATIC:
         {
-            HDC hdcStatic = (HDC)wParam;
-            SetBkMode(hdcStatic, TRANSPARENT);
+            HDC hdc = (HDC)wParam;
+            SetBkMode(hdc, TRANSPARENT);
             return (INT_PTR)g_bgColor;
         }
             
