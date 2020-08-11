@@ -42,6 +42,7 @@ void OnCreate(HWND hWnd)
 void OnMouseButtonClick(HWND hWnd, HWND hBtnCtrl)
 {
     // ** Check which button was clicked
+    /*
     if (hBtnCtrl == btnOk)
     {
         // The OK button was clicked
@@ -50,6 +51,7 @@ void OnMouseButtonClick(HWND hWnd, HWND hBtnCtrl)
     {
         // The Cancel button was clicked
     }
+    */
 };
 //---------------------------------------------------------------------------------------------
 // ** END: OnMouseButtonClick
