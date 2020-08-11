@@ -23,7 +23,7 @@
 
 // ** Events listeners
 void OnCreate(HWND hWnd);
-void OnButtonClick(HWND hWnd, HWND hBtnCtrl);
+void OnMouseButtonClick(HWND hWnd, HWND hBtnCtrl);
 void OnPaint(HWND hWnd);
 void OnQuit();
 
