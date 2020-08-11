@@ -30,8 +30,9 @@ int g_iPosY = 0;
 int g_iWidth  = 800;
 int g_iHeight = 600;
 
-// ** Window background-color
+// ** Window background-color (choose one)
 HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // dialog bgcolor
+//HBRUSH g_bgColor = (HBRUSH)GetStockObject(BLACK_BRUSH);  // black bgcolor
 //HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
 //HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
 
