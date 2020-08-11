@@ -38,14 +38,14 @@ void OnCreate(HWND hWnd)
 //---------------------------------------------------------------------------------------------
 // ** OnMouseButtonClick
 //---------------------------------------------------------------------------------------------
-void OnMouseButtonClick(HWND hWnd, HWND hWndBtnCtrl)
+void OnMouseButtonClick(HWND hWnd, HWND hBtnCtrl)
 {
     // ** Check which button was clicked
-    if (hWndBtnCtrl == btnOk)
+    if (hBtnCtrl == btnOk)
     {
         // The OK button was clicked
     }
-    else if (hWndBtnCtrl == btnCancel)
+    else if (hBtnCtrl == btnCancel)
     {
         // The Cancel button was clicked
     }
