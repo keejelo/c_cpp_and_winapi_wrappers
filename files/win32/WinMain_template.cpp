@@ -144,7 +144,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break; 
         }
          
-        // ** Set background-color of static controls 
+        // ** Set background-color of static controls to match window
         case WM_CTLCOLORSTATIC:
         {
             HDC hdcStatic = (HDC)wParam;
