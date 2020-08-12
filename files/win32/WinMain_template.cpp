@@ -41,7 +41,7 @@ HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);  // dialog bgcolor
 //HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
 
 // ** Text-color for static controls (custom)
-const COLORREF g_textColor = RGB(0, 0, 0);
+const COLORREF g_textColor = RGB(0, 0, 0);  // default is black (0,0,0)
 
 
 //---------------------------------------------------------------------------------------------
