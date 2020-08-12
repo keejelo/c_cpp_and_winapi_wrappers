@@ -12,8 +12,8 @@
 // ** INCLUDE FILES
 //---------------------------------------------------------------------------------------------
 #include <windows.h>
-//#include "resource.h"
-//#include "MyProgram.h"
+// #include "resource.h"
+// #include "MyProgram.h"
 
 
 //---------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (msg)
     {
         case WM_CREATE:
-            //OnCreate(hWnd);  // Declared in "MyProgram.h"
+            // OnCreate(hWnd);  // Declared in "MyProgram.h"
             CenterWindow(hWnd);
             EnumChildWindows(hWnd, EnumChildProc, 0);
             break;
@@ -150,7 +150,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             HDC hdc;
             PAINTSTRUCT ps;
             hdc = BeginPaint(hWnd, &ps);
-            //OnPaint(hWnd);  // Declared in "MyProgram.h"
+            // OnPaint(hWnd);  // Declared in "MyProgram.h"
             EndPaint(hWnd, &ps);
             break; 
         }
@@ -168,13 +168,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (HIWORD(wParam))
             {
                 case BN_CLICKED:
-                    //OnMouseButtonClick(hWnd, (HWND)lParam);  // Declared in "MyProgram.h"
+                    // OnMouseButtonClick(hWnd, (HWND)lParam);  // Declared in "MyProgram.h"
                     break;
             }
             break;
         
         case WM_CLOSE:
-            //OnQuit();  // Declared in "MyProgram.h"
+            // OnQuit();  // Declared in "MyProgram.h"
             DestroyWindow(hWnd);
             break;
 
