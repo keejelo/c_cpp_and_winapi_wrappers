@@ -35,10 +35,13 @@ int g_iWidth  = 800;
 int g_iHeight = 600;
 
 // ** Window background-color (choose one)
-HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE); // dialog bgcolor
-//HBRUSH g_bgColor = (HBRUSH)GetStockObject(BLACK_BRUSH);  // black bgcolor
-//HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
-//HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
+HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);  // dialog bgcolor
+// HBRUSH g_bgColor = (HBRUSH)GetStockObject(BLACK_BRUSH);  // black bgcolor
+// HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
+// HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
+
+// ** Text-color for static controls (custom)
+const COLORREF g_textColor = RGB(0, 0, 0);
 
 
 //---------------------------------------------------------------------------------------------
@@ -152,11 +155,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break; 
         }
          
-        // ** Set background-color of static controls to match window
+        // ** Set background-color of static controls to match window,
+        //    and optionally the text-color.
         case WM_CTLCOLORSTATIC:
         {
-            HDC hdc = (HDC)wParam;
-            SetBkMode(hdc, TRANSPARENT);
+            HDC hdcStatic = (HDC) wParam;
+            SetTextColor(hdcStatic, g_textColor);
+            SetBkMode(hdcStatic, TRANSPARENT);
             return (INT_PTR)g_bgColor;
         }
             
