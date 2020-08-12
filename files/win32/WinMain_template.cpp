@@ -36,9 +36,9 @@ int g_iHeight = 600;
 
 // ** Window background-color (choose one)
 HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);  // dialog bgcolor
-// HBRUSH g_bgColor = (HBRUSH)GetStockObject(BLACK_BRUSH);  // black bgcolor
-// HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
-// HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
+//HBRUSH g_bgColor = (HBRUSH)GetStockObject(BLACK_BRUSH);  // black bgcolor
+//HBRUSH g_bgColor = (HBRUSH)GetStockObject(WHITE_BRUSH);  // white bgcolor
+//HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
 
 // ** Text-color for static controls (custom)
 const COLORREF g_textColor = RGB(0, 0, 0);
@@ -113,13 +113,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         return 0;
     }
 
-    ShowWindow(hWnd, nCmdShow); // Display the window
-    UpdateWindow(hWnd);         // Cause window client area to be drawn
+    ShowWindow(hWnd, nCmdShow);  // Display the window
+    UpdateWindow(hWnd);          // Cause window client area to be drawn
 
     // ** The message loop
-    while(GetMessage(&msg, NULL, 0, 0) > 0) // Get any messages (prevents returning: -1)
+    while(GetMessage(&msg, NULL, 0, 0) > 0)  // Get any messages (prevents returning: -1)
     {
-        if(!IsDialogMessage(hWnd, &msg))    // Enable tabstop for controls (if not a dialog)
+        if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
         {
             TranslateMessage(&msg);  // Translate keyboard messages
             DispatchMessage(&msg);   // Return control to Windows (OS)
@@ -140,7 +140,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (msg)
     {
         case WM_CREATE:
-            // OnCreate(hWnd);  // Declared in "MyProgram.h"
+            //OnCreate(hWnd);  // Declared in "MyProgram.h"
             CenterWindow(hWnd);
             EnumChildWindows(hWnd, EnumChildProc, 0);
             break;
@@ -150,7 +150,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             HDC hdc;
             PAINTSTRUCT ps;
             hdc = BeginPaint(hWnd, &ps);
-            // OnPaint(hWnd);  // Declared in "MyProgram.h"
+            //OnPaint(hWnd);  // Declared in "MyProgram.h"
             EndPaint(hWnd, &ps);
             break; 
         }
@@ -168,13 +168,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (HIWORD(wParam))
             {
                 case BN_CLICKED:
-                    // OnMouseButtonClick(hWnd, (HWND)lParam);  // Declared in "MyProgram.h"
+                    //OnMouseButtonClick(hWnd, (HWND)lParam);  // Declared in "MyProgram.h"
                     break;
             }
             break;
         
         case WM_CLOSE:
-            // OnQuit();  // Declared in "MyProgram.h"
+            //OnQuit();  // Declared in "MyProgram.h"
             DestroyWindow(hWnd);
             break;
 
