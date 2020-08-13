@@ -18,7 +18,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Browse for file (Open/Save dialog), and return its path as string
 //---------------------------------------------------------------------------------------------
-std::string BrowseFile(HWND hWnd, bool bOpenOrSave, std::string strInitialDir)
+std::string BrowseFile(HWND hWndParent, bool bOpenOrSave, std::string strInitialDir)
 {
     // ** Create string, default full path
     std::string strFullPath = "";
@@ -60,7 +60,7 @@ std::string BrowseFile(HWND hWnd, bool bOpenOrSave, std::string strInitialDir)
     // ** Initialize OPENFILENAME
     ZeroMemory(&ofn, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);
-    ofn.hwndOwner = hWnd;
+    ofn.hwndOwner = hWndParent;
     ofn.lpstrFile = szFile;
     ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so GetOpenFileName/GetSaveFileName does not use the contents of szFile to initialize itself.
     ofn.nMaxFile = MAX_PATH;    
