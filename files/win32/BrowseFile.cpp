@@ -18,7 +18,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Browse for file (Open/Save dialog), and return its path as string
 //---------------------------------------------------------------------------------------------
-std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
+std::string BrowseFile(HWND hWnd, bool bOpenOrSave, std::string strInitialDir)
 {
     // ** Create string, default full path
     std::string strFullPath = "";
