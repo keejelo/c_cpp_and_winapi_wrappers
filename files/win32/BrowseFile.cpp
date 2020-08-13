@@ -69,7 +69,7 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
     ofn.lpstrInitialDir = strFullPath.c_str();
     ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY;
     
-    // ** Check if we're going show Open (true) or Save (false) dialog
+    // ** Check if we're going to show Open (true) or Save (false) dialog
     if(bOpenOrSave)
     {
         ofn.Flags |= OFN_FILEMUSTEXIST;
