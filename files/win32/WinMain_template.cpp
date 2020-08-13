@@ -91,7 +91,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         return 0;
     }
     
-    DWORD dwStyle = WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX;
+    DWORD dwStyle = WS_OVERLAPPEDWINDOW; // = WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX;
     
     // ** Create the window
     hWnd = CreateWindow(
