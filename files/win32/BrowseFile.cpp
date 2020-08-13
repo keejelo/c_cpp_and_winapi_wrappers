@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-// ** Browse for file and return its path as string
+// ** Browse for file and return its path as string (Open or Save dialog)
 //---------------------------------------------------------------------------------------------
 std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
 {
