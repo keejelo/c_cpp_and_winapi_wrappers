@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------------------------
 // ** FUNCTION PROTOTYPES
 //---------------------------------------------------------------------------------------------
-std::string BrowseFile(HWND hWnd, bool bOpenOrSave = true, std::string strInitialDir = "");
+std::string BrowseFile(HWND hWndParent, bool bOpenOrSave = true, std::string strInitialDir = "");
 
 
 //---------------------------------------------------------------------------------------------
