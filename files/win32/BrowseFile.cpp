@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-// ** Browse for file and return its path as string (Open/Save dialog)
+// ** Browse for file (Open/Save dialog), and return its path as string
 //---------------------------------------------------------------------------------------------
 std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
 {
@@ -94,7 +94,7 @@ std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
     return ""; // return empty if Cancel or not selected any file
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Browse for file and return its path as string
+// ** END: Browse for file (Open/Save dialog), and return its path as string
 //---------------------------------------------------------------------------------------------
 
 
