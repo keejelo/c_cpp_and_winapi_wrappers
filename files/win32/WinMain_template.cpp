@@ -41,7 +41,7 @@ HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);  // dialog bgcolor
 //HBRUSH g_bgColor = CreateSolidBrush(RGB(255, 255, 255)); // custom bgcolor
 
 // ** Text-color for static controls (custom)
-const COLORREF g_textColor = RGB(0, 0, 0);  // default is black (0,0,0)
+//const COLORREF g_textColor = RGB(0, 0, 0);  // default is black (0,0,0)
 
 
 //---------------------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_CTLCOLORSTATIC:
         {
             HDC hdcStatic = (HDC) wParam;
-            SetTextColor(hdcStatic, g_textColor);
+            //SetTextColor(hdcStatic, g_textColor);
             SetBkMode(hdcStatic, TRANSPARENT);
             return (INT_PTR)g_bgColor;
         }
