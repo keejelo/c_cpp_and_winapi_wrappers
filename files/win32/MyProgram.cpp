@@ -40,11 +40,11 @@ void OnMouseButtonClick(HWND hWnd, HWND hBtnCtrl)
 {
     // ** Check which button was clicked
     /*
-    if (hBtnCtrl == btnOk)
+    if (hBtnCtrl == hBtnOk)
     {
         // The OK button was clicked
     }
-    else if (hBtnCtrl == btnCancel)
+    else if (hBtnCtrl == hBtnCancel)
     {
         // The Cancel button was clicked
     }
