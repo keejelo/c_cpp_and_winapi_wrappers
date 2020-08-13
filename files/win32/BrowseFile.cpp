@@ -16,9 +16,9 @@
 //---------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------
-// ** Browse for file to open, and return its path as string
+// ** Browse for file and return its path as string
 //---------------------------------------------------------------------------------------------
-std::string BrowseFileOpen(HWND hWnd, std::string strInitialDir)
+std::string BrowseFile(HWND hWnd, std::string strInitialDir, bool bOpenOrSave)
 {
     // ** Create string, default full path
     std::string strFullPath = "";
@@ -62,90 +62,39 @@ std::string BrowseFileOpen(HWND hWnd, std::string strInitialDir)
     ofn.lStructSize = sizeof(ofn);
     ofn.hwndOwner = hWnd;
     ofn.lpstrFile = szFile;
-    ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetOpenFileName does not use the contents of szFile to initialize itself.
-    ofn.nMaxFile = MAX_PATH;
+    ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so GetOpenFileName/GetSaveFileName does not use the contents of szFile to initialize itself.
+    ofn.nMaxFile = MAX_PATH;    
     ofn.lpstrFilter = "All files (*.*)\0*.*\0"; // "Text files (*.txt)\0*.txt\0All files (*.*)\0*.*\0";
-    ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
     ofn.lpstrDefExt = "";
     ofn.lpstrInitialDir = strFullPath.c_str();
-
-    // ** Open file dialog
-    if (GetOpenFileName(&ofn))
+    ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY;
+    
+    // ** Check if we're going show Open or Save dialog
+    if(bOpenOrSave)
     {
-        return ofn.lpstrFile; // return filename
-    }
-
-    return ""; // return empty if Cancel or not selected any file
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Browse for file to open, and return its path as string
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-// ** Browse for file to save, and return its path as string
-//---------------------------------------------------------------------------------------------
-std::string BrowseFileSave(HWND hWnd, std::string strInitialDir)
-{
-    // ** Create string, default full path
-    std::string strFullPath = "";
-
-    // ** Transform the string to lowercase before search, makes search "case-insensitive"
-    std::transform( strInitialDir.begin(), strInitialDir.end(), strInitialDir.begin(), [](unsigned char c) { return std::tolower(c); } );
-
-    // ** Search for %userprofile% in string (in case the string contains it)
-    std::size_t found = strInitialDir.find("%userprofile%");
-
-    // ** If found then make path with %userprofile% (only if string contains it, else we skip this)
-    if (found != std::string::npos)
-    {
-        //puts("%userprofile% was found!\n");
-
-        // ** Get %UserProfile% path string (expand the environment variable and build final string)
-        char szProfilePath[MAX_PATH] = { 0 };
-        HRESULT result = SHGetFolderPath(NULL, CSIDL_PROFILE, NULL, 0, szProfilePath);
-
-        if (result == S_OK)
+        ofn.Flags |= OFN_FILEMUSTEXIST;
+        
+        // ** Open file dialog
+        if (GetOpenFileName(&ofn))
         {
-            strInitialDir.replace(0, 14, "\\"); // Remove %userprofile% from the string since it was just a search symbol, and replace it with a bracket
-            strFullPath = szProfilePath;    // Add the proper userprofile from the CSIDL format list
-            strFullPath += strInitialDir;   // Add rest of the string to complete the full path
+            return ofn.lpstrFile; // return filename
         }
     }
     else
     {
-        //puts("%userprofile% not found!\n");
-        strFullPath = strInitialDir;
-    }
-
-    // ** Buffer for file name
-    char szFile[MAX_PATH] = { 0 };
-
-    // ** Create common dialog box structure
-    OPENFILENAME ofn = { 0 };
-
-    // ** Initialize OPENFILENAME
-    ZeroMemory(&ofn, sizeof(ofn));
-    ofn.lStructSize = sizeof(ofn);
-    ofn.hwndOwner = hWnd;
-    ofn.lpstrFile = szFile;
-    ofn.lpstrFile[0] = '\0';  // Set lpstrFile[0] to '\0' so that GetSaveFileName does not use the contents of szFile to initialize itself.
-    ofn.nMaxFile = MAX_PATH;
-    ofn.lpstrFilter = "All files (*.*)\0*.*\0"; // "Text files (*.txt)\0*.txt\0All files (*.*)\0*.*\0";
-    ofn.Flags = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT;
-    ofn.lpstrDefExt = "";
-    ofn.lpstrInitialDir = strFullPath.c_str();
-
-    // ** Save file dialog
-    if (GetSaveFileName(&ofn))
-    {
-        return ofn.lpstrFile; // return filename
+        ofn.Flags |= OFN_OVERWRITEPROMPT;
+        
+        // ** Save file dialog
+        if (GetSaveFileName(&ofn))
+        {
+            return ofn.lpstrFile; // return filename
+        }    
     }
 
     return ""; // return empty if Cancel or not selected any file
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Browse for file to save, and return its path as string
+// ** END: Browse for file and return its path as string
 //---------------------------------------------------------------------------------------------
 
 
