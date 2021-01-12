@@ -215,7 +215,7 @@ BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 void CenterWindow(HWND hWnd)
 {
-    RECT rc;
+    RECT rc = {0};
     GetWindowRect(hWnd, &rc);
     int x = (GetSystemMetrics(SM_CXSCREEN) - rc.right) / 2;
     int y = (GetSystemMetrics(SM_CYSCREEN) - rc.bottom) / 2;
