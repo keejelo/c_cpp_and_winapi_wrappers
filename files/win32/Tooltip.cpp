@@ -16,7 +16,7 @@
 
 /*
 //---------------------------------------------------------------------------------------------
-// ** Initialize Common Controls
+// ** Visual style
 //---------------------------------------------------------------------------------------------
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
@@ -46,6 +46,10 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszTe
     // ** Create tooltip
     HWND hWndTip = NULL;
     
+    // ** Initialize Common Controls
+    InitCommonControls();
+    
+    // ** Create control
     hWndTip = CreateWindowEx(
         WS_EX_TOPMOST, 
         TOOLTIPS_CLASS,
