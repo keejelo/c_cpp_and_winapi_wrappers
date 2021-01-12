@@ -62,7 +62,7 @@ void CenterWindow(HWND hWnd);
 //---------------------------------------------------------------------------------------------
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {    
-    static char szAppName[] = "WindowClassName";               // Window classname (custom)
+    static char szAppName[] = "WindowName";                    // Window name (window 'class' (not c++ class))
     HWND hWnd;                                                 // Window handle
     MSG msg;                                                   // Window message structure
     WNDCLASSEX wc;                                             // Structure to hold window's attributes
@@ -79,12 +79,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.hIconSm       = NULL;                                   // Small icon
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);            // Cursor style
     wc.lpszMenuName  = NULL;                                   // Name of menu resource (if any)
-    wc.lpszClassName = szAppName;                              // Set window classname
+    wc.lpszClassName = szAppName;                              // Set window 'class'
 
     // ** Window background color
     wc.hbrBackground = g_bgColor;
 
-    // ** Register the window class
+    // ** Register the window 'class'
     if (!RegisterClassEx(&wc))
     {
         MessageBox(NULL, "Window registration failed!", "Error", MB_ICONEXCLAMATION | MB_OK);
@@ -95,7 +95,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     // ** Create the window
     hWnd = CreateWindow(
-        szAppName,      // Window classname
+        szAppName,      // Window name (window 'class' (not c++ class))
         g_szWinTitle,   // Title of the window
         dwStyle,        // Windowstyle
         g_iPosX,        // X pos
@@ -119,11 +119,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // ** The message loop
     while(GetMessage(&msg, NULL, 0, 0) > 0)  // Get any messages (prevents returning: -1)
     {
-        if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
-        {
+        //if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
+        //{
             TranslateMessage(&msg);  // Translate keyboard messages
             DispatchMessage(&msg);   // Return control to Windows (OS)
-        }
+        //}
     }
     return (int)msg.wParam;
 };
