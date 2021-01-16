@@ -17,7 +17,7 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Initialize common controls (Enables visual-styles on controls among other things)
+// ** Enables visual-styles on controls among other things
 //---------------------------------------------------------------------------------------------
 #pragma comment(linker,"\"/manifestdependency:type='win32' \
 name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
@@ -119,11 +119,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // ** The message loop
     while(GetMessage(&msg, NULL, 0, 0) > 0)  // Get any messages (prevents returning: -1)
     {
-        //if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
-        //{
+        if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
+        {
             TranslateMessage(&msg);  // Translate keyboard messages
             DispatchMessage(&msg);   // Return control to Windows (OS)
-        //}
+        }
     }
     return (int)msg.wParam;
 };
