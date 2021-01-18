@@ -1,1 +1,1 @@
-Code to be used with Windows API
+Code using Windows API
