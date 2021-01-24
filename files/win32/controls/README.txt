@@ -3,6 +3,6 @@ Makes things easier when creating controls at run time, without resource files.
 Written in C code for simplicity, not using C++ classes etc.
 Hope this can help someone :)
 
-TODO: Add more controls and wrappers. Also wrapper for Common controls eventually.
+TODO: Add more controls and wrappers. Common controls.
 
 
