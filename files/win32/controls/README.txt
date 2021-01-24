@@ -1,3 +1,3 @@
-Wrappers for easier creating Windows API standard controls like static text, static lines, button, editbox etc.
+Wrappers for easier creating Windows API standard controls like static text, static lines, button, editbox and more..
 Makes things easier when creating controls at run time, without resource files. Pure code!
 Hope this can help someone :)
