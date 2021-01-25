@@ -122,6 +122,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     DestroyWindow(hWnd);
                     break;
             }
+            break;
         }        
         break;
         
@@ -129,11 +130,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             switch ((char)wParam)
             {
-                // ** Check if O key is pressed
-                case 'O':  
+                case 'O':  // Check if O key is pressed
                 {
-                    // ** Check if CTRL key is pressed
-                    if (GetKeyState(VK_CONTROL) & 0x8000)
+                    if (GetKeyState(VK_CONTROL) & 0x8000)  // Check if CTRL key is held down
                     {
                         // open something
                     }
