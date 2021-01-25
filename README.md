@@ -13,7 +13,7 @@ My goal is to make things easier/faster to write C code especially WinAPI code (
 Trying to stay away from C++ classes etc. to keep it all very simple. I don't have anything against C++ and classes, it's just that "raw" functions are easier for everyone to understand right away, and they can easily be implemented in a C++ class if that is what you want.
 
 If anyone finds some of this useful that's great! :)<br>
-If not, that's ok, you're probably a better programmer than me :)
+If not, that's ok, you're probably a better programmer than me and that's cool :)
 
 
 <br><br><br><br><br>
