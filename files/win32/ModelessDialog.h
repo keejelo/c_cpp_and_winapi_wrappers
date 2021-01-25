@@ -26,7 +26,7 @@
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void RegisterDialogClass(HINSTANCE hInstance);
-HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
+HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
 
 
