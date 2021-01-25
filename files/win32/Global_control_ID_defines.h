@@ -10,7 +10,6 @@
 //
 // The names and values are abitrary (does not matter), but each name and value must be unique.
 // Valid range for ID values is 1 through 65565.
-//
 //---------------------------------------------------------------------------------------------
 
 
