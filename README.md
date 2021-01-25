@@ -14,11 +14,7 @@ Trying to stay away from C++ classes etc. to keep it all very simple. I don't ha
 If anyone finds some of this useful that's great!
 :)
 
-
-
-
-
-
+<br><br><br><br><br>
 Some online resources:
 
 http://www.winprog.org/tutorial/
