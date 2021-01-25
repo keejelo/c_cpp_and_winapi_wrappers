@@ -128,7 +128,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 case ID_FIND: // some menu item with control id: ID_FIND
                 {
                     // ** Create and open dialog when menu item is clicked
-                    CreateDialogBox(hWnd, g_hInstance, "Find", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
+                    CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
                     break;
                 }
             }
