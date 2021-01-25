@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Create menu
 //---------------------------------------------------------------------------------------------
-void CreateWindowMenu(HWND hWnd)
+HMENU CreateWindowMenu(HWND hWnd)
 {
     HMENU hMenu = CreateMenu();
     HMENU hSubMenu = CreatePopupMenu();
@@ -81,6 +81,8 @@ void CreateWindowMenu(HWND hWnd)
 
     // ** Adde menu to window
     SetMenu(hWnd, hMenu);
+    
+    return hMenu;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create menu
@@ -98,7 +100,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
         case WM_CREATE:
-            CreateMenuBar(hWnd); // <----- add this
+            hMyMenu = CreateMenuBar(hWnd); // <----- add this, hMyMenu is GLOBAL handler to the menu (HMENU hMyMenu) in case we need it 
             break;
 
         case WM_COMMAND:         // <----- add this if not existant
