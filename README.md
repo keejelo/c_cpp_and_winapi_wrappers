@@ -14,3 +14,13 @@ Trying to stay away from C++ classes etc. to keep it all very simple. I don't ha
 If anyone finds some of this useful that's great!
 :)
 
+
+Some online resources:
+http://www.winprog.org/tutorial/
+https://zetcode.com/gui/winapi/
+http://winapi.foosyerdoos.org.uk/
+http://www.catch22.net/tuts/
+http://in4k.untergrund.net/various%20web%20articles/Creating_Small_Win32_Executables_-_Fast_Builds.htm
+https://www.cprogramming.com/tutorial/c-tutorial.html
+https://www.tenouk.com/Sitemap.html
+
