@@ -1,9 +1,9 @@
 #pragma once
 //---------------------------------------------------------------------------------------------
-// ** Global_control_ID_defines.h
+// ** Global_ID_defines.h
 //---------------------------------------------------------------------------------------------
-#ifndef GLOBAL_CONTROL_ID_DEFINES_H
-#define GLOBAL_CONTROL_ID_DEFINES_H
+#ifndef GLOBAL_ID_DEFINES_H
+#define GLOBAL_ID_DEFINES_H
 //---------------------------------------------------------------------------------------------
 // A file to define all your global ID's, similar to what MFC does for you, but here we have to
 // manage and control it all ourselves. This file must be included everywhere you use the ID's.
@@ -38,5 +38,5 @@
 
 
 //---------------------------------------------------------------------------------------------
-#endif // GLOBAL_CONTROL_ID_DEFINES_H
+#endif // GLOBAL_ID_DEFINES_H
 //---------------------------------------------------------------------------------------------
