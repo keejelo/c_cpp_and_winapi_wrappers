@@ -90,10 +90,12 @@ HMENU CreateWindowMenu(HWND hWnd)
 
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////
+// ** HOW TO IMPLEMENT
+///////////////////////////////////////////////////////////////////////////////////////////////
 /*
-// Example of how to implement in main window procedure
 
+// ** Do this in your main window procedure
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -102,38 +104,53 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case WM_CREATE:
             hMyMenu = CreateWindowMenu(hWnd); // <----- add this, hMyMenu is GLOBAL handler to the menu (HMENU hMyMenu) in case we need it 
             break;
-
+            
         case WM_COMMAND:         // <----- add this if not existant
+        {
+            // ** Parse the menu selections   // <----- add this and below ID cases
+            switch (LOWORD(wParam))
             {
-                // ** Parse the menu selections   // <----- add this and below ID cases
-                switch (LOWORD(wParam))
-                {
-                    case ID_OPEN:
-                        // open something
-                        break;
+                case ID_OPEN:
+                    // open something
+                    break;
 
-                    case ID_ABOUT:
-                        // open about dialog
-                        break;
-                        
-                    case ID_EXIT:
-                        DestroyWindow(hWnd);
-                        break;
+                case ID_ABOUT:
+                    // open about dialog
+                    break;
+
+                case ID_EXIT:
+                    DestroyWindow(hWnd);
+                    break;
+            }
+        }        
+        break;
+        
+        case WM_KEYDOWN:
+        {
+            switch ((char)wParam)
+            {
+                // ** Check if O key is pressed
+                case 'O':  
+                {
+                    // ** Check if CTRL key is pressed
+                    if (GetKeyState(VK_CONTROL) & 0x8000)
+                    {
+                        // open something
+                    }
                 }
+                break;
             }
             break;
-
+        }
+        break;
+        
         case WM_DESTROY:
             PostQuitMessage(0);
             break;
-
+            
         default:
             return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
 };
-
 */
-
-
-
