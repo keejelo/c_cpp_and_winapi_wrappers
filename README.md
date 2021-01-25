@@ -34,3 +34,6 @@ https://www.cprogramming.com/tutorial/c-tutorial.html
 
 https://www.tenouk.com/Sitemap.html
 
+https://docs.microsoft.com/en-us/windows/win32/apiindex/api-index-portal
+
+
