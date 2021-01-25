@@ -51,7 +51,7 @@ void RegisterDialogClass(HINSTANCE hInstance)
     WNDCLASSEX wc = { 0 };
     wc.cbSize = sizeof(WNDCLASSEX);
     wc.lpfnWndProc = (WNDPROC)DialogProc;
-    wc.hInstance = hInstance;  // g_hInstance
+    wc.hInstance = hInstance;
     wc.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
     wc.lpszClassName = "DialogClass";
 
