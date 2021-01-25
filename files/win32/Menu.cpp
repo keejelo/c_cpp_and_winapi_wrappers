@@ -2,12 +2,10 @@
 // ** Menu.cpp
 //---------------------------------------------------------------------------------------------
 
-
 //---------------------------------------------------------------------------------------------
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "Menu.h"
-
 
 
 //---------------------------------------------------------------------------------------------
@@ -92,7 +90,7 @@ void CreateWindowMenu(HWND hWnd)
 
 
 /*
-// Example of how to implement in event handler
+// Example of how to implement in main window procedure
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -109,7 +107,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 switch (LOWORD(wParam))
                 {
                     case ID_OPEN:
-                        // open file or something
+                        // open something
                         break;
 
                     case ID_ABOUT:
