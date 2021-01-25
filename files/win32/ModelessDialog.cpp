@@ -69,10 +69,10 @@ void RegisterDialogClass(HINSTANCE hInstance)
 //---------------------------------------------------------------------------------------------
 // ** Create Dialogbox
 //---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
+HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
 {
     RECT rc;
-    GetWindowRect(hWnd, &rc);
+    GetWindowRect(hWndParent, &rc);
     int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
     int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
 
