@@ -106,9 +106,7 @@ BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
 // ** HOW TO IMPLEMENT
 ///////////////////////////////////////////////////////////////////////////////////////////////
 /*
-
 // ** Do this in your main window procedure 
-
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -122,20 +120,33 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         
         case WM_COMMAND:
         {
-            wmId = LOWORD(wParam);
-
             // ** Parse menu selections
-            switch(wmId)
+            switch(LOWORD(wParam))
             {
                 case ID_FIND: // some menu item with control id: ID_FIND
-                {
-                    // ** Create and open dialog when menu item is clicked
-                    CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
+                    // ** Create and open dialog when menu item is clicked, hMyDlg is GLOBAL handle to dialog
+                    hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
                     break;
-                }
             }
             break;
         }
+        break;
+        
+        case WM_SIZE:
+        {
+            switch (wParam)
+            {
+                case SIZE_MINIMIZED:
+                    ShowWindow(hMyDlg, SW_HIDE);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog
+                    break;
+                
+                case SIZE_RESTORED:
+                    ShowWindow(hMyDlg, SW_SHOW);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog
+                    break;
+            }
+            break;
+        }
+        break;        
         
         case WM_DESTROY:
         {
