@@ -10,7 +10,7 @@
 // around in different files, and in worst case some ID's are duplicated and result in strange
 // and unknown errors. Keeping them together is easier and you have total control.
 //
-// The names and values are abitrary (does not matter), but each name and value must be unique.
+// The names and values are arbitrary(does not matter), but each name and value must be unique.
 // Valid range for ID values is 1 through 65565.
 //
 // This file must be included everywhere you use the ID's.
