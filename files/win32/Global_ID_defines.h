@@ -8,7 +8,7 @@
 // A file to define all your global ID's, similar to what MFC does for you, but here we have to
 // manage and control it all ourselves. It's easier to have them all in one file than scattered
 // around in different files, and in worst case some ID's are duplicated and result in strange
-// and unknown errors. Keeping them together is easier and you have total control.
+// and unknown errors. Keeping them together in one file is easier and you have total control.
 //
 // The names and values are arbitrary, does not matter what you name them, but each name and
 // value must be unique. Valid range for ID values is 1 through 65565.
