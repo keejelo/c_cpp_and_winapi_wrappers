@@ -25,7 +25,7 @@
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-void CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
+HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
 void RegisterDialogClass(HINSTANCE hInstance);
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
 
