@@ -105,7 +105,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hMyMenu = CreateWindowMenu(hWnd); // <----- add this, hMyMenu is GLOBAL handler to the menu (HMENU hMyMenu) in case we need it 
             break;
             
-        case WM_COMMAND:         // <----- add this if not existant
+        case WM_COMMAND:         // <----- add this if none existant
         {
             // ** Parse the menu selections   // <----- add this and below ID cases
             switch (LOWORD(wParam))
@@ -126,7 +126,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }        
         break;
         
-        case WM_KEYDOWN:
+        case WM_KEYDOWN:   // <----- add this if none existant, this way you can catch keypresses
         {
             switch ((char)wParam)
             {
