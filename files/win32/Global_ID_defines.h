@@ -25,8 +25,9 @@
 #define IDC_BUTTON2      103
 #define IDM_OPEN         104
 #define IDM_SAVE         105
-#define IDM_ABOUT        106
-#define IDM_EXIT         107
+#define IDM_EXIT         106
+#define IDM_ABOUT        107
+
 
 
 
