@@ -1,4 +1,4 @@
-# C/C++ wrappers
+# C/C++ and WindowsAPI wrappers
 Simple wrappers for C/C++ and Win32 API (Windows API)
 
 After many years of programming stuff, I'm tired of writing the same code over and over again.
