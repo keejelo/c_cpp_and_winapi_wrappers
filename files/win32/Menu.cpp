@@ -100,7 +100,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     switch (message)
     {
         case WM_CREATE:
-            hMyMenu = CreateMenuBar(hWnd); // <----- add this, hMyMenu is GLOBAL handler to the menu (HMENU hMyMenu) in case we need it 
+            hMyMenu = CreateWindowMenu(hWnd); // <----- add this, hMyMenu is GLOBAL handler to the menu (HMENU hMyMenu) in case we need it 
             break;
 
         case WM_COMMAND:         // <----- add this if not existant
