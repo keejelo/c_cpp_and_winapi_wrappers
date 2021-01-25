@@ -69,16 +69,18 @@ void RegisterDialogClass(HINSTANCE hInstance)
 //---------------------------------------------------------------------------------------------
 // ** Create Dialogbox
 //---------------------------------------------------------------------------------------------
-void CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
+HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
 {
     RECT rc;
     GetWindowRect(hWnd, &rc);
     int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
     int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
 
-    CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
-        WS_VISIBLE | WS_SYSMENU | WS_CAPTION , xPos, yPos, iWidth, iHeight, 
-        NULL, NULL, hInstance,  NULL);
+    HWND hDlg = CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
+                    WS_VISIBLE | WS_SYSMENU | WS_CAPTION,
+                    xPos, yPos, iWidth, iHeight, 
+                    NULL, NULL, hInstance,  NULL);
+    return hDlg;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
