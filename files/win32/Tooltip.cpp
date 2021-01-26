@@ -20,6 +20,7 @@
 //---------------------------------------------------------------------------------------------
 HWND CreateToolTip(HWND hParentWnd, /*int ctrlID,*/ HWND hWndCtrl, LPTSTR lpszText)
 {
+     // ** Initialize Common Controls
     INITCOMMONCONTROLSEX cc;
     cc.dwSize = sizeof(INITCOMMONCONTROLSEX);
     cc.dwICC = ICC_TAB_CLASSES | ICC_BAR_CLASSES;
@@ -37,9 +38,6 @@ HWND CreateToolTip(HWND hParentWnd, /*int ctrlID,*/ HWND hWndCtrl, LPTSTR lpszTe
 
     // ** Create tooltip
     HWND hWndTip = NULL;
-    
-    // ** Initialize Common Controls
-    InitCommonControls();
     
     // ** Create control
     hWndTip = CreateWindowEx(
