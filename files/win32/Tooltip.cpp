@@ -10,19 +10,9 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Might need to import library (Common Controls) try it first without, else uncomment line
+// ** Import library (Common Controls)
 //---------------------------------------------------------------------------------------------
-// #pragma comment(lib, "comctl32.lib")
-
-/*
-//---------------------------------------------------------------------------------------------
-// ** Visual style
-//---------------------------------------------------------------------------------------------
-#pragma comment(linker,"\"/manifestdependency:type='win32' \
-name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
-processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
-//---------------------------------------------------------------------------------------------
-*/
+#pragma comment(lib, "comctl32.lib")
 
 
 //---------------------------------------------------------------------------------------------
@@ -34,6 +24,11 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 //---------------------------------------------------------------------------------------------
 HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszText)
 {
+    INITCOMMONCONTROLSEX cc;
+    cc.dwSize = sizeof(INITCOMMONCONTROLSEX);
+	cc.dwICC = ICC_TAB_CLASSES | ICC_BAR_CLASSES;
+	InitCommonControlsEx(&cc);
+
     // ** Max-width (pixels) before newline occurs
     int iMaxWidth = 300;
 
