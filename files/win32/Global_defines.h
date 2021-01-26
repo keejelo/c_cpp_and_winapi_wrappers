@@ -1,9 +1,9 @@
 #pragma once
 //---------------------------------------------------------------------------------------------
-// ** Global_ID_defines.h  - (similar to "resource.h" in MS Visual Studio IDE)
+// ** Global_defines.h  - (similar to "resource.h" in MS Visual Studio IDE)
 //---------------------------------------------------------------------------------------------
-#ifndef GLOBAL_ID_DEFINES_H
-#define GLOBAL_ID_DEFINES_H
+#ifndef GLOBAL_DEFINES_H
+#define GLOBAL_DEFINES_H
 //---------------------------------------------------------------------------------------------
 // A file to define all your global ID's, similar to what MSVS does for you with "resource.h".
 // So if you're adding alot of resources to your project, you're better off using "resource.h"
@@ -51,5 +51,5 @@
 
 
 //---------------------------------------------------------------------------------------------
-#endif // GLOBAL_ID_DEFINES_H
+#endif // GLOBAL_DEFINES_H
 //---------------------------------------------------------------------------------------------
