@@ -26,8 +26,8 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszTe
 {
     INITCOMMONCONTROLSEX cc;
     cc.dwSize = sizeof(INITCOMMONCONTROLSEX);
-	cc.dwICC = ICC_TAB_CLASSES | ICC_BAR_CLASSES;
-	InitCommonControlsEx(&cc);
+    cc.dwICC = ICC_TAB_CLASSES | ICC_BAR_CLASSES;
+    InitCommonControlsEx(&cc);
 
     // ** Max-width (pixels) before newline occurs
     int iMaxWidth = 300;
