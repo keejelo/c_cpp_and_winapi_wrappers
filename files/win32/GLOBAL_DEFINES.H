@@ -13,7 +13,7 @@
 // As we have to manage and control it all ourselves, it's easier to have it all in one file
 // than scattered around in different files, and in worst case some ID's are duplicated and
 // resulting in strange and unknown errors. Keeping them together in one file is easier and 
-// you have total control.
+// you have better control.
 //
 // The names and values are arbitrary, does not matter what you name them, but each name and
 // value must be unique. Valid range for ID values is 1 through 65565.
