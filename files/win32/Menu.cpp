@@ -76,12 +76,13 @@ HMENU CreateWindowMenu(HWND hWnd)
 
 
     //-------------------------------------------------
-    // ** END: Edit your menu items
+    // ** END: Add menu and menuitems
     //-------------------------------------------------
 
     // ** Adde menu to window
     SetMenu(hWnd, hMenu);
     
+    // ** Return handle
     return hMenu;
 };
 //---------------------------------------------------------------------------------------------
