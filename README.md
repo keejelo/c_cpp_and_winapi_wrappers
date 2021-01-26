@@ -18,7 +18,7 @@ If not, that's ok, you're probably a better programmer than me, or found your ow
 
 
 <br><br><br><br>
-Some online resources:
+Some online resources I read from time to time:
 
 http://www.winprog.org/tutorial/
 
