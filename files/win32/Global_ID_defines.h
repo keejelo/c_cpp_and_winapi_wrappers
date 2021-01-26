@@ -5,9 +5,11 @@
 #ifndef GLOBAL_ID_DEFINES_H
 #define GLOBAL_ID_DEFINES_H
 //---------------------------------------------------------------------------------------------
-// A file to define all your global ID's, similar to what MFC does for you with "resource.h", 
-// so if you're adding alot of resources to your project you're better off using "resource.h"
-// If not then here we go:
+// A file to define all your global ID's, similar to what MSVS does for you with "resource.h".
+// So if you're adding alot of resources to your project, you're better off using "resource.h"
+// and a resource file (.rc) so things don't get mixed up.
+//
+// If all you need is defines, then here we go:
 // Here we have to manage and control it all ourselves. It's easier to have it all in one
 // file than scattered around in different files, and in worst case some ID's are duplicated
 // and result in strange and unknown errors. Keeping them together in one file is easier and
