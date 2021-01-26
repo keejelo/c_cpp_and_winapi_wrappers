@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Variables
 //---------------------------------------------------------------------------------------------
-const int NUMPARTS = 3;
-int g_iParts[NUMPARTS];
+const int NUMPARTS = 3; // <---- this is how many parts (sections) you want in the statusbar
+int g_iParts[NUMPARTS]; // <---- an array that holds the total number of parts
 
 
 //---------------------------------------------------------------------------------------------
