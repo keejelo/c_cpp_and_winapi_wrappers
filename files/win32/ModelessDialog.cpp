@@ -20,9 +20,9 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_CREATE:
             /*
-            CreateEditCtrl(hWnd, "", 10, 10, IDC_EDIT1);
-            CreateButtonCtrl(hWnd, "OK", 10, 50, IDC_BUTTON1);
-            CreateButtonCtrl(hWnd, "Cancel", 150, 50, IDC_BUTTON2);
+            CreateEditCtrl(hWnd, "", 10, 10, IDC_EDIT1);             // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, "OK", 10, 50, IDC_BUTTON1);       // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, "Cancel", 150, 50, IDC_BUTTON2);  // <---- using "Controls.h"
             */
             EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set control visuals
             break;
