@@ -13,8 +13,8 @@ So I went back to basic, reading old C books like "C programming languange, Kern
 My goal is to make things easier/faster to write C/C++ code especially WinAPI code (at least for myself), that's why I'm making wrapper functions.
 Trying to stay away from C++ classes etc. to keep it all very simple. I don't have anything against C++ and classes, it's just that "raw" functions are easier for everyone to understand right away, and they can easily be implemented in a C++ class if one wants to.
 
-The code is written in a mixed C/C++ language, using filetype *.cpp and *.h<br>
-(If I was a better coder I would've written it all in C or C++, maybe I'll clean it more up some day)
+The code is written in a mix of C/C++ language, using filetype *.cpp and *.h <br>
+(If I was a better coder I would've written it all in pure C or C++, maybe I'll do that some day for purity)
 
 If anyone finds some of this useful that's great! :)<br>
 If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
