@@ -20,7 +20,7 @@ If not, that's ok, you're probably a better programmer than me, or found your ow
 <br><br><br><br>
 Some good online resources:
 
-http://www.winprog.org/tutorial/
+http://www.winprog.org/tutorial/start.html
 
 https://zetcode.com/gui/winapi/
 
