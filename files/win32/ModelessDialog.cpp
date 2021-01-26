@@ -28,7 +28,6 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_COMMAND:
-
             break;
 
         case WM_CLOSE:
