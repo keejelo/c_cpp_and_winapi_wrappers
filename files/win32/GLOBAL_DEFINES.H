@@ -31,13 +31,13 @@
 //---------------------------------------------------------------------------------------------
 /*
 // Examples
-#define IDC_EDIT1        101
-#define IDC_BUTTON1      102
-#define IDC_BUTTON2      103
-#define IDM_OPEN         104
-#define IDM_SAVE         105
-#define IDM_EXIT         106
-#define IDM_ABOUT        107
+#define ID_EDIT1        101
+#define ID_BUTTON1      102
+#define ID_BUTTON2      103
+#define ID_OPEN         104
+#define ID_SAVE         105
+#define ID_EXIT         106
+#define ID_ABOUT        107
 */
 
 
