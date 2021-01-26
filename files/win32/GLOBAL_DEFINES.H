@@ -15,12 +15,13 @@
 // resulting in strange and unknown errors. Keeping them together in one file is easier and 
 // you have better control.
 //
-// The names and values are arbitrary, does not matter what you name them, but each name and
-// value must be unique. Valid range for ID values is 1 through 65565.
+// The names and values are arbitrary, does not matter what you name them (kinda),
+// but each name and value must be unique. Valid range for ID values is 1 through 65565.
 //
 // There are some reserved names and values that it's maybe best to stay away from:
 // https://docs.microsoft.com/en-us/cpp/windows/predefined-symbol-ids
-//
+// 
+//---------------------------------------------------------------------------------------------
 // This file must be included everywhere you use the ID's.
 //---------------------------------------------------------------------------------------------
 
@@ -28,6 +29,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Defines
 //---------------------------------------------------------------------------------------------
+/*
+// Examples
 #define IDC_EDIT1        101
 #define IDC_BUTTON1      102
 #define IDC_BUTTON2      103
@@ -35,7 +38,7 @@
 #define IDM_SAVE         105
 #define IDM_EXIT         106
 #define IDM_ABOUT        107
-
+*/
 
 
 
