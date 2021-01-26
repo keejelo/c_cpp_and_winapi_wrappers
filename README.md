@@ -14,8 +14,6 @@ My goal is to make things easier/faster to write C/C++ code especially WinAPI co
 Trying to stay away from C++ classes etc. to keep it all very simple. I don't have anything against C++ and classes, it's just that "raw" functions are easier for everyone to understand right away, and they can easily be implemented in a C++ class, or in a namespace, if one wants to.
 
 TLDR;<br>
-The code is written in a mix of C/C++ language, using filetype *.cpp and *.h <br>
-(If I was a better coder I would've written it all in pure C or C++, maybe I'll do that some day for purity)
 
 If anyone finds some of this useful that's great! :)<br>
 If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
