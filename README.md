@@ -36,4 +36,7 @@ https://www.tenouk.com/Sitemap.html
 
 https://docs.microsoft.com/en-us/windows/win32/apiindex/api-index-portal
 
+https://www.codeproject.com/
+
+https://www.codeguru.com/
 
