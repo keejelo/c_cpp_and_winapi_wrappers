@@ -18,6 +18,9 @@
 // The names and values are arbitrary, does not matter what you name them, but each name and
 // value must be unique. Valid range for ID values is 1 through 65565.
 //
+// There are some reserved names and values that it's maybe best to stay away from:
+// https://docs.microsoft.com/en-us/cpp/windows/predefined-symbol-ids
+//
 // This file must be included everywhere you use the ID's.
 //---------------------------------------------------------------------------------------------
 
