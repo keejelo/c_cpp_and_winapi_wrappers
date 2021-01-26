@@ -1,7 +1,7 @@
 # C/C++ and Win32 wrappers
 Simple wrappers for C/C++ and Win32 API (Windows API)
 
-After many years of programming stuff, it's tiring to write the same code over and over again, and never ending up in a uniform way.
+After many years of programming stuff, it's tiring to write the same code over and over again, and never ending up doing it in a uniform way.
 I want to collect some of my codefiles here for easier access for myself (for my pet projects) and perhaps for others who might need them or can find them helpful.
 (Not that my code stuff is so great, special and genius :))
 
