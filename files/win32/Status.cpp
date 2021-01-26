@@ -112,6 +112,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             // ** Add statusbar
             hStatusBar = CreateStatusBar(hWnd, ID_STATUS);  // <------ add this, hStatusBar is GLOBAL handler to statusbar (HWND hStatusBar)
+            // ** Set text
+            SetStatusBarText(hStatusBar, 0, "Hello");
         }
         break;
 
