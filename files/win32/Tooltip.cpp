@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Create a tooltip for a control
 //---------------------------------------------------------------------------------------------
-HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszText)
+HWND CreateToolTip(HWND hParentWnd, /*int ctrlID,*/ HWND hWndCtrl, LPTSTR lpszText)
 {
     INITCOMMONCONTROLSEX cc;
     cc.dwSize = sizeof(INITCOMMONCONTROLSEX);
@@ -35,8 +35,9 @@ HWND CreateToolTip(HWND hParentWnd, /*int toolID,*/ HWND hWndCtrl, LPTSTR lpszTe
     // ** Delay time (seconds) before the tooltip disappears
     int iDelayTime = 2;
         
-    // ** Get the control to set the tooltip to
-    HWND hWndTool = hWndCtrl;  /* HWND hWndTool = GetDlgItem(hParentWnd, toolID); */
+    // ** Get the control and set the tooltip
+    HWND hWndTool = hWndCtrl;  
+    /* HWND hWndTool = GetDlgItem(hParentWnd, ctrlID); */
 
     // ** Create tooltip
     HWND hWndTip = NULL;
