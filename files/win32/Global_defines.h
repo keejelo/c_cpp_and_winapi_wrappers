@@ -10,9 +10,9 @@
 // and a resource file (.rc) so things don't get mixed up.
 //
 // If all you need is defines, then here we go:
-// We have to manage and control it all ourselves. It's easier to have it all in one file than
-// scattered around in different files, and in worst case some ID's are duplicated and 
-// resulting in strange and unknown errors. Keeping them together in one file is easier and
+// As we have to manage and control it all ourselves, it's easier to have it all in one file
+// than scattered around in different files, and in worst case some ID's are duplicated and
+// resulting in strange and unknown errors. Keeping them together in one file is easier and 
 // you have total control.
 //
 // The names and values are arbitrary, does not matter what you name them, but each name and
