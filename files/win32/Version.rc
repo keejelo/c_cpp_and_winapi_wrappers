@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------
-// ** version.rc
+// ** Version.rc
 //---------------------------------------------------------------------------------------------
 // Add this file and "version.h" to any project to have versioning, just compile, that's it!
 // Custom the strings and values in "version.h" to fit your project.
@@ -7,7 +7,7 @@
 // Source and inspiration:
 // https://www.zachburlingame.com/2011/02/versioning-a-native-cc-binary-with-visual-studio/
 //---------------------------------------------------------------------------------------------
-#include "version.h"
+#include "Version.h"
 //---------------------------------------------------------------------------------------------
 
 
