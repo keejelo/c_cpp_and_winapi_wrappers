@@ -13,7 +13,7 @@
 //
 // If all you need is defines, then here we go:
 // As we have to manage and control it all ourselves, it's easier to have it all in one file
-// than scattered around in different files, and in worst case some ID's are duplicated and
+// than scattered around in different files, and in worst case some ID's are conflicted and
 // resulting in strange and unknown errors. Keeping them together in one file is easier and 
 // you have better control.
 //
