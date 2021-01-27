@@ -6,14 +6,14 @@
 // Source and inspiration:
 // https://www.zachburlingame.com/2011/02/versioning-a-native-cc-binary-with-visual-studio/
 //---------------------------------------------------------------------------------------------
+#include <windows.h>
+//---------------------------------------------------------------------------------------------
 
 #define APP_PROD_NAME "My_app_name"          // .exe will be added automatically
 #define APP_DESCRIPTN "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
 #define APP_DEVELOPER "Your developer name"
 
-//---------------------------------------------------------------------------------------------
-#include <windows.h>
 //---------------------------------------------------------------------------------------------
 
 #define STRINGIZE2(s) #s
