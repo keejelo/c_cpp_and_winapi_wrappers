@@ -12,7 +12,7 @@
 #define APP_PROD_NAME "My_app_name"          // .exe will be added automatically
 #define APP_DESCRIPTN "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
-#define APP_DEVELOPER "Your developer name"
+#define APP_DEVELOPER "My developer name"
 
 //---------------------------------------------------------------------------------------------
 
