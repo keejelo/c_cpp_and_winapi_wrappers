@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------
-// ** version.h 
+// ** Version.h
 //---------------------------------------------------------------------------------------------
 // Add this file and "version.rc" to any project to have versioning, just compile, that's it!
 // Custom the strings and values below to fit your project.
