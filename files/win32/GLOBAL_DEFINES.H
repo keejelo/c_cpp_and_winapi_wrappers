@@ -9,6 +9,7 @@
 // So if you're adding alot of resources to your project, you're better off using "resource.h"
 // and a resource file (.rc) so things don't get mixed up.
 // http://www.winprog.org/tutorial/resources.html
+// https://www.codeproject.com/Articles/1244/Resource-ID-Organiser-Add-In-for-Visual-C-5-0-6-0
 //
 // If all you need is defines, then here we go:
 // As we have to manage and control it all ourselves, it's easier to have it all in one file
