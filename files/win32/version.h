@@ -10,11 +10,11 @@
 #include <windows.h>
 //---------------------------------------------------------------------------------------------
 
-#define APP_PROD_NAME "My_app_name"          // .exe will be added automatically
-#define APP_DESCRIPTN "My description"
-#define APP_COPYRIGHT "Copyright (C) 2021"
-#define APP_DEVELOPER "My developer name"
-#define APP_COMMENTS  "My comments"
+#define APP_PROD_NAME               "My_app_name"          // .exe will be added automatically
+#define APP_DESCRIPTN               "My description"
+#define APP_COPYRIGHT               "Copyright (C) 2021"
+#define APP_DEVELOPER               "My developer name"
+#define APP_COMMENTS                "My comments"
 
 //---------------------------------------------------------------------------------------------
 
@@ -47,9 +47,9 @@
 #define VER_COMMENTS_STR            APP_COMMENTS
 
 #ifdef _DEBUG
-#define VER_VER_DEBUG             VS_FF_DEBUG
+#define VER_VER_DEBUG               VS_FF_DEBUG
 #else
-#define VER_VER_DEBUG             0
+#define VER_VER_DEBUG               0
 #endif
 
 #define VER_FILEOS                  VOS_NT_WINDOWS32
