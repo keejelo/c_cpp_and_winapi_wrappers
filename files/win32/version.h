@@ -8,7 +8,7 @@
 #define APP_NAME      "My_app_name"          // .exe will be added automatically
 #define APP_DESCRIPT  "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
-#define APP_DEVELOPER "Developer name"
+#define APP_DEVELOPER "Your developer name"
 
 //---------------------------------------------------------------------------------------------
 #include <windows.h>
