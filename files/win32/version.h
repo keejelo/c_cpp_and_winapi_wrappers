@@ -5,8 +5,8 @@
 // https://www.zachburlingame.com/2011/02/versioning-a-native-cc-binary-with-visual-studio/
 //---------------------------------------------------------------------------------------------
 
-#define APP_NAME      "My_app_name"          // .exe will be added automatically
-#define APP_DESCRIPT  "My description"
+#define APP_PROD_NAME "My_app_name"          // .exe will be added automatically
+#define APP_DESCRIPTN "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
 #define APP_DEVELOPER "Your developer name"
 
@@ -22,14 +22,14 @@
 #define VERSION_REVISION            0
 #define VERSION_BUILD               0
  
-#define VER_FILE_DESCRIPTION_STR    APP_DESCRIPT
+#define VER_FILE_DESCRIPTION_STR    APP_DESCRIPTN
 #define VER_FILE_VERSION            VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_BUILD
 #define VER_FILE_VERSION_STR        STRINGIZE(VERSION_MAJOR)        \
                                     "." STRINGIZE(VERSION_MINOR)    \
                                     "." STRINGIZE(VERSION_REVISION) \
                                     "." STRINGIZE(VERSION_BUILD)    \
 
-#define VER_PRODUCTNAME_STR         APP_NAME
+#define VER_PRODUCTNAME_STR         APP_PROD_NAME
 #define VER_PRODUCT_VERSION         VER_FILE_VERSION
 #define VER_PRODUCT_VERSION_STR     VER_FILE_VERSION_STR
 #define VER_ORIGINAL_FILENAME_STR   VER_PRODUCTNAME_STR ".exe"
