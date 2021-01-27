@@ -16,12 +16,12 @@
 //---------------------------------------------------------------------------------------------
 // ** Other defines
 //---------------------------------------------------------------------------------------------
-#define IDC_EDIT1        201
-#define IDC_BUTTON1      202
-#define IDC_BUTTON2      203
-#define IDM_OPEN         204
-#define IDM_SAVE         205
-#define IDM_EXIT         206
-#define IDM_ABOUT        207
+#define ID_EDIT1        201
+#define ID_BUTTON1      202
+#define ID_BUTTON2      203
+#define ID_OPEN         204
+#define ID_SAVE         205
+#define ID_EXIT         206
+#define ID_ABOUT        207
 
 
