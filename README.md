@@ -12,7 +12,7 @@ So I went back to basic, reading old C books like: "C programming languange, Ker
 Also searching the web for old and legacy, but still relevant, C and WinAPI code.<br>
 And still looking for good old C, Win32 books and must reads of these topics.
 
-My goal is to make things easier/faster to write C/C++ code especially WinAPI code (at least for myself), that's why I'm making wrapper functions.<br>
+My goal is to make things easier/faster to write C/C++ code especially WinAPI code (at least for myself), that's why I'm making wrapper functions, my own library sort of.<br>
 To keep it all very simple I'm not using C++ classes. I don't have anything against C++ classes, it's just that "raw" functions can be easier to understand right away, and they can easily be implemented in a C++ class, or in a namespace etc., if one wants to.
 
 TLDR;<br>
