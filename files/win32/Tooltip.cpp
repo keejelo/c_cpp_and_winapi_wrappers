@@ -13,6 +13,7 @@
 // ** Import library (Common Controls)
 //---------------------------------------------------------------------------------------------
 #pragma comment(lib, "comctl32.lib")
+// ** Instead of using: "Menu: Project->Properties->Linker->Input->Additional Dependencies"
 
 
 //---------------------------------------------------------------------------------------------
