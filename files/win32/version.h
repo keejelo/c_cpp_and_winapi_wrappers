@@ -14,9 +14,10 @@
 #define APP_DESCRIPTN "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
 #define APP_DEVELOPER "My developer name"
+#define APP_COMMENTS  "My comments"
 
 //---------------------------------------------------------------------------------------------
- 
+
 #define VERSION_MAJOR               1        // major version
 #define VERSION_MINOR               0        // minor version
 #define VERSION_REVISION            0        // revision
@@ -43,14 +44,14 @@
 #define VER_INTERNAL_NAME_STR       VER_ORIGINAL_FILENAME_STR
 #define VER_COPYRIGHT_STR           APP_COPYRIGHT
 #define VER_COMPANY_NAME_STR        APP_DEVELOPER
- 
+#define VER_COMMENTS_STR            APP_COMMENTS
+
 #ifdef _DEBUG
-  #define VER_VER_DEBUG             VS_FF_DEBUG
+#define VER_VER_DEBUG             VS_FF_DEBUG
 #else
-  #define VER_VER_DEBUG             0
+#define VER_VER_DEBUG             0
 #endif
- 
+
 #define VER_FILEOS                  VOS_NT_WINDOWS32
 #define VER_FILEFLAGS               VER_VER_DEBUG
 #define VER_FILETYPE                VFT_APP
-
