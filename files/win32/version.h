@@ -7,7 +7,7 @@
 // https://www.zachburlingame.com/2011/02/versioning-a-native-cc-binary-with-visual-studio/
 //---------------------------------------------------------------------------------------------
 
-#define APP_NAME      "My_app_name"          // .exe will be added automatically
+#define APP_NAME      "My_app_name"          // name of executable (.exe will be added auto.)
 #define APP_DESCRIPT  "My description"
 #define APP_COPYRIGHT "Copyright (C) 2021"
 
