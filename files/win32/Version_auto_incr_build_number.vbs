@@ -29,7 +29,7 @@ End If
  
 ' Read file
 Set objFile = fso.OpenTextFile(strFilename,1)
-oldContent=objFile.ReadAll
+oldContent = objFile.ReadAll
  
 ' Write file
 newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
