@@ -1,6 +1,9 @@
 '-----------------------------------------------------------------------------------------
 ' Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
+' Author: keejelo
+' https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
+'-----------------------------------------------------------------------------------------
 ' Auto increments build version number (x.x.x.build) in the "Version.h" file
 ' You can run this file in the "pre-compile" stage to have auto versioning of buildnumber
 '-----------------------------------------------------------------------------------------
@@ -29,7 +32,7 @@ Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent=objFile.ReadAll
  
 ' Write file
-newContent = replace(oldContent,strSearch,strReplace,1,-1,0)
+newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
@@ -44,9 +47,10 @@ set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
 ' Write file
-newContent = replace(oldContent,strSearch,strReplace)
+newContent = Replace(oldContent,strSearch,strReplace)
 set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
 
 WScript.Quit
+
