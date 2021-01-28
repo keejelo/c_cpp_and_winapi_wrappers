@@ -1,7 +1,7 @@
 '-----------------------------------------------------------------------------------------
 ' Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
-' Auto increments build version number in the "Version.h" file
+' Auto increments build version number ( 0.0.0.# <--) in the "Version.h" file
 ' You can run this file in the "pre-compile" stage to have auto versioning of buildnumber
 '-----------------------------------------------------------------------------------------
 
