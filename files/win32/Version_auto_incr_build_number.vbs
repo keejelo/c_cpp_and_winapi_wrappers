@@ -13,12 +13,12 @@ Option Explicit
 Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent,BUILD_VERSION
 
 ' Initial build version number, this updates each time file is run (writes to this file)
-BUILD_VERSION=0
+BUILD_VERSION=1
 
 ' File and strings to search and replace
 strFilename = "Version.h"
 strSearch   = "#define VERSION_BUILD               " & BUILD_VERSION
-strReplace  = "#define VERSION_BUILD               " & BUILD_VERSION + 1 * 1
+strReplace  = "#define VERSION_BUILD               " & Int(BUILD_VERSION + 1)
 
 ' Does file exist?
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -29,7 +29,7 @@ End If
  
 ' Read file
 Set objFile = fso.OpenTextFile(strFilename,1)
-oldContent = objFile.ReadAll
+oldContent=objFile.ReadAll
  
 ' Write file
 newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
@@ -40,7 +40,7 @@ objFile.Close
 ' Increment BUILD_VERSION number each time this file is run
 strFilename = WScript.ScriptFullName
 strSearch   = "BUILD_VERSION=" & BUILD_VERSION
-strReplace  = "BUILD_VERSION=" & BUILD_VERSION + 1 * 1
+strReplace  = "BUILD_VERSION=" & Int(BUILD_VERSION + 1)
 
 ' Read file
 Set objFile = fso.OpenTextFile(strFilename,1)
@@ -53,4 +53,3 @@ objFile.Write newContent
 objFile.Close 
 
 WScript.Quit
-
