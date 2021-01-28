@@ -12,8 +12,8 @@
 Option Explicit
 Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent,BUILD_VERSION
 
-' Initial build version number, this updates each time file is run (writes to this file),
-' must match the number in "Version.h" from the start, to work as we want.
+' Initial build version number, this updates each time file is run (writes to this file).
+' Must match the number in "Version.h" from the start, to work as we want.
 BUILD_VERSION=0
 
 ' File and strings to search and replace
