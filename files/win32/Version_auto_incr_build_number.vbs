@@ -1,11 +1,11 @@
 '-----------------------------------------------------------------------------------------
 ' Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
-' https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
-' Find and replace source: https://ss64.com/vb/syntax-replace.html
-'-----------------------------------------------------------------------------------------
 ' Auto increments build version number (x.x.x.build) in the "Version.h" file
 ' You can run this file in the "pre-compile" stage to have auto versioning of buildnumber
+'-----------------------------------------------------------------------------------------
+' https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
+' Find and replace source: https://ss64.com/vb/syntax-replace.html
 '-----------------------------------------------------------------------------------------
 
  
