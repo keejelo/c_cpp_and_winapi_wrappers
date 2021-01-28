@@ -18,7 +18,7 @@ BUILD_VERSION=0
 ' File and strings to search and replace
 strFilename = "Version.h"
 strSearch   = "#define VERSION_BUILD               " & BUILD_VERSION
-strReplace  = "#define VERSION_BUILD               " & Int(BUILD_VERSION) + 1
+strReplace  = "#define VERSION_BUILD               " & BUILD_VERSION + 1 * 1
 
 ' Does file exist?
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -40,7 +40,7 @@ objFile.Close
 ' Increment BUILD_VERSION number each time this file is run
 strFilename = WScript.ScriptFullName
 strSearch   = "BUILD_VERSION=" & BUILD_VERSION
-strReplace  = "BUILD_VERSION=" & Int(BUILD_VERSION) + 1
+strReplace  = "BUILD_VERSION=" & BUILD_VERSION + 1 * 1
 
 ' Read file
 Set objFile = fso.OpenTextFile(strFilename,1)
