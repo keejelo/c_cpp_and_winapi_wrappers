@@ -1,7 +1,7 @@
 '-----------------------------------------------------------------------------------------
 ' Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
-' Auto increments build version number in the "version.h" file
+' Auto increments build version number in the "Version.h" file
 ' You can run this file in the "pre-compile" stage to have auto versioning of buildnumber
 '-----------------------------------------------------------------------------------------
 
@@ -20,8 +20,8 @@ strReplace  = "#define VERSION_BUILD               " & BUILD_VERSION + 1 * 1
 ' Does file exist?
 Set fso = CreateObject("Scripting.FileSystemObject")
 If fso.FileExists(strFilename) = False Then
-   wscript.echo "Error, file not found! -> " & strFilename
-   wscript.Quit
+   WScript.Echo "Error, file not found: " & strFilename
+   WScript.Quit
 End If
  
 ' Read file
@@ -35,7 +35,7 @@ objFile.Write newContent
 objFile.Close 
 
 ' Increment BUILD_VERSION number each time this file is run
-strFilename = Wscript.ScriptFullName
+strFilename = WScript.ScriptFullName
 strSearch   = "BUILD_VERSION=" & BUILD_VERSION
 strReplace  = "BUILD_VERSION=" & BUILD_VERSION + 1 * 1
 
@@ -49,4 +49,4 @@ set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
 
-wscript.Quit
+WScript.Quit
