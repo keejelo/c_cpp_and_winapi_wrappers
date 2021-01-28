@@ -52,3 +52,4 @@ objFile.Write newContent
 objFile.Close 
 
 WScript.Quit
+
