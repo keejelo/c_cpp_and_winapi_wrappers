@@ -8,7 +8,6 @@
 ' Find and replace source: https://ss64.com/vb/syntax-replace.html
 '-----------------------------------------------------------------------------------------
 
- 
 Option Explicit
 Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent,BUILD_VERSION
 
@@ -53,4 +52,3 @@ objFile.Write newContent
 objFile.Close 
 
 WScript.Quit
-
