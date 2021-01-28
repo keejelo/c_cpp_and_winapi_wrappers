@@ -22,8 +22,8 @@ strReplace  = "#define VERSION_BUILD               " & BUILD_VERSION + 1 * 1
 ' Does file exist?
 Set fso = CreateObject("Scripting.FileSystemObject")
 If fso.FileExists(strFilename) = False Then
-   WScript.Echo "Error, file not found: " & strFilename
-   WScript.Quit
+    WScript.Echo "Error, file not found: " & strFilename
+    WScript.Quit
 End If
  
 ' Read file
@@ -42,12 +42,12 @@ strSearch   = "BUILD_VERSION=" & BUILD_VERSION
 strReplace  = "BUILD_VERSION=" & BUILD_VERSION + 1 * 1
 
 ' Read file
-set objFile = fso.OpenTextFile(strFilename,1)
+Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
 ' Write file
 newContent = Replace(oldContent,strSearch,strReplace)
-set objFile = fso.OpenTextFile(strFilename,2)
+Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
 
