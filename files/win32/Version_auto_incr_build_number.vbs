@@ -33,7 +33,7 @@ End If
 Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
-' Write the new build version number to file "Version.h"
+' Write the new BUILD_VERSION number to file "Version.h"
 newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
@@ -48,7 +48,7 @@ strReplace  = "BUILD_VERSION=" & (BUILD_VERSION * 1) + 1
 Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
-' Write the new build version number to variable in this file (self) to keep track
+' Write the new BUILD_VERSION number to variable in this file (self) to keep track
 newContent = Replace(oldContent,strSearch,strReplace)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
