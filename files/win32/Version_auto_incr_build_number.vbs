@@ -15,7 +15,7 @@ Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent,BUILD_VER
 
 ' Initial build version number, this updates each time this file is run (writes to self).
 ' Must match the number in "Version.h" from the start, to work as we want.
-BUILD_VERSION=39
+BUILD_VERSION=0
 
 ' File and strings to search and replace in file "Version.h"
 strFilename = "Version.h"
