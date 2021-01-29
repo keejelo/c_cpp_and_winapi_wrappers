@@ -15,7 +15,7 @@ Dim fso,strFilename,strSearch,strReplace,objFile,oldContent,newContent,BUILD_VER
 
 ' Initial build version number, this updates each time this file is run (writes to self).
 ' Must match the number in "Version.h" from the start, to work as we want.
-BUILD_VERSION=0
+BUILD_VERSION=39
 
 ' File and strings to search and replace in file "Version.h"
 strFilename = "Version.h"
@@ -33,8 +33,8 @@ End If
 Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
-' Write the new BUILD_VERSION number to file "Version.h"
-newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
+' Write the new build version number to file "Version.h"
+newContent = Replace(oldContent,strSearch,strReplace,1,1,0)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
@@ -48,8 +48,8 @@ strReplace  = "BUILD_VERSION=" & (BUILD_VERSION * 1) + 1
 Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
-' Write the new BUILD_VERSION number to variable in this file (self) to keep track
-newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
+' Write the new build version number to variable in this file (self) to keep track
+newContent = Replace(oldContent,strSearch,strReplace,1,1,0)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
