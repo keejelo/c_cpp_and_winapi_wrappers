@@ -14,17 +14,17 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialogbox window procedure
 //---------------------------------------------------------------------------------------------
-LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK DialogProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch(msg)
     {
         case WM_CREATE:
             /*
-            CreateEditCtrl(hWnd, "", 10, 10, IDC_EDIT1);             // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, "OK", 10, 50, IDC_BUTTON1);       // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, "Cancel", 150, 50, IDC_BUTTON2);  // <---- using "Controls.h"
+            CreateEditCtrl(hDlgWnd, "", 10, 10, IDC_EDIT1);             // <---- using "Controls.h"
+            CreateButtonCtrl(hDlgWnd, "OK", 10, 50, IDC_BUTTON1);       // <---- using "Controls.h"
+            CreateButtonCtrl(hDlgWnd, "Cancel", 150, 50, IDC_BUTTON2);  // <---- using "Controls.h"
             */
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
+            EnumChildWindows(hDlgWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
             break;
 
         case WM_COMMAND:
@@ -43,11 +43,11 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_CLOSE:
-            DestroyWindow(hWnd);
+            DestroyWindow(hDlgWnd);
             break;
     }
 
-    return (DefWindowProc(hWnd, msg, wParam, lParam));
+    return (DefWindowProc(hDlgWnd, msg, wParam, lParam));
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialogbox window procedure
@@ -89,11 +89,11 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
     int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
 
     // ** Create and show the dialog
-    HWND hDlg = CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
+    HWND hDlgWnd = CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
                     WS_VISIBLE | WS_SYSMENU | WS_CAPTION,
                     xPos, yPos, iWidth, iHeight, 
                     NULL, NULL, hInstance,  NULL);
-    return hDlg;
+    return hDlgWnd;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
