@@ -32,15 +32,12 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 /*
                 case IDC_BUTTON1:
-                {
                     // OK button clicked
                     break;
-                }
+                    
                 case IDC_BUTTON2:
-                {
                     // Cancel button clicked
                     break;
-                }
                 */                    
             }
             break;
