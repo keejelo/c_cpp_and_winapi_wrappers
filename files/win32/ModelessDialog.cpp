@@ -89,11 +89,11 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
     int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
 
     // ** Create and show the dialog
-    HWND hDlgWnd = CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
+    HWND hDlg = CreateWindowEx(WS_EX_DLGMODALFRAME | WS_EX_TOPMOST, "DialogClass", sTitle,
                     WS_VISIBLE | WS_SYSMENU | WS_CAPTION,
                     xPos, yPos, iWidth, iHeight, 
                     NULL, NULL, hInstance,  NULL);
-    return hDlgWnd;
+    return hDlg;
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
