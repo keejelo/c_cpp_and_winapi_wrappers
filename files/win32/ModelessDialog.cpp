@@ -28,6 +28,21 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_COMMAND:
+            switch (wParam)
+            {
+                /*
+                case IDC_BUTTON1:
+                {
+                    // OK button clicked
+                    break;
+                }
+                case IDC_BUTTON2:
+                {
+                    // Cancel button clicked
+                    break;
+                }
+                */                    
+            }
             break;
 
         case WM_CLOSE:
