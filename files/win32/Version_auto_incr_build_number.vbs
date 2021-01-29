@@ -49,7 +49,7 @@ Set objFile = fso.OpenTextFile(strFilename,1)
 oldContent = objFile.ReadAll
  
 ' Write the new BUILD_VERSION number to variable in this file (self) to keep track
-newContent = Replace(oldContent,strSearch,strReplace)
+newContent = Replace(oldContent,strSearch,strReplace,1,-1,0)
 Set objFile = fso.OpenTextFile(strFilename,2)
 objFile.Write newContent
 objFile.Close 
