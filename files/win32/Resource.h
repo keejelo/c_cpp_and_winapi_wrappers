@@ -9,27 +9,27 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Menu items                Range : 100 - 999
+// ** Icons                     Range : 100 - 999
 //---------------------------------------------------------------------------------------------
-#define ID_OPEN                 100
-#define ID_SAVE                 101
-#define ID_EXIT                 102
-#define ID_ABOUT                103
+#define ID_ICON1                100   // Lowest ID value placed first defaults as the app icon
+#define ID_ICON1_SM             101
 
 
 //---------------------------------------------------------------------------------------------
-// ** Controls                  Range : 1000 - 1999
+// ** Menu items                Range : 1000 - 1999
 //---------------------------------------------------------------------------------------------
-#define ID_EDIT1                1000
-#define ID_BUTTON1              1001
-#define ID_BUTTON2              1002
+#define ID_OPEN                 1000
+#define ID_SAVE                 1001
+#define ID_EXIT                 1002
+#define ID_ABOUT                1003
 
 
 //---------------------------------------------------------------------------------------------
-// ** Icons                     Range : 2000 - 2999
+// ** Controls                  Range : 2000 - 2999
 //---------------------------------------------------------------------------------------------
-#define ID_ICON1                2000   // Lowest ID value placed first defaults as the app icon
-#define ID_ICON1_SM             2001
+#define ID_EDIT1                2000
+#define ID_BUTTON1              2001
+#define ID_BUTTON2              2002
 
 
 //---------------------------------------------------------------------------------------------
