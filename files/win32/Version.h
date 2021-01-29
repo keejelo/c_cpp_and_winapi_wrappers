@@ -7,7 +7,7 @@
 // Source and inspiration:
 // https://www.zachburlingame.com/2011/02/versioning-a-native-cc-binary-with-visual-studio/
 //---------------------------------------------------------------------------------------------
-#include <windows.h>
+#include <winver.h>
 //---------------------------------------------------------------------------------------------
 
 #define APP_PROD_NAME               "My_app_name"          // .exe will be added automatically
