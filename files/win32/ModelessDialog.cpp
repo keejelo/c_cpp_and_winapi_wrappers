@@ -82,7 +82,7 @@ void RegisterDialogClass(HINSTANCE hInstance)
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
 {
-    // ** Get parents dimensions, position dialog in parent center
+    // ** Get parent window dimensions, position dialog in parent center
     RECT rc = { 0 };
     GetWindowRect(hWndParent, &rc);
     int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
