@@ -136,9 +136,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             // ** Parse menu selections
             switch(LOWORD(wParam))
             {
-                case ID_FIND: // some menu item with control id: ID_FIND
-                    // ** Create and open dialog when menu item is clicked, hMyDlg is GLOBAL handle to dialog (HWND hMyDlg)
-                    hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
+                case ID_FIND: // some menu item in main window with control id: ID_FIND
+                    // ** Create and open dialog when menu item is clicked, g_hMyDlg is GLOBAL handle to dialog (HWND g_hMyDlg)
+                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
                     break;
             }
             break;
@@ -150,11 +150,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case SIZE_MINIMIZED:
-                    ShowWindow(hMyDlg, SW_HIDE);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog
+                    ShowWindow(g_hMyDlg, SW_HIDE);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog
                     break;
                 
                 case SIZE_RESTORED:
-                    ShowWindow(hMyDlg, SW_SHOW);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog
+                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog
                     break;
             }
             break;
