@@ -2,7 +2,8 @@
 ' Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
 ' Auto increments build version number (x.x.x.build) in the "Version.h" file
-' Run this file in the "pre-compile" stage to have auto versioning of buildnumber
+' Run this file in the project "pre-build" event to have auto versioning of buildnumber
+' Command line: wscript Version_auto_incr_build_number.vbs
 '-----------------------------------------------------------------------------------------
 ' Author: keejelo 2021
 ' https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
