@@ -24,7 +24,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             CreateButtonCtrl(hWnd, "OK", 10, 50, IDC_BUTTON1);       // <---- using "Controls.h"
             CreateButtonCtrl(hWnd, "Cancel", 150, 50, IDC_BUTTON2);  // <---- using "Controls.h"
             */
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set control visuals
+            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
             break;
 
         case WM_COMMAND:
