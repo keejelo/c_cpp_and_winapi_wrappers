@@ -41,8 +41,8 @@ objFile.Close
 
 ' Increment BUILD_VERSION number variable in this file (self)
 strFilename = WScript.ScriptFullName
-strSearch = "BUILD_VERSION=" & BUILD_VERSION
-strReplace = "BUILD_VERSION=" & (BUILD_VERSION * 1) + 1
+strSearch   = "BUILD_VERSION=" & BUILD_VERSION
+strReplace  = "BUILD_VERSION=" & (BUILD_VERSION * 1) + 1
 
 ' Read file (self), ready for search and replace
 Set objFile = fso.OpenTextFile(strFilename,1)
