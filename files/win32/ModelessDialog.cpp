@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialogbox window procedure
 //---------------------------------------------------------------------------------------------
-LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK DialogProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch(msg)
     {
@@ -24,7 +24,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             CreateButtonCtrl(hWnd, "OK", 10, 50, IDC_BUTTON1);       // <---- using "Controls.h"
             CreateButtonCtrl(hWnd, "Cancel", 150, 50, IDC_BUTTON2);  // <---- using "Controls.h"
             */
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
+            EnumChildWindows(hDlgWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
             break;
 
         case WM_COMMAND:
@@ -43,11 +43,11 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_CLOSE:
-            DestroyWindow(hWnd);
+            DestroyWindow(hDlgWnd);
             break;
     }
 
-    return (DefWindowProc(hWnd, msg, wParam, lParam));
+    return (DefWindowProc(hDlgWnd, msg, wParam, lParam));
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialogbox window procedure
