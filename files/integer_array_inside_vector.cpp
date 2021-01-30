@@ -17,7 +17,7 @@ int main()
     // ** Create a vector that holds the array struct
     std::vector<Int3> vec;
     
-    // ** Push back values in vector
+    // ** Insert array values in vector
     vec.push_back({ 8, 5, 6 });
 
     // ..or set them one by one
