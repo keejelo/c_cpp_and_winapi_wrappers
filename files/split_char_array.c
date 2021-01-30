@@ -24,7 +24,7 @@ int main()
         printf("%d\n", str[i]);
     }
 
-    printf("\nInteger converted to string:\n");
+    printf("\nInteger converted to string (back to char array):\n");
     for (int i = 0; i < sizeof(str) - 1; i++)
     {
         char buf[10];
