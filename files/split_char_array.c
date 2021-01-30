@@ -13,7 +13,7 @@ int main()
     }
     
     printf("\nInteger hex:\n");
-    for (int i = 0; i < sizeof(str)-1; i++)
+    for (int i = 0; i < sizeof(str) - 1; i++)
     {
         printf("0x%X\n", str[i]);
     }
