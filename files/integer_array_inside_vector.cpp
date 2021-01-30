@@ -1,4 +1,5 @@
 // ** Example of how to use and integer array inside a vector
+//    This is great for lists with items and subitems etc.
 
 #include <stdio.h>
 #include <vector>
