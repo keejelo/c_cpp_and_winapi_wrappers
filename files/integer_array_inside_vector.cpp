@@ -1,7 +1,8 @@
+// ** Example of how to use and integer array inside a vector
+
 #include <stdio.h>
 #include <vector>
 
-// Example
 
 int main()
 {    
