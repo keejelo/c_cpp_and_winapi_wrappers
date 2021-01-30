@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <vector>
 
+// Example
 
 int main()
 {    
@@ -26,7 +27,7 @@ int main()
     printf("%d\n", v[0].a[1]);
     printf("%d\n", v[0].a[2]);
 
-    // ** pause before exit
+    // ** Pause before exit
     getchar();
     return 0;
 };
