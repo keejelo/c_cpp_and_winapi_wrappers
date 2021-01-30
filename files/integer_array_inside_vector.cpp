@@ -11,24 +11,24 @@ int main()
     // ** Create struct of an integer array that can hold 3 values
     struct Int3
     {
-        int a[3] = { 0 };
+        int arr[3] = { 0 };
     };
 
     // ** Create a vector that holds the array struct
-    std::vector<Int3> v;
+    std::vector<Int3> vec;
     
     // ** Push back values in vector
-    v.push_back({ 8, 5, 6 });
+    vec.push_back({ 8, 5, 6 });
 
     // ..or set them one by one
-    // v[0].a[0] = 9;
-    // v[0].a[1] = 4;
-    // v[0].a[2] = 7;
+    // vec[0].arr[0] = 9;
+    // vec[0].arr[1] = 4;
+    // vec[0].arr[2] = 7;
 
     // ** Output values
-    printf("%d\n", v[0].a[0]);
-    printf("%d\n", v[0].a[1]);
-    printf("%d\n", v[0].a[2]);
+    printf("%d\n", vec[0].arr[0]);
+    printf("%d\n", vec[0].arr[1]);
+    printf("%d\n", vec[0].arr[2]);
 
     // ** Pause before exit
     getchar();
