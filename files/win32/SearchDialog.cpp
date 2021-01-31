@@ -81,6 +81,7 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 case VK_RETURN:
                     Search(GetParent(hEditWnd));
                     break;
+                    
                 case VK_ESCAPE:
                     SendMessage(GetParent(hEditWnd), WM_CLOSE, NULL, NULL);
                     break;
