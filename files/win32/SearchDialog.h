@@ -15,7 +15,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Variables
 //---------------------------------------------------------------------------------------------
-extern int SearchList(char *str);
+extern int SearchList(char *str);  // <-- this is a function in another file, just passing it
 
 
 //---------------------------------------------------------------------------------------------
@@ -26,9 +26,9 @@ HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWi
 void RegisterDialogClass(HINSTANCE hInstance);
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
 
-LRESULT EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);  // <-- EditCtrl msg handler
 
-void Search(HWND hWnd);
+void Search(HWND hWnd);  // <-- function that executes the extern function "SearchList"
 
 
 
