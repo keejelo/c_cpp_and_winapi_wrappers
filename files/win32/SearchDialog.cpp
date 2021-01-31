@@ -32,11 +32,11 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 150, 50);
-
+            
             EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set control font to DEFAULT_GUI
-
+            
             SetFocus(hEdit); // Set focus to edit control when opening
-
+            
             g_DefEditProc = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
         }
         break;
@@ -70,7 +70,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 // ** Edit control window procedure (message handler for this control)
 //---------------------------------------------------------------------------------------------
-LRESULT EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -79,14 +79,17 @@ LRESULT EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch ((char)wParam)
             {
                 case VK_RETURN:
-                    Search(GetParent(hWnd));
+                    Search(GetParent(hEditWnd));
+                    break;
+                case VK_ESCAPE:
+                    SendMessage(GetParent(hEditWnd), WM_CLOSE, NULL, NULL);
                     break;
             }
         }
         break;
     }
 
-    return CallWindowProc(g_DefEditProc, hWnd, msg, wParam, lParam);
+    return CallWindowProc(g_DefEditProc, hEditWnd, msg, wParam, lParam);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Edit control window procedure
