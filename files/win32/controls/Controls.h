@@ -15,7 +15,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-// ** Controls  (using long long int for x64 build)
+// ** Controls  (using long long in case of 64-bit build, works in 32-bit as well)
 
 HWND CreateStaticTextCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w = 100, int h = 30, DWORD dwStyle = NULL, DWORD dwExStyle = NULL);
 HWND CreateStaticLineHoriz(HWND hParentWnd, long long int ctrlID, int x, int y, int w = 100, int h = 5, DWORD dwStyle = NULL, DWORD dwExStyle = NULL);
