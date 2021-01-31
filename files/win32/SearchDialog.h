@@ -22,7 +22,7 @@ extern int SearchList(char *str);  // <-- this is a function in another file, ju
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);  // <-- EditCtrl msg handler
+LRESULT CALLBACK EditProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);  // <-- EditCtrl msg handler
 HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
 void RegisterDialogClass(HINSTANCE hInstance);
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
