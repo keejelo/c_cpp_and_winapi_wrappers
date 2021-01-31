@@ -145,7 +145,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 
 
 //---------------------------------------------------------------------------------------------
-// ** Enumerate over all controls and set correct font
+// ** Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
 {
@@ -154,7 +154,7 @@ BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
     return TRUE;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Enumerate over all controls and set font
+// ** END: Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
 
 
