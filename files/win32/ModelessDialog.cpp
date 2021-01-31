@@ -7,7 +7,7 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "ModelessDialog.h"
-//#include "Controls.h"  // <---- This makes creating controls easier
+//#include "Controls.h"  // <---- creating controls easier
 
 
 
@@ -20,9 +20,9 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_CREATE:
             /*
-            HWND hEdit = CreateEditCtrl(hWnd, IDC_EDIT1, "", 10, 10); // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, IDC_BUTTON1, "OK", 10, 50);        // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, IDC_BUTTON2, "Cancel", 150, 50);   // <---- using "Controls.h"
+            HWND hEdit = CreateEditCtrl(hWnd, IDC_EDIT1, "", 10, 10, 100); // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, IDC_BUTTON1, "OK", 10, 50);             // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, IDC_BUTTON2, "Cancel", 130, 50);        // <---- using "Controls.h"
             EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set dialog controls font to DEFAULT_GUI_FONT
             SetFocus(hEdit);  // Set focus to edit control when opening
             */
@@ -36,8 +36,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     // OK button clicked
                     char str[255] = {0};
                     GetDlgItemText(hWnd, IDC_EDIT1, str, sizeof(str));
-                    // "str" now holds edit controls text
-                    
+                    // "str" now holds edit controls text                    
                     break;
                     
                 case IDC_BUTTON2:
