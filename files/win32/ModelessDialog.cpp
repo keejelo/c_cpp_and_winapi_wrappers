@@ -108,6 +108,8 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //---------------------------------------------------------------------------------------------
 // ** Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
+// EnumChildWindows(hWnd, EnumDialogChildProc, 0);  // <--- Run this at the end of: WM_CREATE
+//---------------------------------------------------------------------------------------------
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
 {
     HFONT hfDefault = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
