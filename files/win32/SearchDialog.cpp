@@ -45,7 +45,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case ID_SEARCH_BTN_OK:
-                    Search(hWnd);
+                    ValidateSearch(hWnd);
                     break;
 
                 case ID_SEARCH_BTN_CANCEL:
@@ -79,7 +79,7 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch ((char)wParam)
             {
                 case VK_RETURN:
-                    Search(GetParent(hEditWnd));
+                    ValidateSearch(GetParent(hEditWnd));
                     break;
                     
                 case VK_ESCAPE:
@@ -161,9 +161,9 @@ BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Search 
+// ** Validate search 
 //---------------------------------------------------------------------------------------------
-void Search(HWND hWnd)
+void ValidateSearch(HWND hWnd)
 {
     char str[255] = { 0 };
     GetDlgItemText(hWnd, ID_SEARCH_TXT, str, sizeof(str));
@@ -180,7 +180,7 @@ void Search(HWND hWnd)
     }
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Search 
+// ** END: Validate search 
 //---------------------------------------------------------------------------------------------
 
 
