@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------------------------
 bool CALLBACK SetFont(HWND hCtrl, LPARAM font);
 BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam);
-
+HFONT FontCreate(const char *sFontName, int fontSize);
 
 
 //---------------------------------------------------------------------------------------------
