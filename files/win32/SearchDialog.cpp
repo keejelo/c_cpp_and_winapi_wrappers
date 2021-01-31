@@ -45,10 +45,8 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case ID_SEARCH_BTN_OK:
-                {
                     Search(hWnd);
                     break;
-                }
 
                 case ID_SEARCH_BTN_CANCEL:
                     SendMessage(hWnd, WM_CLOSE, NULL, NULL);
