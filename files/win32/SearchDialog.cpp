@@ -29,9 +29,9 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_CREATE:
         {
-            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10);
+            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
-            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 150, 50);
+            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
             
             EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set control font to DEFAULT_GUI
             
@@ -208,8 +208,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (LOWORD(wParam))
             {
                 case ID_FIND: // some menu item with control id: ID_FIND
-                    // ** Create and open dialog when menu item is clicked, hMyDlg is GLOBAL handle to dialog (HWND hMyDlg)
-                    hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 300, 200);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
+                    // ** Create and open dialog when menu item is clicked, g_hMyDlg is GLOBAL handle to dialog (HWND g_hMyDlg)
+                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 238, 130);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
                     break;
             }
             break;
@@ -221,11 +221,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case SIZE_MINIMIZED:
-                    ShowWindow(hMyDlg, SW_HIDE);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog (HWND hMyDlg)
+                    ShowWindow(g_hMyDlg, SW_HIDE);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
                     break;
 
                 case SIZE_RESTORED:
-                    ShowWindow(hMyDlg, SW_SHOW);  // <-------  add this, "hMyDlg" is GLOBAL handle to dialog (HWND hMyDlg)
+                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
                     break;
             }
             break;
