@@ -26,7 +26,7 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
 void RegisterDialogClass(HINSTANCE hInstance);
 BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
-void Search(HWND hWnd);  // <-- function that executes the extern function "SearchList"
+void ValidateSearch(HWND hWnd);  // <-- function that executes the extern function "SearchList"
 
 
 //---------------------------------------------------------------------------------------------
