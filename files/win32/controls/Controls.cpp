@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Create static text control
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticTextCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -45,7 +45,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
 //---------------------------------------------------------------------------------------------
 // ** Create static line horizontal
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineHoriz(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -75,7 +75,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, int ctrl
 //---------------------------------------------------------------------------------------------
 // ** Create static line vertical
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineVert(HWND hParentWnd, long long int ctrlID, int x, int y, int h, int w, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -105,7 +105,7 @@ HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, int ctrlI
 //---------------------------------------------------------------------------------------------
 // ** Create pushbutton control
 //---------------------------------------------------------------------------------------------
-HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle, void *fnCallback)
+HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, void *fnCallback)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -143,7 +143,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w,
 //---------------------------------------------------------------------------------------------
 // ** Create edit control
 //---------------------------------------------------------------------------------------------
-HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, int iMaxLength, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, int iMaxLength, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -182,7 +182,7 @@ HWND CreateEditCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, i
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdown control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -212,7 +212,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, int x, int y, int w, int h, int
 //---------------------------------------------------------------------------------------------
 // ** Create combobox simple control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -242,7 +242,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, int x, int y, int w, int h, int c
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdownlist control
 //---------------------------------------------------------------------------------------------
-HWND CreateDropDownListCtrl(HWND hParentWnd, int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateDropDownListCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -284,7 +284,7 @@ UINT AddStringCombo(const HWND hCombo, const char szText[])
 //---------------------------------------------------------------------------------------------
 // ** Create listbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateListBoxCtrl(HWND hParentWnd, int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateListBoxCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -326,7 +326,7 @@ UINT AddStringListBox(const HWND hListBoxCtrl, const char szText[])
 //---------------------------------------------------------------------------------------------
 // ** Create checkbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateCheckBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateCheckBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -356,7 +356,7 @@ HWND CreateCheckBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int 
 //---------------------------------------------------------------------------------------------
 // ** Create radiobutton control
 //---------------------------------------------------------------------------------------------
-HWND CreateRadioButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -392,7 +392,7 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, const char szText[], int x, int y, i
 //---------------------------------------------------------------------------------------------
 // ** Create groupbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateGroupBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
