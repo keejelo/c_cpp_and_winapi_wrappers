@@ -53,3 +53,23 @@ BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam)
 // ** END: Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
 
+
+
+//---------------------------------------------------------------------------------------------
+// ** Create font
+//---------------------------------------------------------------------------------------------
+// Create control:  HWND hButton = CreateWindow(...);
+// Create the font: HFONT hMyFont = FontCreate("Tahoma", 18);
+// Set the font:    SendMessage(hButton, WM_SETFONT, (WPARAM)hMyFont, TRUE);
+//---------------------------------------------------------------------------------------------
+HFONT FontCreate(const char *sFontName, int fontSize)
+{
+    HFONT hFont = CreateFont(
+        fontSize, 0, 0, 0, FW_MEDIUM, FALSE, FALSE, FALSE, ANSI_CHARSET,
+        OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+        DEFAULT_PITCH | FF_DONTCARE, sFontName);
+    return hFont;
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create font
+//---------------------------------------------------------------------------------------------
