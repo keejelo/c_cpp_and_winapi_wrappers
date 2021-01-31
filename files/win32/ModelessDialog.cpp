@@ -20,11 +20,12 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_CREATE:
             /*
-            CreateEditCtrl(hWnd, "", 10, 10, 50, 14, IDC_EDIT1);             // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, "OK", 10, 50, 50, 14, IDC_BUTTON1);       // <---- using "Controls.h"
-            CreateButtonCtrl(hWnd, "Cancel", 150, 50, 50, 14, IDC_BUTTON2);  // <---- using "Controls.h"
+            HWND hEdit = CreateEditCtrl(hWnd, IDC_EDIT1, "", 10, 10); // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, IDC_BUTTON1, "OK", 10, 50);        // <---- using "Controls.h"
+            CreateButtonCtrl(hWnd, IDC_BUTTON2, "Cancel", 150, 50);   // <---- using "Controls.h"
+            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set dialog controls font to DEFAULT_GUI_FONT
+            SetFocus(hEdit);  // Set focus to edit control when opening
             */
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set child controls font to default system font
             break;
 
         case WM_COMMAND:
@@ -33,10 +34,15 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 /*
                 case IDC_BUTTON1:
                     // OK button clicked
+                    char str[255] = {0};
+                    GetDlgItemText(hWnd, IDC_EDIT1, str, sizeof(str));
+                    // "str" now holds edit controls text
+                    
                     break;
                     
                 case IDC_BUTTON2:
                     // Cancel button clicked
+                    SendMessage(hWnd, WM_CLOSE, NULL, NULL); // Close dialog
                     break;
                 */                    
             }
