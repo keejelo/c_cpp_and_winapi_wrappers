@@ -8,7 +8,7 @@ I want to collect some of my codefiles here for easier access for myself (for my
 I also started this because I had to go back and learn C and Win32 (Windows API) from the ground up, still learning.<br>
 After many years of using C/C++, MFC, resource editors, other classes/libraries and shortcuts, I wanted to learn how it is all made from scratch, only using code and no resource editors if possible, I want to know how to code it all from the beginning.
 
-So I went back to basic, reading old C books like: "C programming languange, Kernigan Ritchie", "C The complete reference 4.th.ed., Herbert Schildt", and old Win32 books like: "Windows 2000 programming from the gound up, Herbert Schildt", "Programming Windows: The Definitive Guide To The Win32 Api, Charles Petzold".<br>
+So I went back to basic, reading old C books like: "C programming languange, Kernigan Ritchie", "C The complete reference 4.th.ed., Herbert Schildt", and old Win32 books like: "Windows 2000 programming from the gound up, Herbert Schildt", "Programming Windows: The Definitive Guide To The Win32 Api, Charles Petzold".<br><br>
 Also searching the web for old and legacy, but still relevant, C and WinAPI code.<br>
 Still looking for more good old C, Win32 books and must reads of these topics.
 
