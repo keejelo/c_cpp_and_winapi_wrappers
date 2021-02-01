@@ -13,7 +13,7 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Defines (i.e. dialog control ID's) - the ideal way is to put these in "resource.h"
+// ** Defines (i.e. dialog control ID's) - the ideal way is to put these in "Resource.h"
 //---------------------------------------------------------------------------------------------
 // #define ID_EDIT1        101
 // #define ID_BUTTON1      102
