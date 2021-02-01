@@ -34,9 +34,11 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
             
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0);	// Set control font to DEFAULT_GUI
+            // ** Set all controls font to DEFAULT_GUI
+            EnumChildWindows(hWnd, EnumDialogChildProc, 0); 
             
-            SetFocus(hEdit); // Set focus to edit control when opening
+            // ** Set focus to edit control when opening
+            SetFocus(hEdit);
             
             // ** Start up message handler for EditBox
             g_DefEditProc = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
