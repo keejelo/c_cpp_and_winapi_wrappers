@@ -30,6 +30,9 @@
 #define ID_EDIT1                2000
 #define ID_BUTTON1              2001
 #define ID_BUTTON2              2002
+#define ID_SEARCH_TXT           2003
+#define ID_SEARCH_BTN_OK        2004
+#define ID_SEARCH_BTN_CANCEL    2005
 
 
 //---------------------------------------------------------------------------------------------
