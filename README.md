@@ -10,7 +10,7 @@ After many years of using C/C++, MFC, resource editors, other classes/libraries 
 
 So I went back to basic, reading old C books like: "C programming languange, Kernigan Ritchie", "C The complete reference 4.th.ed., Herbert Schildt", and old Win32 books like: "Windows 2000 programming from the gound up, Herbert Schildt", "Programming Windows: The Definitive Guide To The Win32 Api, Charles Petzold".<br>
 Also searching the web for old and legacy, but still relevant, C and WinAPI code.<br>
-And still looking for good old C, Win32 books and must reads of these topics.
+Still looking for more good old C, Win32 books and must reads of these topics.
 
 My goal is to make things easier/faster to write C/C++ code especially WinAPI code (at least for myself), that's why I'm making wrapper functions, my own library sort of.<br>
 To keep it all very simple I'm not using C++ classes. I don't have anything against C++ classes, it's just that "raw" functions can be easier to understand right away, and they can easily be implemented in a C++ class, or in a namespace etc., if one wants to.
