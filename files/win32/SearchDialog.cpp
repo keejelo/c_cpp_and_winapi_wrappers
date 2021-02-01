@@ -38,6 +38,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             
             SetFocus(hEdit); // Set focus to edit control when opening
             
+            // ** Start up message handler for EditBox
             g_DefEditProc = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
         }
         break;
