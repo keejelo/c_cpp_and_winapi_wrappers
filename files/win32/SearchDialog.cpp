@@ -23,7 +23,7 @@ WNDPROC g_DefOkBtnProc;      // variable that holds the default message proc for
 WNDPROC g_DefCancelBtnProc;  // variable that holds the default message proc for child control
 
 size_t iTabFocusIndex = 0;          // index that holds the current control in focus
-std::vector<HWND> vDialogControls;  // vector that holds all dialog controls
+std::vector<HWND> vDialogControls;  // vector that holds all dialog controls, used for TabKey
 
 
 //---------------------------------------------------------------------------------------------
