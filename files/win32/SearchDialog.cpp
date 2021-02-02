@@ -377,7 +377,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_COMMAND:
         {
             // ** Parse menu selections
-            switch (LOWORD(wParam))
+            switch (wParam)
             {
                 case ID_FIND: // some menu item with control id: ID_FIND
                     // ** Create and open dialog when menu item is clicked, g_hMyDlg is GLOBAL handle to dialog (HWND g_hMyDlg)
