@@ -127,11 +127,11 @@ HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[]
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
-                        // ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
+        // ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
 
-                        // ** Add an icon to the button (optional)
-                        //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // IDI_APPLICATION used as example (default application icon)
-                        //SendMessage(hWndBtnCtrl, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
+        // ** Add an icon to the button (optional)
+        //HICON hIcon = LoadIcon(NULL, IDI_APPLICATION); // IDI_APPLICATION used as example (default application icon)
+        //SendMessage(hWndBtnCtrl, BM_SETIMAGE, (WPARAM)IMAGE_ICON, (LPARAM)hIcon);
 
     return hWndBtnCtrl;
 };
@@ -166,7 +166,7 @@ HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], 
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
-                        // ** Set max limit if specified
+    // ** Set max limit if specified
     if (iMaxLength > 0)
     {
         SendMessage(hWndEditCtrl, EM_SETLIMITTEXT, iMaxLength, NULL);
@@ -378,11 +378,11 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szT
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
-                        /*
-                        Group the radio boxes:
-                        Put the WS_GROUP in the first radio button's style.
-                        It will group the current radio button until it see the second WS_GROUP
-                        */
+        /*
+        Group the radio boxes:
+        Put the WS_GROUP in the first radio button's style.
+        It will group the current radio button until it see the second WS_GROUP
+        */
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create radiobutton control
