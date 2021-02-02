@@ -51,7 +51,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             EnumChildWindows(hWnd, EnableTabKey, 0); // Enable tabkey for controls
             EnumChildWindows(hWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
 
-            // ** Set custom message handlers for controls
+            // ** Set message handlers for controls
             g_DefEditProc      = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
             g_DefOkBtnProc     = (WNDPROC)SetWindowLong(hOkBtn, GWL_WNDPROC, (long)OkBtnProc);
             g_DefCancelBtnProc = (WNDPROC)SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)CancelBtnProc);
