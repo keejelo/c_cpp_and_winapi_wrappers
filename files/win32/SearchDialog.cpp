@@ -40,7 +40,9 @@ BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Custom TAB key function to move focus between controls
+// ** Custom TAB key function to move focus between controls 
+//---------------------------------------------------------------------------------------------
+// Since this "dialog" is created with CreateWindowEx we have to handle messages ourselves
 //---------------------------------------------------------------------------------------------
 void TabFocus(bool bUpDown)
 {
