@@ -111,11 +111,11 @@ LRESULT CALLBACK EditProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 case VK_TAB:
                     if (GetKeyState(VK_SHIFT) & 0x8000)  // Check if SHIFT key is pressed
                     {
-                        TabFocus(0);
+                        TabFocus(0);  // Move focus to previous control
                     }
                     else
                     {
-                        TabFocus(1);
+                        TabFocus(1);  // Move focus to next control
                     }
                     break;
             }
