@@ -31,9 +31,9 @@ BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam);
 BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam);
 
 // ** Control message handlers
-LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK EditProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK OkBtnProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK CancelBtnProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
 //---------------------------------------------------------------------------------------------
