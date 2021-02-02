@@ -142,7 +142,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 // ** Edit control window procedure (message handler for this control)
 //---------------------------------------------------------------------------------------------
-LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK EditProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -151,11 +151,11 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case VK_RETURN:
-                    ValidateSearch(GetParent(hEditWnd));
+                    ValidateSearch(GetParent(hCtrlWnd));
                     break;
 
                 case VK_ESCAPE:
-                    SendMessage(GetParent(hEditWnd), WM_CLOSE, NULL, NULL);
+                    SendMessage(GetParent(hCtrlWnd), WM_CLOSE, NULL, NULL);
                     break;
                 
                 case VK_TAB:
@@ -173,7 +173,7 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         break;
     }
 
-    return CallWindowProc(g_DefEditProc, hEditWnd, msg, wParam, lParam);
+    return CallWindowProc(g_DefEditProc, hCtrlWnd, msg, wParam, lParam);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Edit control window procedure
@@ -183,7 +183,7 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 // ** Ok Button control window procedure (message handler for this control)
 //---------------------------------------------------------------------------------------------
-LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK OkBtnProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -192,11 +192,11 @@ LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lPara
             switch (wParam)
             {
                 case VK_RETURN:
-                    ValidateSearch(GetParent(hOkBtnWnd));
+                    ValidateSearch(GetParent(hCtrlWnd));
                     break;
 
                 case VK_ESCAPE:
-                    SendMessage(GetParent(hOkBtnWnd), WM_CLOSE, NULL, NULL);
+                    SendMessage(GetParent(hCtrlWnd), WM_CLOSE, NULL, NULL);
                     break;
 
                 case VK_TAB:
@@ -214,7 +214,7 @@ LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lPara
         break;
     }
 
-    return CallWindowProc(g_DefOkBtnProc, hOkBtnWnd, msg, wParam, lParam);
+    return CallWindowProc(g_DefOkBtnProc, hCtrlWnd, msg, wParam, lParam);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Ok Button control window procedure
@@ -224,7 +224,7 @@ LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lPara
 //---------------------------------------------------------------------------------------------
 // ** Cancel Button control window procedure (message handler for this control)
 //---------------------------------------------------------------------------------------------
-LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK CancelBtnProc(HWND hCtrlWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -234,7 +234,7 @@ LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPAR
             {
                 case VK_RETURN:
                 case VK_ESCAPE:
-                    SendMessage(GetParent(hCancelBtnWnd), WM_CLOSE, NULL, NULL);
+                    SendMessage(GetParent(hCtrlWnd), WM_CLOSE, NULL, NULL);
                     break;
 
                 case VK_TAB:
@@ -252,7 +252,7 @@ LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPAR
         break;
     }
 
-    return CallWindowProc(g_DefCancelBtnProc, hCancelBtnWnd, msg, wParam, lParam);
+    return CallWindowProc(g_DefCancelBtnProc, hCtrlWnd, msg, wParam, lParam);
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Cancel Button control window procedure
