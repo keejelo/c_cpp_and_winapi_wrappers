@@ -15,18 +15,27 @@
 //---------------------------------------------------------------------------------------------
 // ** Variables
 //---------------------------------------------------------------------------------------------
-extern int SearchList(char *str);  // <-- this is a function in another file, just passing it
+extern int SearchList(char *str);
 
 
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam);  // <-- EditCtrl msg handler
 HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight);
 void RegisterDialogClass(HINSTANCE hInstance);
-BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam);
-void ValidateSearch(HWND hWnd);  // <-- function that executes the extern function "SearchList"
+
+BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam);
+BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam);
+
+// ** Control message handlers
+LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+void ValidateSearch(HWND hWnd);
+void TabFocus(bool bUpDown);
+
 
 
 //---------------------------------------------------------------------------------------------
