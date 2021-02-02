@@ -5,18 +5,76 @@
 // functional.
 //---------------------------------------------------------------------------------------------
 
+
 //---------------------------------------------------------------------------------------------
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "SearchDialog.h"
 #include "Resource.h"      // <---- contains ID's
 #include "Controls.h"      // <---- for creating controls
+#include <vector>
+
 
 
 //---------------------------------------------------------------------------------------------
 // ** Variables
 //---------------------------------------------------------------------------------------------
-WNDPROC g_DefEditProc;  // Variable that holds the default message proc for Editbox
+WNDPROC g_DefEditProc;       // variable that holds the default message proc for child control
+WNDPROC g_DefOkBtnProc;      // variable that holds the default message proc for child control
+WNDPROC g_DefCancelBtnProc;  // variable that holds the default message proc for child control
+
+size_t iTabFocusIndex = 0;          // index that holds the current control in focus
+std::vector<HWND> vDialogControls;  // vector that holds all dialog controls
+
+
+//---------------------------------------------------------------------------------------------
+// ** Function that adds all controls to a vector for indexing
+//---------------------------------------------------------------------------------------------
+BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam)
+{
+    vDialogControls.push_back(hWnd);
+    return TRUE;
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Function that adds all controls to a vector for indexing
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Custom TAB key function to move focus between controls
+//---------------------------------------------------------------------------------------------
+void TabFocus(bool bUpDown)
+{
+    if (bUpDown)
+    {
+        if (iTabFocusIndex < (vDialogControls.size() - 1) )
+        {
+            SetFocus(vDialogControls[iTabFocusIndex + 1]);
+            iTabFocusIndex++;
+        }
+        else
+        {
+            SetFocus(vDialogControls[0]);
+            iTabFocusIndex = 0;
+        }
+    }
+    else
+    {
+        if (iTabFocusIndex >= 1)
+        {
+            SetFocus(vDialogControls[iTabFocusIndex - 1]);
+            iTabFocusIndex--;
+        }
+        else
+        {
+            SetFocus(vDialogControls[(vDialogControls.size() - 1)]);
+            iTabFocusIndex = (vDialogControls.size() - 1);
+        }
+    }
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Custom TAB key function to move focus between controls
+//---------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------
@@ -25,32 +83,40 @@ WNDPROC g_DefEditProc;  // Variable that holds the default message proc for Edit
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     HWND hEdit = NULL;
+    HWND hOkBtn = NULL;
+    HWND hCancelBtn = NULL;
 
     switch (msg)
     {
         case WM_CREATE:
         {
-            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
-            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
-            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
+            // ** Create some controls
+            hEdit      = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
+            hOkBtn     = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
+            hCancelBtn = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
+
+            SetFocus(hEdit); // Set focus to edit control when opening
+            iTabFocusIndex = 0; // Set focus index to ZERO
+            vDialogControls.clear(); // Clear vector (in case it's not empty)
             
-            // ** Set all controls font to DEFAULT_GUI
-            EnumChildWindows(hWnd, EnumDialogChildProc, 0); 
-            
-            // ** Set focus to edit control when opening
-            SetFocus(hEdit);
-            
-            // ** Start up message handler for EditBox
-            g_DefEditProc = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
+            EnumChildWindows(hWnd, EnableTabKey, 0); // Enable tabkey for controls
+            EnumChildWindows(hWnd, SetCtrlFont, 0);	// Set font to DEFAULT_GUI
+
+            g_DefEditProc      = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
+            g_DefOkBtnProc     = (WNDPROC)SetWindowLong(hOkBtn, GWL_WNDPROC, (long)OkBtnProc);
+            g_DefCancelBtnProc = (WNDPROC)SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)CancelBtnProc);
         }
         break;
 
-        case WM_COMMAND:
+        case WM_COMMAND: 
+            
             switch (wParam)
             {
                 case ID_SEARCH_BTN_OK:
+                {
                     ValidateSearch(hWnd);
                     break;
+                }
 
                 case ID_SEARCH_BTN_CANCEL:
                     SendMessage(hWnd, WM_CLOSE, NULL, NULL);
@@ -60,6 +126,8 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case WM_CLOSE:
             SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);  // Reset the window proc to default (or else errors can occur)
+            SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);  // Reset the window proc to default (or else errors can occur)
+            SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);  // Reset the window proc to default (or else errors can occur)
             DestroyWindow(hWnd);
             break;
     }
@@ -80,14 +148,25 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         case WM_KEYDOWN:
         {
-            switch ((char)wParam)
+            switch (wParam)
             {
                 case VK_RETURN:
                     ValidateSearch(GetParent(hEditWnd));
                     break;
-                    
+
                 case VK_ESCAPE:
                     SendMessage(GetParent(hEditWnd), WM_CLOSE, NULL, NULL);
+                    break;
+                
+                case VK_TAB:
+                    if (GetKeyState(VK_SHIFT) & 0x8000)  // Check if SHIFT key is pressed
+                    {
+                        TabFocus(0);
+                    }
+                    else
+                    {
+                        TabFocus(1);
+                    }
                     break;
             }
         }
@@ -98,6 +177,85 @@ LRESULT CALLBACK EditProc(HWND hEditWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Edit control window procedure
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Ok Button control window procedure (message handler for this control)
+//---------------------------------------------------------------------------------------------
+LRESULT CALLBACK OkBtnProc(HWND hOkBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg)
+    {
+        case WM_KEYDOWN:
+        {
+            switch (wParam)
+            {
+                case VK_RETURN:
+                    ValidateSearch(GetParent(hOkBtnWnd));
+                    break;
+
+                case VK_ESCAPE:
+                    SendMessage(GetParent(hOkBtnWnd), WM_CLOSE, NULL, NULL);
+                    break;
+
+                case VK_TAB:
+                    if (GetKeyState(VK_SHIFT) & 0x8000)  // Check if SHIFT key is pressed
+                    {
+                        TabFocus(0);
+                    }
+                    else
+                    {
+                        TabFocus(1);
+                    }
+                    break;
+            }
+        }
+        break;
+    }
+
+    return CallWindowProc(g_DefOkBtnProc, hOkBtnWnd, msg, wParam, lParam);
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Ok Button control window procedure
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Cancel Button control window procedure (message handler for this control)
+//---------------------------------------------------------------------------------------------
+LRESULT CALLBACK CancelBtnProc(HWND hCancelBtnWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    switch (msg)
+    {
+        case WM_KEYDOWN:
+        {
+            switch (wParam)
+            {
+                case VK_RETURN:
+                case VK_ESCAPE:
+                    SendMessage(GetParent(hCancelBtnWnd), WM_CLOSE, NULL, NULL);
+                    break;
+
+                case VK_TAB:
+                    if (GetKeyState(VK_SHIFT) & 0x8000)  // Check if SHIFT key is pressed
+                    {
+                        TabFocus(0);
+                    }
+                    else
+                    {
+                        TabFocus(1);
+                    }
+                    break;
+            }
+        }
+        break;
+    }
+
+    return CallWindowProc(g_DefCancelBtnProc, hCancelBtnWnd, msg, wParam, lParam);
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Cancel Button control window procedure
 //---------------------------------------------------------------------------------------------
 
 
@@ -151,9 +309,9 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //---------------------------------------------------------------------------------------------
 // ** Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
-// EnumChildWindows(hWnd, EnumDialogChildProc, 0);  // <--- Run this at the end of: WM_CREATE 
+// EnumChildWindows(hWnd, SetCtrlFont, 0);  // <--- Run this at the end of: WM_CREATE
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
+BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam)
 {
     HFONT hfDefault = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
     SendMessage(hWnd, WM_SETFONT, (WPARAM)hfDefault, MAKELPARAM(TRUE, 0));
@@ -165,7 +323,7 @@ BOOL CALLBACK EnumDialogChildProc(HWND hWnd, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Validate search 
+// ** Search 
 //---------------------------------------------------------------------------------------------
 void ValidateSearch(HWND hWnd)
 {
@@ -180,11 +338,11 @@ void ValidateSearch(HWND hWnd)
     else
     {
         SendMessage(hWnd, WM_CLOSE, NULL, NULL);
-        SearchList(str);  // <----- EXTERN function that searches for a string
+        SearchList(str);  // <----- Extern function that searches for a string
     }
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Validate search 
+// ** END: Search 
 //---------------------------------------------------------------------------------------------
 
 
