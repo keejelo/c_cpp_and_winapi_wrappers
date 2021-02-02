@@ -22,8 +22,8 @@ WNDPROC g_DefEditProc;       // variable that holds the default message proc for
 WNDPROC g_DefOkBtnProc;      // variable that holds the default message proc for child control
 WNDPROC g_DefCancelBtnProc;  // variable that holds the default message proc for child control
 
-size_t iTabFocusIndex = 0;          // index that holds the current focused controlindex
-std::vector<HWND> vDialogControls;  // vector that holds all dialog controls, used in TabFocus
+size_t g_iTabFocusIndex = 0;          // index that holds the current focused controlindex
+std::vector<HWND> g_vDialogControls;  // vector that holds all dialog controls, used in TabFocus
 
 
 //---------------------------------------------------------------------------------------------
@@ -45,8 +45,8 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             hCancelBtn = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
             SetFocus(hEdit);         // Set focus to edit control when opening
-            iTabFocusIndex = 0;      // Set focus index to ZERO
-            vDialogControls.clear(); // Clear vector (in case it's not empty from last time)
+            g_iTabFocusIndex = 0;      // Set focus index to ZERO
+            g_vDialogControls.clear(); // Clear vector (in case it's not empty from last time)
             
             EnumChildWindows(hWnd, EnableTabKey, 0); // Enable tabkey for controls
             EnumChildWindows(hWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
@@ -77,7 +77,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);
             SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);
             SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);
-            
+
             DestroyWindow(hWnd);
             break;
     }
@@ -286,7 +286,7 @@ BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam)
 {
-    vDialogControls.push_back(hWnd);
+    g_vDialogControls.push_back(hWnd);
     return TRUE;
 };
 //---------------------------------------------------------------------------------------------
@@ -304,28 +304,28 @@ void TabFocus(bool bUpDown)
 {
     if (bUpDown)
     {
-        if (iTabFocusIndex < (vDialogControls.size() - 1))
+        if (g_iTabFocusIndex < (g_vDialogControls.size() - 1))
         {
-            SetFocus(vDialogControls[iTabFocusIndex + 1]);
-            iTabFocusIndex++;
+            SetFocus(g_vDialogControls[g_iTabFocusIndex + 1]);
+            g_iTabFocusIndex++;
         }
         else
         {
-            SetFocus(vDialogControls[0]);
-            iTabFocusIndex = 0;
+            SetFocus(g_vDialogControls[0]);
+            g_iTabFocusIndex = 0;
         }
     }
     else
     {
-        if (iTabFocusIndex >= 1)
+        if (g_iTabFocusIndex >= 1)
         {
-            SetFocus(vDialogControls[iTabFocusIndex - 1]);
-            iTabFocusIndex--;
+            SetFocus(g_vDialogControls[g_iTabFocusIndex - 1]);
+            g_iTabFocusIndex--;
         }
         else
         {
-            SetFocus(vDialogControls[(vDialogControls.size() - 1)]);
-            iTabFocusIndex = (vDialogControls.size() - 1);
+            SetFocus(g_vDialogControls[(g_vDialogControls.size() - 1)]);
+            g_iTabFocusIndex = (g_vDialogControls.size() - 1);
         }
     }
 };
