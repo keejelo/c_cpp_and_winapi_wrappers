@@ -27,58 +27,6 @@ std::vector<HWND> vDialogControls;  // vector that holds all dialog controls
 
 
 //---------------------------------------------------------------------------------------------
-// ** Function that adds all controls to a vector for indexing
-//---------------------------------------------------------------------------------------------
-BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam)
-{
-    vDialogControls.push_back(hWnd);
-    return TRUE;
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Function that adds all controls to a vector for indexing
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-// ** Custom TAB key function to move focus between controls
-//---------------------------------------------------------------------------------------------
-// Since this "dialog" is created with CreateWindowEx we have to handle messages ourselves
-//---------------------------------------------------------------------------------------------
-void TabFocus(bool bUpDown)
-{
-    if (bUpDown)
-    {
-        if (iTabFocusIndex < (vDialogControls.size() - 1) )
-        {
-            SetFocus(vDialogControls[iTabFocusIndex + 1]);
-            iTabFocusIndex++;
-        }
-        else
-        {
-            SetFocus(vDialogControls[0]);
-            iTabFocusIndex = 0;
-        }
-    }
-    else
-    {
-        if (iTabFocusIndex >= 1)
-        {
-            SetFocus(vDialogControls[iTabFocusIndex - 1]);
-            iTabFocusIndex--;
-        }
-        else
-        {
-            SetFocus(vDialogControls[(vDialogControls.size() - 1)]);
-            iTabFocusIndex = (vDialogControls.size() - 1);
-        }
-    }
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Custom TAB key function to move focus between controls
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
 // ** Dialogbox window procedure (message handler for dialog window)
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -329,6 +277,58 @@ BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Set default gui font to all controls
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Function that adds all controls to a vector for indexing
+//---------------------------------------------------------------------------------------------
+BOOL CALLBACK EnableTabKey(HWND hWnd, LPARAM lParam)
+{
+    vDialogControls.push_back(hWnd);
+    return TRUE;
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Function that adds all controls to a vector for indexing
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Custom TAB key function to move focus between controls
+//---------------------------------------------------------------------------------------------
+// Since this "dialog" is created with CreateWindowEx we have to handle messages ourselves
+//---------------------------------------------------------------------------------------------
+void TabFocus(bool bUpDown)
+{
+    if (bUpDown)
+    {
+        if (iTabFocusIndex < (vDialogControls.size() - 1))
+        {
+            SetFocus(vDialogControls[iTabFocusIndex + 1]);
+            iTabFocusIndex++;
+        }
+        else
+        {
+            SetFocus(vDialogControls[0]);
+            iTabFocusIndex = 0;
+        }
+    }
+    else
+    {
+        if (iTabFocusIndex >= 1)
+        {
+            SetFocus(vDialogControls[iTabFocusIndex - 1]);
+            iTabFocusIndex--;
+        }
+        else
+        {
+            SetFocus(vDialogControls[(vDialogControls.size() - 1)]);
+            iTabFocusIndex = (vDialogControls.size() - 1);
+        }
+    }
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Custom TAB key function to move focus between controls
 //---------------------------------------------------------------------------------------------
 
 
