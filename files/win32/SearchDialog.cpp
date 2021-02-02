@@ -224,7 +224,7 @@ void RegisterDialogClass(HINSTANCE hInstance)
     // ** Register the window class
     if (!RegisterClassEx(&wc))
     {
-        MessageBox(NULL, "Dialog window registration failed!", "Error", MB_ICONEXCLAMATION | MB_OK);
+        MessageBox(NULL, "Dialog window registration failed!", "Error", MB_ICONEXCLAMATION);
     }
 };
 //---------------------------------------------------------------------------------------------
@@ -344,7 +344,7 @@ void ValidateSearch(HWND hWnd)
 
     if (strlen(str) == 0)
     {
-        MessageBox(hWnd, "Search string cannot be empty!","Error", MB_ICONEXCLAMATION);
+        MessageBox(hWnd, "Search string cannot be empty!", "Error", MB_ICONEXCLAMATION);
         SetFocus(GetDlgItem(hWnd, ID_SEARCH_TXT));
     }
     else
