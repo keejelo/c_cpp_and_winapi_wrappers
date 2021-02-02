@@ -73,9 +73,10 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_CLOSE:
-            SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);            // Reset the window proc to default (or else errors can occur)
-            SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);          // Reset the window proc to default (or else errors can occur)
-            SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);  // Reset the window proc to default (or else errors can occur)
+            // ** Reset the window proc to default, or else bad things can happen
+            SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);
+            SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);
+            SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);
             DestroyWindow(hWnd);
             break;
     }
