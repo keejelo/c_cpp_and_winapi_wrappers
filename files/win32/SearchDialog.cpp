@@ -77,6 +77,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);
             SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);
             SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);
+            
             DestroyWindow(hWnd);
             break;
     }
