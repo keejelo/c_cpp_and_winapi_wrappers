@@ -44,12 +44,12 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             hOkBtn     = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             hCancelBtn = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
-            SetFocus(hEdit); // Set focus to edit control when opening
-            iTabFocusIndex = 0; // Set focus index to ZERO
-            vDialogControls.clear(); // Clear vector (in case it's not empty)
+            SetFocus(hEdit);         // Set focus to edit control when opening
+            iTabFocusIndex = 0;      // Set focus index to ZERO
+            vDialogControls.clear(); // Clear vector (in case it's not empty from last time)
             
             EnumChildWindows(hWnd, EnableTabKey, 0); // Enable tabkey for controls
-            EnumChildWindows(hWnd, SetCtrlFont, 0);	 // Set font to DEFAULT_GUI
+            EnumChildWindows(hWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
 
             g_DefEditProc      = (WNDPROC)SetWindowLong(hEdit, GWL_WNDPROC, (long)EditProc);
             g_DefOkBtnProc     = (WNDPROC)SetWindowLong(hOkBtn, GWL_WNDPROC, (long)OkBtnProc);
@@ -72,8 +72,8 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
 
         case WM_CLOSE:
-            SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);  // Reset the window proc to default (or else errors can occur)
-            SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);  // Reset the window proc to default (or else errors can occur)
+            SetWindowLong(hEdit, GWL_WNDPROC, (long)g_DefEditProc);            // Reset the window proc to default (or else errors can occur)
+            SetWindowLong(hOkBtn, GWL_WNDPROC, (long)g_DefOkBtnProc);          // Reset the window proc to default (or else errors can occur)
             SetWindowLong(hCancelBtn, GWL_WNDPROC, (long)g_DefCancelBtnProc);  // Reset the window proc to default (or else errors can occur)
             DestroyWindow(hWnd);
             break;
