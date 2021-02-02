@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------------------------
 #include "SearchDialog.h"
 #include "Resource.h"      // <---- contains ID's
-#include "Controls.h"      // <---- for creating controls
+#include "Controls.h"      // <---- for creating controls easier
 #include <vector>
 
 
