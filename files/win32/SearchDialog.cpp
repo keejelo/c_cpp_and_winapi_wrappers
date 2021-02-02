@@ -44,7 +44,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             hOkBtn     = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             hCancelBtn = CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
-            SetFocus(hEdit);         // Set focus to edit control when opening
+            SetFocus(hEdit);           // Set focus to edit control when opening
             g_iTabFocusIndex = 0;      // Set focus index to ZERO
             g_vDialogControls.clear(); // Clear vector (in case it's not empty from last time)
             
