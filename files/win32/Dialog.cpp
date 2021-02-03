@@ -57,7 +57,6 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //         need to include it (#include "MyDlg.h") wherever you are going to use it.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
 //---------------------------------------------------------------------------------------------
@@ -116,7 +115,6 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // STEP 2: DO THIS IN YOUR MAIN WINDOW PROCEDURE (usually in "WinMain.cpp" or "main.cpp")
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
 
 //---------------------------------------------------------------------------------------------
 // ** Main window procedure (message handler)
