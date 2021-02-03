@@ -54,7 +54,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // STEP 1: Create a dialog procedure, here you tell what the dialog is going to do.
 //         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h", if so you of course then
-           nedd to include it (#include "MyDlg.h") wherever you are going to use it.
+           need to include it (#include "MyDlg.h") wherever you are going to use it.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
