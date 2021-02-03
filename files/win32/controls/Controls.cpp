@@ -143,7 +143,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[]
 //---------------------------------------------------------------------------------------------
 // ** Create edit control
 //---------------------------------------------------------------------------------------------
-HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, int iMaxLength, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, int iMaxLength)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -151,6 +151,7 @@ HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], 
 
     dwExStyle |= WS_EX_CLIENTEDGE;
     dwStyle |= WS_TABSTOP | WS_VISIBLE | WS_CHILD;
+    //dwStyle |= ES_WANTRETURN | ES_MULTILINE; // <--- for multiline editboxes
 
     HWND hWndEditCtrl = CreateWindowEx(
         dwExStyle,      // Extended window style, this makes border native 3D or if manifested then OS colors and response
