@@ -101,7 +101,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //---------------------------------------------------------------------------------------------
 // ** Set default gui font to all controls
 //---------------------------------------------------------------------------------------------
-// EnumChildWindows(hWnd, SetCtrlFont, 0);  // <--- Run this at the end of: WM_CREATE
+// EnumChildWindows(hWnd, SetCtrlFont, 0);  // <--- Run this after creating controls
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam)
 {
