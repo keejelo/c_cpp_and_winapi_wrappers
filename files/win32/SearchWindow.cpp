@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Include files
 //---------------------------------------------------------------------------------------------
-#include "SearchDialog.h"
+#include "SearchWindow.h"
 #include "Resource.h"      // <---- contains ID's
 #include "Controls.h"      // <---- for creating controls easier
 #include <commctrl.h>      // <---- SetWindowSubclass etc.
