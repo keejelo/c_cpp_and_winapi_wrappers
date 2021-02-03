@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
 // ** Include files
 //-----------------------------------------------------------------------------
-#include <windows.h>
 #include "Resource.h"  // <-- defines: ID_DIALOG_TEMPLATE
+#include <windows.h>
 
 //-----------------------------------------------------------------------------
 // ** Minimal dialog template, we add controls later with code.
