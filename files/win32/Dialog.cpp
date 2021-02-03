@@ -52,8 +52,10 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 /*
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// STEP 1: Create a dialog procedure example, what the dialog is going to do:
+// STEP 1: Create a dialog procedure example, what the dialog is going to do.
+//         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h"
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
@@ -111,7 +113,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// STEP 2: DO THIS IN YOUR MAIN WINDOW PROCEDURE 
+// STEP 2: DO THIS IN YOUR MAIN WINDOW PROCEDURE (usually in "WinMain.cpp" or "main.cpp")
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -170,6 +172,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //  STEP 3: CHANGE/ADD TO YOUR WINMAIN FUNCTION (MESSAGE LOOP) LIKE BELOW:
+//          (usually at the bottom in "WinMain.cpp" or "main.cpp")
 ///////////////////////////////////////////////////////////////////////////////////////////////
     
     // above here (WinMain function) is window created etc.
@@ -197,6 +200,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// DONE
+// DONE! Good luck!
 ///////////////////////////////////////////////////////////////////////////////////////////////
 */
