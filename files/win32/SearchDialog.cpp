@@ -58,6 +58,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             ShowWindow(hWnd, SW_SHOW);  // Show dialog
             return 1;
         }
+            
         default:
             return 0;  // Give control back to OS so it can process other messages
     }
