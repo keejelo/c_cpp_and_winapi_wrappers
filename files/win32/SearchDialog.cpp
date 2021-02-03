@@ -1,9 +1,6 @@
 //---------------------------------------------------------------------------------------------
 // ** SearchDialog.cpp
 //---------------------------------------------------------------------------------------------
-// Modeless dialog created for search, uses "DialogTemplate.rc" dialog skeleton.
-// Controls and all other stuff is created with code.
-//---------------------------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------------------------
@@ -17,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK SearchDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -58,7 +55,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             ShowWindow(hWnd, SW_SHOW);  // Show dialog
             return 1;
         }
-            
+
         default:
             return 0;  // Give control back to OS so it can process other messages
     }
@@ -67,35 +64,6 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog procedure (message handler)
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
-// ** Create Dialogbox   (uses "DialogTemplate.rc" dialog skeleton)
-//---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
-{
-    // ** Get parent window dimensions, position dialog in parent center
-    RECT rc = { 0 };
-    GetWindowRect(hWndParent, &rc);
-    int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
-    int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
-
-    HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
-
-    if (hDlg == NULL)
-    {
-        MessageBox(NULL, "Dialog creation failed!", "Error", MB_ICONEXCLAMATION);
-        return 0;
-    }
-
-    SetWindowText(hDlg, sTitle);
-    SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
-
-    return hDlg;
-};
-//---------------------------------------------------------------------------------------------
-// ** END: Create Dialogbox
 //---------------------------------------------------------------------------------------------
 
 
@@ -137,83 +105,3 @@ void ValidateSearch(HWND hWnd)
 //---------------------------------------------------------------------------------------------
 // ** END: Validate search input
 //---------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-// ** HOW TO IMPLEMENT
-///////////////////////////////////////////////////////////////////////////////////////////////
-/*
-
-///////  DO THIS IN YOUR MAIN WINDOW PROCEDURE 
-
-
-LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-    switch (msg)
-    {
-        case WM_COMMAND:
-        {
-            // ** Parse menu selections
-            switch (wParam)
-            {
-                case ID_FIND: // some menu item with control id: ID_FIND
-
-                    // ** Create and open dialog when menu item is clicked, g_hMyDlg is GLOBAL handle to dialog (HWND g_hMyDlg)
-
-                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 238, 130);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
-
-                    break;
-            }
-            break;
-        }
-        break;
-
-        case WM_SIZE:
-        {
-            switch (wParam)
-            {
-                case SIZE_MINIMIZED:
-                    ShowWindow(g_hMyDlg, SW_HIDE);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
-                    break;
-
-                case SIZE_RESTORED:
-                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
-                    break;
-            }
-            break;
-        }
-        break;
-
-        case WM_DESTROY:
-        {
-            PostQuitMessage(0);
-            return 0;
-        }
-    }
-    return DefWindowProcW(hWnd, msg, wParam, lParam);
-};
-
-
-////////  AND CHANGE YOUR MAIN MESSAGE LOOP LIKE BELOW:
-
-
-while (GetMessage(&msg, NULL, 0, 0) > 0) 
-{
-    if (!g_hMyDlg || !IsDialogMessage(g_hMyDlg, &msg))   // <--- Enables dialog to catch tabstop and keypresses for controls !!!!!!!!!!
-    {
-        // accelerator etc and what not
-
-        TranslateMessage(&msg);			 // Translate keyboard messages
-        DispatchMessage(&msg);			 // Return control to Windows (OS)
-    }
-}
-
-return (int)msg.wParam;
-
-
-*/
