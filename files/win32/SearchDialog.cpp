@@ -32,7 +32,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_CREATE:
         {
             // ** Create some controls
-            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100); // , 14, ES_WANTRETURN | ES_MULTILINE);
+            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
