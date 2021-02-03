@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------
-// ** SearchDialog.cpp
+// ** SearchWindow.cpp
 //---------------------------------------------------------------------------------------------
 // Modeless dialog created for search, based on "ModelessDialog.cpp", but more detailed and
 // functional.
