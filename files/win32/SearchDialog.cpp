@@ -13,7 +13,6 @@
 #include "Resource.h"      // <---- contains ID's
 #include "Controls.h"      // <---- for creating controls easier
 #include <commctrl.h>      // <---- SetWindowSubclass etc.
-#include <vector>
 
 
 //---------------------------------------------------------------------------------------------
