@@ -19,8 +19,6 @@
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    HWND hEdit = NULL;
-
     switch (msg)
     {
         case WM_COMMAND:
@@ -51,7 +49,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_INITDIALOG:
         {
             // ** Create some controls
-            hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
+            HWND hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
             CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
