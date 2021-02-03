@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------
 // Wrapper for CreateDialog, uses file "DialogTemplate.rc" for creating dialog skeleton.
 // The dialog content are created in their own custom dialog procedure in "WM_INITDIALOG".
-// Each dialog has its own dialog procedure and handles all its action there.
+// Each dialog needs to have its own dialog procedure and handle all its action there.
 //---------------------------------------------------------------------------------------------
 
 
