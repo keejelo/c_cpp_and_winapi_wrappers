@@ -199,4 +199,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return DefWindowProcW(hWnd, msg, wParam, lParam);
 };
+
+
+// AND CHANGE YOUR MAIN MESSAGE LOOP LIKE BELOW:
+
+
+while (GetMessage(&msg, NULL, 0, 0) > 0) 
+{
+    if (!g_hMyDlg || !IsDialogMessage(g_hMyDlg, &msg))   // <--- Enables dialog to catch tabstop and keypresses for controls !!!!!!!!!!
+    {
+        // accelerator etc and what not
+
+        TranslateMessage(&msg);			 // Translate keyboard messages
+        DispatchMessage(&msg);			 // Return control to Windows (OS)
+    }
+}
+
+return (int)msg.wParam;
+
+
 */
