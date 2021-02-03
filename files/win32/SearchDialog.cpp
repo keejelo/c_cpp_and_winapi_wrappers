@@ -39,7 +39,7 @@ LRESULT CALLBACK DialogProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             SetFocus(hEdit);  // Set focus to edit control when opening
             EnumChildWindows(hWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
 
-            // ** Set custom message handler for control to grab ENTER keypress
+            // ** Set custom message handler for control to catch keypress
             SetWindowSubclass(hEdit, EditProc, 0, 0);
         }
         break;
