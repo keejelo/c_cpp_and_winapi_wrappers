@@ -22,8 +22,6 @@ extern int SearchList(char *str); // <-- function in another file
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK SearchDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
-BOOL CALLBACK SetCtrlFont(HWND hWnd, LPARAM lParam);
-void ValidateSearch(HWND hWnd);
 
 
 //---------------------------------------------------------------------------------------------
