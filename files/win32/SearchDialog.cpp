@@ -70,7 +70,7 @@ BOOL CALLBACK DlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Create Dialogbox
+// ** Create Dialogbox   (uses "DialogTemplate.rc" dialog skeleton)
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight)
 {
