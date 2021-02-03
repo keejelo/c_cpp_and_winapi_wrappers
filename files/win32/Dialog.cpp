@@ -52,7 +52,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 /*
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// STEP 1: Create a dialog procedure example, what the dialog is going to do.
+// STEP 1: Create a dialog procedure, here you tell what the dialog is going to do.
 //         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h"
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
