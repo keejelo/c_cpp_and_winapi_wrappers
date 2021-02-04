@@ -42,7 +42,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
 
         case WM_INITDIALOG:
         {
-            // ** Since this is a modal dialog we have to set it up ourselves, so let's do it:
+            // ** Since this is a modal dialog, we have to set size, pos. and title ourselves here, so let's do it:
             
             // ** Dialogs title
             SetWindowText(hDlgWnd, "About");
