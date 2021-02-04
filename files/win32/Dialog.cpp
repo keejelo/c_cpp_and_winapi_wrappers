@@ -59,8 +59,7 @@ struct DialogTemplate
 //---------------------------------------------------------------------------------------------
 // This is the function you use to create your dialogs.
 //---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, 
-                     DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
+HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
 {
     // ** Not using this since we create template with code above
     //HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
