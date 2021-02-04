@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Create static text control
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticTextCtrl(HWND hWndParent, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -32,9 +32,9 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Static controls usually have ID = -1  (This can also be an id (IDC_STATIC_TEXT1))
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, in
 //---------------------------------------------------------------------------------------------
 // ** Create static line horizontal
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineHoriz(HWND hWndParent, int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -62,9 +62,9 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, long lon
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Static controls usually have ID = -1   (This can also be an id (IDC_STATIC_LINE1))
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, long lon
 //---------------------------------------------------------------------------------------------
 // ** Create static line vertical
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineVert(HWND hWndParent, int x, int y, int h, int w, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -92,9 +92,9 @@ HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, long long
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Static controls usually have ID = -1   (This can also be an id (IDC_STATIC_LINE2))
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, long long
 //---------------------------------------------------------------------------------------------
 // ** Create pushbutton control
 //---------------------------------------------------------------------------------------------
-HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, void *fnCallback)
+HWND CreateButtonCtrl(HWND hWndParent, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, void *fnCallback)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -122,9 +122,9 @@ HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[]
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_BUTTON1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
         // ** ? TODO: push button object into vector array so its ID and callback function is saved for use in "OnButtonClick"  ?
@@ -143,7 +143,7 @@ HWND CreateButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[]
 //---------------------------------------------------------------------------------------------
 // ** Create edit control
 //---------------------------------------------------------------------------------------------
-HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, int iMaxLength)
+HWND CreateEditCtrl(HWND hWndParent, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle, int iMaxLength)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -162,9 +162,9 @@ HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], 
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_EDIT1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
     // ** Set max limit if specified
@@ -183,7 +183,7 @@ HWND CreateEditCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], 
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdown control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateComboBoxDropDownCtrl(HWND hWndParent, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -200,9 +200,9 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, long long int ctrlID, int x, in
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_COMBO1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -213,7 +213,7 @@ HWND CreateComboBoxDropDownCtrl(HWND hParentWnd, long long int ctrlID, int x, in
 //---------------------------------------------------------------------------------------------
 // ** Create combobox simple control
 //---------------------------------------------------------------------------------------------
-HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateComboBoxSimpleCtrl(HWND hWndParent, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);  // 50
@@ -230,9 +230,9 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, long long int ctrlID, int x, int 
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_COMBO2)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ HWND CreateComboBoxSimpleCtrl(HWND hParentWnd, long long int ctrlID, int x, int 
 //---------------------------------------------------------------------------------------------
 // ** Create combobox dropdownlist control
 //---------------------------------------------------------------------------------------------
-HWND CreateDropDownListCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateDropDownListCtrl(HWND hWndParent, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -260,9 +260,9 @@ HWND CreateDropDownListCtrl(HWND hParentWnd, long long int ctrlID, int x, int y,
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_DROPDOWN1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -285,7 +285,7 @@ UINT AddStringCombo(const HWND hCombo, const char szText[])
 //---------------------------------------------------------------------------------------------
 // ** Create listbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateListBoxCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateListBoxCtrl(HWND hWndParent, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);   // 50
@@ -302,9 +302,9 @@ HWND CreateListBoxCtrl(HWND hParentWnd, long long int ctrlID, int x, int y, int 
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_LISTBOX1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -327,7 +327,7 @@ UINT AddStringListBox(const HWND hListBoxCtrl, const char szText[])
 //---------------------------------------------------------------------------------------------
 // ** Create checkbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateCheckBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateCheckBoxCtrl(HWND hWndParent, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -344,9 +344,9 @@ HWND CreateCheckBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_CHECKBOX1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
@@ -357,7 +357,7 @@ HWND CreateCheckBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText
 //---------------------------------------------------------------------------------------------
 // ** Create radiobutton control
 //---------------------------------------------------------------------------------------------
-HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateRadioButtonCtrl(HWND hWndParent, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -374,9 +374,9 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szT
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_RADIOBUTTON1)
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 
         /*
@@ -393,7 +393,7 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szT
 //---------------------------------------------------------------------------------------------
 // ** Create groupbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateGroupBoxCtrl(HWND hWndParent, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -410,9 +410,9 @@ HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int 
         y,              // Vertical position
         w,              // Width
         h,              // Height
-        hParentWnd,     // Handle to parent window
+        hWndParent,     // Handle to parent window
         (HMENU)ctrlID,  //  Static controls usually have ID = -1   (This can also be an id (IDC_GROUP1))
-        (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
+        (HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
 //---------------------------------------------------------------------------------------------
