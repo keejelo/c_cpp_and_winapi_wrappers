@@ -121,7 +121,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
             int w = 238;
             int h = 130;
 
-            // ** Position dialog in center of parent window
+            // ** Calculate parent window center position
             RECT rc = { 0 };
             GetWindowRect(GetParent(hDlgWnd), &rc);
             int x = ((rc.left + rc.right) / 2) - (w / 2);
