@@ -24,19 +24,19 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             switch (wParam)
             {
                 case IDOK:      // <-- This captures ENTER key, default dialog OK 
-                    EndDialog(hDlgWnd, 1);
+                    EndDialog(hDlgWnd, 0);
                     DestroyWindow(hDlgWnd);
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hDlgWnd, 1);
+                    EndDialog(hDlgWnd, 0);
                     DestroyWindow(hDlgWnd);
                     return 1;
             }
             return 1;
 
         case WM_CLOSE:
-            EndDialog(hDlgWnd, 1);
+            EndDialog(hDlgWnd, 0);
             DestroyWindow(hDlgWnd);
             return 1;
 

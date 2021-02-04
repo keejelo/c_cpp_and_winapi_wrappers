@@ -36,7 +36,7 @@ INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPa
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hDlgWnd, 1);
+                    EndDialog(hDlgWnd, 0);
                     DestroyWindow(hDlgWnd);
                     return 1;
 
@@ -45,14 +45,14 @@ INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPa
                     return 1;
 
                 case ID_SEARCH_BTN_CANCEL:
-                    EndDialog(hDlgWnd, 1);
+                    EndDialog(hDlgWnd, 0);
                     DestroyWindow(hDlgWnd);
                     return 1;
             }
             return 1;
 
         case WM_CLOSE:
-            EndDialog(hDlgWnd, 1);
+            EndDialog(hDlgWnd, 0);
             DestroyWindow(hDlgWnd);
             return 1;
 
