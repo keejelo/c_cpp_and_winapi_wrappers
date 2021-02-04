@@ -101,10 +101,14 @@ INT_PTR CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc)
     // ** Create a dialog with the template above
     INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
     
-    if (nDlg == -1)
+    if (nDlg == NULL)
     {
-        MessageBox(NULL, "Dialog creation failed!\n\nError: -1", "Error", MB_ICONEXCLAMATION);
-        return 0;
+        char str[256] = "Dialog creation failed!\n\nError return code: NULL (0)\n\nDid you use correct syntax?\n\nMake sure you do not close the dialog with zero (0)\n\nint nResult = 1;\n\nEndDialog(hWnd, nResult);\n\n\"nResult\" must be greater than zero (0)";
+        MessageBox(NULL, str, "Error", MB_ICONEXCLAMATION);
+    }
+    else if (nDlg == -1)
+    {
+        MessageBox(NULL, "Dialog creation failed!\n\nError return code: -1", "Error", MB_ICONEXCLAMATION);
     }
     return nDlg;
 
