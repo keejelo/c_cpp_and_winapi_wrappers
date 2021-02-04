@@ -17,10 +17,10 @@
 #include <stdio.h>
 
 //---------------------------------------------------------------------------------------------
-// ** Dialog template (needs unicode strings)
+// ** Dialog template
 //---------------------------------------------------------------------------------------------
-#define DLGTITLE    L"EMPTY_DIALOG_TEMPLATE"
-#define DLGFONT     L"MS Shell Dlg"
+#define DLGTITLE     "EMPTY_DIALOG_TEMPLATE"
+#define DLGFONT      "MS Shell Dlg"
 #define NUMCHARS(aa) (sizeof(aa)/sizeof((aa)[0]))
 
 #pragma pack(push, 4)
@@ -35,9 +35,9 @@ struct DialogTemplate
     short cy;
     WORD  menu;                         // menu resource name
     WORD  windowClass;                  // window 'class' name
-    WCHAR szTitle[NUMCHARS(DLGTITLE)];  // window title of dialog
+    CHAR  szTitle[NUMCHARS(DLGTITLE)];  // window title of dialog
     short pointsize;                    // only if DS_SETFONT flag is set
-    WCHAR szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
+    CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
 } dlgTpl =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
@@ -212,7 +212,7 @@ INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             CreateButtonCtrl(hDlgWnd, ID_BUTTON1, "Hello", 10, 50);
             CreateButtonCtrl(hDlgWnd, ID_BUTTON2, "world", 130, 50);
 
-            SetFocus(hEdit);            // Set focus to edit control when opening
+            SetFocus(hEdit);   // Set focus to edit control when opening
 
             return 1;
         }
