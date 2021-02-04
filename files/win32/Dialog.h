@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc);
+HWND CreateDialogBox(HWND hWnd, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 
 //---------------------------------------------------------------------------------------------
