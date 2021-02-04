@@ -12,14 +12,14 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "Dialog.h"
-
+#include <CommCtrl.h>
 
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
 #define DLGTITLE    "DIALOG TEMPLATE"
-#define DLGFONT     "MS Sans Serif"
-#define NUMCHARS(x) (sizeof(x)/sizeof((x)[0]))
+#define DLGFONT     "MS Shell Dlg"
+#define NUMCHARS(a) (sizeof(a)/sizeof((a)[0]))
 
 #pragma pack(push, 4)
 struct DialogTemplate
@@ -38,16 +38,16 @@ struct DialogTemplate
     CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
 } dlgTpl =
 {
-    WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
-    | DS_MODALFRAME | DS_SETFONT,
+    WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+    | DS_MODALFRAME | DS_SHELLFONT | DS_SETFONT | DS_SETFOREGROUND /*| DS_CENTER*/,
     0x0,                     // exStyle
     0,                       // number of ccontrols in dialog
     0, 0, 0, 0,              // x, y, w, h (pos and size of dialog)
     0,                       // no menu
     0,                       // no window class
-    DLGTITLE,                // caption (title)
-    8,                       // font size
-    DLGFONT                  // font name
+    DLGTITLE,                // caption (we override this later)
+    8,                       // font size (have no effect on future created controls)
+    DLGFONT                  // font name (have no effect on future created controls)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog template
@@ -60,21 +60,14 @@ struct DialogTemplate
 // This is the function you use to create your dialogs. 
 // "DlgBox" is an optional shorthand for "CreateDialogBox"
 //---------------------------------------------------------------------------------------------
-HWND DlgBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
+HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
 {
-    return CreateDialogBox(hParentWnd, sTitle, iWidth, iHeight, DlgProc, xPos, yPos, bCenterWindow);
-};
-HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
-{
-    // ** Not using this since we create template with code above
-    //HWND hDlg = CreateDialog((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hParentWnd, DlgProc);
+    // ** Create a dialog with the template above
+    HWND hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
 
-    // ** Using this instead with template above
-    HWND hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hParentWnd, DlgProc, 0);
-   
     if (hDlg == NULL)
     {
-        MessageBox(NULL, "Dialog creation failed!", "Error", MB_ICONEXCLAMATION);
+        MessageBox(NULL, "Dialog creation failed!\n\nError: NULL", "Error", MB_ICONEXCLAMATION);
         return 0;
     }
 
@@ -82,7 +75,7 @@ HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeigh
     if (bCenterWindow)
     {
         RECT rc = { 0 };
-        GetWindowRect(hParentWnd, &rc);
+        GetWindowRect(hWndParent, &rc);
         xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
         yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
     }
@@ -96,6 +89,87 @@ HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeigh
 // ** END: Create Dialogbox
 //---------------------------------------------------------------------------------------------
 
+
+//---------------------------------------------------------------------------------------------
+// ** Create Modal Dialogbox - this creates a dialogbox from the template
+//---------------------------------------------------------------------------------------------
+// This is the function you use to create your dialogs. 
+// "DlgBoxModal" is an optional shorthand for "CreateDialogBoxModal"
+//---------------------------------------------------------------------------------------------
+int CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc)
+{
+    // ** Create a dialog with the template above
+    int nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
+    
+    if (nDlg == -1)
+    {
+        MessageBox(NULL, "Dialog creation failed!\n\nError: -1", "Error", MB_ICONEXCLAMATION);
+        return 0;
+    }
+    return nDlg;
+
+
+    /*//-------------------------------------------------------------------
+    // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION:
+    //---------------------------------------------------------------------
+    // Since modal dialogs do not return a window handle, the dialogs size,
+    // position, title caption etc. must be handled in its own dialog proc. 
+    // "WM_INITDIALOG" like below:
+    //-------------------------------------------------------------------
+
+        case WM_INITDIALOG:
+        {
+            // ** Dialogs title
+            SetWindowText(hDlgWnd, "My dialog");
+
+            // ** Dialog size
+            int w = 238;
+            int h = 130;
+
+            // ** Position dialog in center of parent window
+            RECT rc = { 0 };
+            GetWindowRect(GetParent(hDlgWnd), &rc);
+            int x = ((rc.left + rc.right) / 2) - (w / 2);
+            int y = ((rc.top + rc.bottom) / 2) - (h / 2);
+
+            // ** Set dialog position and size
+            SetWindowPos(hDlgWnd, 0, x, y, w, h, 0);
+
+            // ..other code if any
+
+            return 1;
+        }
+
+    *///--------------------------------------------------------------------
+
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Create Modal Dialogbox
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** DlgBox (shorthand for CreateDialogBox)
+//---------------------------------------------------------------------------------------------
+HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
+{
+    return CreateDialogBox(hWndParent, sTitle, iWidth, iHeight, DlgProc, xPos, yPos, bCenterWindow);
+};
+//---------------------------------------------------------------------------------------------
+// ** END: DlgBox (shorthand for CreateDialogBox)
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** DlgBoxModal (shorthand for CreateDialogBoxModal)
+//---------------------------------------------------------------------------------------------
+INT_PTR DlgBoxModal(HWND hWndParent, DLGPROC DlgProc)
+{
+    return CreateDialogBoxModal(hWndParent, DlgProc);
+};
+//---------------------------------------------------------------------------------------------
+// ** END: DlgBoxMod (shorthand for CreateDialogBoxModal)
+//---------------------------------------------------------------------------------------------
 
 
 
@@ -114,9 +188,9 @@ HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeigh
 
 
 //---------------------------------------------------------------------------------------------
-// ** Dialog procedure (message handler)
+// ** Dialog procedure (modeless, non modal)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -128,8 +202,8 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hWnd, 0);
-                    DestroyWindow(hWnd);
+                    EndDialog(hDlgWnd, 1);
+                    DestroyWindow(hDlgWnd);
                     return 1;
 
                 case ID_BUTTON1:
@@ -143,19 +217,19 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             return 1;
 
         case WM_CLOSE:
-            EndDialog(hWnd, 0);
-            DestroyWindow(hWnd);
+            EndDialog(hDlgWnd, 1);
+            DestroyWindow(hDlgWnd);
             return 1;
 
         case WM_INITDIALOG:
         {
             // ** Create some controls when dialog starts
-            HWND hEdit = CreateEditCtrl(hWnd, ID_EDITBOX, "", 10, 10, 100);
-            CreateButtonCtrl(hWnd, ID_BUTTON1, "Hello", 10, 50);
-            CreateButtonCtrl(hWnd, ID_BUTTON2, "world", 130, 50);
+            HWND hEdit = CreateEditCtrl(hDlgWnd, ID_EDITBOX, "", 10, 10, 100);
+            CreateButtonCtrl(hDlgWnd, ID_BUTTON1, "Hello", 10, 50);
+            CreateButtonCtrl(hDlgWnd, ID_BUTTON2, "world", 130, 50);
 
             SetFocus(hEdit);            // Set focus to edit control when opening
-            ShowWindow(hWnd, SW_SHOW);  // Show dialog
+
             return 1;
         }
 
@@ -166,7 +240,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return 0;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Dialog procedure (message handler)
+// ** END: Dialog procedure (modeless, non modal)
 //---------------------------------------------------------------------------------------------
 
 
@@ -176,7 +250,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
-HWND g_hMyDlg;          // global handle to your dialog window
+HWND g_hMyDlg;      // <--- Global handle to your dialog window, somewhere in a global place
 
 
 //---------------------------------------------------------------------------------------------
@@ -195,7 +269,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
                     // ** Create and open dialog when menu item is clicked
 
-                    g_hMyDlg = CreateDialogBox(hWnd, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this to create and open your dialog
+                    g_hMyDlg = DlgBox(hWnd, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this to create and open your dialog
 
                     break;
             }

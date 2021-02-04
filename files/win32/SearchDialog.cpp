@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------------
 // ** SearchDialog.cpp
 //---------------------------------------------------------------------------------------------
-// This is just the dialog procedure and dialog message handler.
+// This is just the dialog procedure (dialog message handler).
 // The actual dialog is created with CreateDialogBox (Dialog.cpp) invoked from another place.
 //---------------------------------------------------------------------------------------------
 
@@ -24,48 +24,48 @@ void ValidateSearch(HWND hWnd);
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK SearchDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog "OK" (also works in EditBox) "submits form"
-                    ValidateSearch(hWnd);
+                case IDOK:      // <-- This captures ENTER key, default dialog OK (also works in EditBox)
+                    ValidateSearch(hDlgWnd);
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hWnd, 0);
-                    DestroyWindow(hWnd);
+                    EndDialog(hDlgWnd, 1);
+                    DestroyWindow(hDlgWnd);
                     return 1;
 
                 case ID_SEARCH_BTN_OK:
-                    ValidateSearch(hWnd);
+                    ValidateSearch(hDlgWnd);
                     return 1;
 
                 case ID_SEARCH_BTN_CANCEL:
-                    EndDialog(hWnd, 0);
-                    DestroyWindow(hWnd);
+                    EndDialog(hDlgWnd, 1);
+                    DestroyWindow(hDlgWnd);
                     return 1;
             }
             return 1;
 
         case WM_CLOSE:
-            EndDialog(hWnd, 0);
-            DestroyWindow(hWnd);
+            EndDialog(hDlgWnd, 1);
+            DestroyWindow(hDlgWnd);
             return 1;
 
         case WM_INITDIALOG:
         {
             // ** Create some controls
-            HWND hEdit = CreateEditCtrl(hWnd, ID_SEARCH_TXT, "", 10, 10, 100);
-            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
-            CreateButtonCtrl(hWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
+            HWND hEdit = CreateEditCtrl(hDlgWnd, ID_SEARCH_TXT, "", 10, 10, 100);
+            CreateButtonCtrl(hDlgWnd, ID_SEARCH_BTN_OK, "OK", 10, 50);
+            CreateButtonCtrl(hDlgWnd, ID_SEARCH_BTN_CANCEL, "Cancel", 130, 50);
 
             SetFocus(hEdit);  // Set focus to edit control when opening
-            EnumChildWindows(hWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
-            ShowWindow(hWnd, SW_SHOW);  // Show dialog
+            EnumChildWindows(hDlgWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
+
             return 1;
         }
 
