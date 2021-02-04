@@ -24,18 +24,18 @@
 #pragma pack(push, 4)
 struct DialogTemplate
 {
-    DWORD  style;
-    DWORD  dwExtendedStyle;
-    WORD   ccontrols;
-    short  x;
-    short  y;
-    short  cx;
-    short  cy;
-    WORD   menu;                         // name of menu resource
-    WORD   windowClass;                  // name of window class
-    CHAR   szTitle[NUMCHARS(DLGTITLE)];  // title string of the dialog box
-    short  pointsize;                    // only if DS_SETFONT flag is set
-    CHAR   szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
+    DWORD style;
+    DWORD dwExtendedStyle;
+    WORD  ccontrols;
+    short x;
+    short y;
+    short cx;
+    short cy;
+    WORD  menu;                         // name of menu resource
+    WORD  windowClass;                  // name of window class
+    CHAR  szTitle[NUMCHARS(DLGTITLE)];  // title string of the dialog box
+    short pointsize;                    // only if DS_SETFONT flag is set
+    CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
 } dlgTemp =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
@@ -117,7 +117,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog "OK" (also works in EditBox) "submits form"
+                case IDOK:      // <-- This captures ENTER key, default dialog "OK" (also works in EditBox) "submit form"
                     // do something here
                     return 1;
 
@@ -138,7 +138,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case WM_CLOSE:
             EndDialog(hWnd, 0);
-            DestroyWindow(hWnd);            
+            DestroyWindow(hWnd);
             return 1;
 
         case WM_INITDIALOG:
