@@ -42,11 +42,11 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
 
         case WM_INITDIALOG:
         {
-            // ** Since this is a modal dialog we have to set it up ourselves
-
+            // ** Since this is a modal dialog we have to set it up ourselves, so let's do it:
+            
             // ** Dialogs title
             SetWindowText(hDlgWnd, "About");
-
+            
             // ** Dialog size
             int w = 300;
             int h = 130;
@@ -59,7 +59,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
 
             // ** Set dialog position and size
             SetWindowPos(hDlgWnd, 0, x, y, w, h, 0);
-
+            
             // ** Create some controls
             HWND hText = CreateStaticTextCtrl(hDlgWnd, "This is the about dialog!", 20, 20);
             HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", 210, 55, 30);
