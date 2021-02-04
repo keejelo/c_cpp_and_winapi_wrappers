@@ -151,7 +151,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             CreateButtonCtrl(hWnd, ID_BUTTON1, "Hello", 10, 50);
             CreateButtonCtrl(hWnd, ID_BUTTON2, "world", 130, 50);
 
-            SetFocus(hEdit);  // Set focus to edit control when opening
+            SetFocus(hEdit);            // Set focus to edit control when opening
             ShowWindow(hWnd, SW_SHOW);  // Show dialog
             return 1;
         }
@@ -174,7 +174,7 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 HWND g_hMyDlg;          // global handle to your dialog window
-HINSTANCE g_hInstance;  // global handle to the application hInstance (WinMain)
+
 
 //---------------------------------------------------------------------------------------------
 // ** Main window procedure (message handler)
