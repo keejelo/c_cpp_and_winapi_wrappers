@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-// ** Optional shorthand: DlgBox( ... )
+// ** CreateDialogBox | shorthand: DlgBox( ... ) 
 HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
-// ** Optional shorthand: DlgBoxModal( ... )
+// ** CreateDialogBoxModal | shorthand: DlgBoxModal( ... )
 int  CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc);
 
 // ** DlgBox (shorthand for CreateDialogBox)
