@@ -51,7 +51,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             int w = 300;
             int h = 130;
 
-            // ** Position dialog in center of parent window
+            // ** Calculate parent window center position
             RECT rc = { 0 };
             GetWindowRect(GetParent(hDlgWnd), &rc);
             int x = ((rc.left + rc.right) / 2) - (w / 2);
