@@ -136,9 +136,9 @@ INT_PTR CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc)
     /*//-------------------------------------------------------------------
     // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION:
     //---------------------------------------------------------------------
-    // Since modal dialogs do not return a window handle, the dialogs size,
-    // position, title caption etc. must be handled in its own dialog proc. 
-    // "WM_INITDIALOG" like below:
+    // Since modal dialogs do not return a window handle: we have to set
+    // the dialogs size, position, title caption etc. ourselves in the 
+    // dialogs procedure, "WM_INITDIALOG" like below:
     //-------------------------------------------------------------------
 
         case WM_INITDIALOG:
