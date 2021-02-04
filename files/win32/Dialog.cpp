@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog.cpp
 //---------------------------------------------------------------------------------------------
-// This creates a dialog template to be used as a skeleton dialog.
+// This creates a dialog template to be used as an empty skeleton dialog.
 // The dialog content are created in their own custom dialog procedure in "WM_INITDIALOG".
 // Each dialog needs to have its own dialog procedure and handle all its action there.
 // See bottom of this file on how to implement and use.
@@ -15,7 +15,7 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Dialog Template
+// ** Dialog template
 //---------------------------------------------------------------------------------------------
 #define DLGTITLE  L"DIALOG TEMPLATE"
 #define DLGFONT   L"MS Sans Serif"
@@ -31,8 +31,8 @@ struct DialogTemplate
     short  y;
     short  cx;
     short  cy;    
-    WORD   menu;                         // name or ordinal of a menu resource
-    WORD   windowClass;                  // name or ordinal of a window class
+    WORD   menu;                         // name of menu resource
+    WORD   windowClass;                  // name of window class
     WCHAR  wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
     short  pointsize;                    // only if DS_SETFONT flag is set
     WCHAR  wszFont[NUMCHARS(DLGFONT)];   // typeface name, if DS_SETFONT is set
@@ -40,17 +40,17 @@ struct DialogTemplate
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
     | DS_MODALFRAME | DS_SETFONT,
-    0x0,                     // exStyle;
-    0,                       // ccontrols
-    0, 0, 0, 0,              // x,y,w,h
-    0,                       // menu: none
-    0,                       // window class: none
-    DLGTITLE,                // Window caption
-    8,                       // font pointsize
+    0x0,                     // exStyle
+    0,                       // number of child controls in dialog
+    0, 0, 0, 0,              // x, y, w, h (pos and size of dialog)
+    0,                       // no menu
+    0,                       // no window class
+    DLGTITLE,                // caption (title)
+    8,                       // font size
     DLGFONT                  // font name
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Dialog Template
+// ** END: Dialog template
 //---------------------------------------------------------------------------------------------
 
 
