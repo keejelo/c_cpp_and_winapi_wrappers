@@ -30,7 +30,7 @@ struct DialogTemplate
     short  x;
     short  y;
     short  cx;
-    short  cy;    
+    short  cy;
     WORD   menu;                         // name of menu resource
     WORD   windowClass;                  // name of window class
     WCHAR  wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
@@ -87,6 +87,8 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
 //---------------------------------------------------------------------------------------------
+
+
 
 
 
