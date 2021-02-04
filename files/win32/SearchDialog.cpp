@@ -31,12 +31,13 @@ BOOL CALLBACK SearchDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog OK (also works in EditBox)
+                case IDOK:      // <-- This captures ENTER key, default dialog "OK" (also works in EditBox) "submits form"
                     ValidateSearch(hWnd);
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
                     EndDialog(hWnd, 0);
+                    DestroyWindow(hWnd);
                     return 1;
 
                 case ID_SEARCH_BTN_OK:
@@ -45,12 +46,14 @@ BOOL CALLBACK SearchDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
                 case ID_SEARCH_BTN_CANCEL:
                     EndDialog(hWnd, 0);
+                    DestroyWindow(hWnd);
                     return 1;
             }
             return 1;
 
         case WM_CLOSE:
             EndDialog(hWnd, 0);
+            DestroyWindow(hWnd);
             return 1;
 
         case WM_INITDIALOG:
