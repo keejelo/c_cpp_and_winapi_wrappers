@@ -21,7 +21,7 @@ extern int SearchList(char *str); // <-- function in another file
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 
 //---------------------------------------------------------------------------------------------

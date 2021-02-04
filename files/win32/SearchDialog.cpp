@@ -24,7 +24,7 @@ void ValidateSearch(HWND hWnd);
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {

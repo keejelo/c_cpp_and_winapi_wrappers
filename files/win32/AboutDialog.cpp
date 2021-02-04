@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
