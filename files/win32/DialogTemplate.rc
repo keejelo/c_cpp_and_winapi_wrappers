@@ -7,4 +7,7 @@
 //-----------------------------------------------------------------------------
 // ** Minimal dialog template skeleton
 //-----------------------------------------------------------------------------
-ID_DIALOG_TEMPLATE DIALOGEX 0, 0, 0, 0 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU { }
+ID_DIALOG_TEMPLATE DIALOGEX 0, 0, 0, 0
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+{
+}
