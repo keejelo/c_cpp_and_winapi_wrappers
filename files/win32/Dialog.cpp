@@ -190,7 +190,7 @@ INT_PTR DlgBoxModal(HWND hWndParent, DLGPROC DlgProc)
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (modeless, non modal)
 //---------------------------------------------------------------------------------------------
-BOOL CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
