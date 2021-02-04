@@ -17,8 +17,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
-#define DLGTITLE  "DIALOG TEMPLATE"
-#define DLGFONT   "MS Sans Serif"
+#define DLGTITLE    "DIALOG TEMPLATE"
+#define DLGFONT     "MS Sans Serif"
 #define NUMCHARS(x) (sizeof(x)/sizeof((x)[0]))
 
 #pragma pack(push, 4)
