@@ -59,13 +59,13 @@ struct DialogTemplate
 //---------------------------------------------------------------------------------------------
 // This is the function you use to create your dialogs.
 //---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
+HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
 {
     // ** Not using this since we create template with code above
-    //HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
+    //HWND hDlg = CreateDialog((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hParentWnd, DlgProc);
 
     // ** Using this instead with template above
-    HWND hDlg = CreateDialogIndirectParam(hInstance, (LPCDLGTEMPLATE)&dlgTemp, hWndParent, DlgProc, 0);
+    HWND hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTemp, hParentWnd, DlgProc, 0);
    
     if (hDlg == NULL)
     {
@@ -77,7 +77,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
     if (bCenterWindow)
     {
         RECT rc = { 0 };
-        GetWindowRect(hWndParent, &rc);
+        GetWindowRect(hParentWnd, &rc);
         xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
         yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
     }
@@ -192,7 +192,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
                     // ** Create and open dialog when menu item is clicked
 
-                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this to create and open your dialog
+                    g_hMyDlg = CreateDialogBox(hWnd, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this to create and open your dialog
 
                     break;
             }
