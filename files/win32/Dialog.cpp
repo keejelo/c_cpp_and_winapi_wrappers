@@ -96,10 +96,10 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 // This is the function you use to create your dialogs. 
 // "DlgBoxModal" is an optional shorthand for "CreateDialogBoxModal"
 //---------------------------------------------------------------------------------------------
-int CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc)
+INT_PTR CreateDialogBoxModal(HWND hWndParent, DLGPROC DlgProc)
 {
     // ** Create a dialog with the template above
-    int nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
+    INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
     
     if (nDlg == -1)
     {
