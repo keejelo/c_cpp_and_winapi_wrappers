@@ -36,7 +36,7 @@ struct DialogTemplate
     CHAR  szTitle[NUMCHARS(DLGTITLE)];  // window title of dialog
     short pointsize;                    // only if DS_SETFONT flag is set
     CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
-} dlgTemp =
+} dlgTpl =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
     | DS_MODALFRAME | DS_SETFONT,
@@ -57,15 +57,20 @@ struct DialogTemplate
 //---------------------------------------------------------------------------------------------
 // ** Create Dialogbox - this creates a dialogbox from the template
 //---------------------------------------------------------------------------------------------
-// This is the function you use to create your dialogs.
+// This is the function you use to create your dialogs. 
+// "DlgBox" is an optional shorthand for "CreateDialogBox"
 //---------------------------------------------------------------------------------------------
+HWND DlgBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
+{
+    return CreateDialogBox(hParentWnd, sTitle, iWidth, iHeight, DlgProc, xPos, yPos, bCenterWindow);
+};
 HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
 {
     // ** Not using this since we create template with code above
     //HWND hDlg = CreateDialog((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hParentWnd, DlgProc);
 
     // ** Using this instead with template above
-    HWND hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTemp, hParentWnd, DlgProc, 0);
+    HWND hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hParentWnd, DlgProc, 0);
    
     if (hDlg == NULL)
     {
@@ -90,8 +95,6 @@ HWND CreateDialogBox(HWND hParentWnd, const char *sTitle, int iWidth, int iHeigh
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
 //---------------------------------------------------------------------------------------------
-
-
 
 
 
