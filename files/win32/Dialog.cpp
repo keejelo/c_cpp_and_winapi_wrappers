@@ -33,9 +33,9 @@ struct DialogTemplate
     short  cy;
     WORD   menu;                         // name of menu resource
     WORD   windowClass;                  // name of window class
-    CHAR   wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
+    CHAR   szTitle[NUMCHARS(DLGTITLE)];  // title string of the dialog box
     short  pointsize;                    // only if DS_SETFONT flag is set
-    CHAR   wszFont[NUMCHARS(DLGFONT)];   // typeface name, if DS_SETFONT is set
+    CHAR   szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
 } dlgTemp =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
