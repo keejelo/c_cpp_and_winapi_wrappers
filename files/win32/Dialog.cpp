@@ -31,9 +31,9 @@ struct DialogTemplate
     short y;
     short cx;
     short cy;
-    WORD  menu;                         // name of menu resource
-    WORD  windowClass;                  // name of window class
-    CHAR  szTitle[NUMCHARS(DLGTITLE)];  // title string of the dialog box
+    WORD  menu;                         // menu resource name
+    WORD  windowClass;                  // window 'class' name
+    CHAR  szTitle[NUMCHARS(DLGTITLE)];  // window title of dialog
     short pointsize;                    // only if DS_SETFONT flag is set
     CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
 } dlgTemp =
@@ -41,7 +41,7 @@ struct DialogTemplate
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
     | DS_MODALFRAME | DS_SETFONT,
     0x0,                     // exStyle
-    0,                       // number of child controls in dialog
+    0,                       // number of ccontrols in dialog
     0, 0, 0, 0,              // x, y, w, h (pos and size of dialog)
     0,                       // no menu
     0,                       // no window class
@@ -59,14 +59,8 @@ struct DialogTemplate
 //---------------------------------------------------------------------------------------------
 // This is the function you use to create your dialogs.
 //---------------------------------------------------------------------------------------------
-HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc)
+HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, int xPos, int yPos, bool bCenterWindow)
 {
-    // ** Get parent window dimensions, position dialog in parent center
-    RECT rc = { 0 };
-    GetWindowRect(hWndParent, &rc);
-    int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
-    int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
-
     // ** Not using this since we create template with code above
     //HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
 
@@ -79,8 +73,17 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
         return 0;
     }
 
-    SetWindowText(hDlg, sTitle);
+    // ** Get parent window dimensions, position dialog in parent center
+    if (bCenterWindow)
+    {
+        RECT rc = { 0 };
+        GetWindowRect(hWndParent, &rc);
+        xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
+        yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
+    }
+
     SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
+    SetWindowText(hDlg, sTitle);
 
     return hDlg;
 };
