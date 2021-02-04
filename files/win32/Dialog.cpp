@@ -1,9 +1,10 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog.cpp
 //---------------------------------------------------------------------------------------------
-// Wrapper for CreateDialog, uses file "DialogTemplate.rc" for creating dialog skeleton.
+// This creates a dialog template to be used as a skeleton dialog.
 // The dialog content are created in their own custom dialog procedure in "WM_INITDIALOG".
 // Each dialog needs to have its own dialog procedure and handle all its action there.
+// See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
 
 
@@ -14,7 +15,49 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Create Dialogbox
+// ** Dialog Template
+//---------------------------------------------------------------------------------------------
+#define DLGTITLE  L"DIALOG TEMPLATE"
+#define DLGFONT   L"MS Sans Serif"
+#define NUMCHARS(aa) (sizeof(aa)/sizeof((aa)[0]))
+
+#pragma pack(push, 4)
+struct DialogTemplate
+{
+    DWORD  style;
+    DWORD  dwExtendedStyle;
+    WORD   ccontrols;
+    short  x;
+    short  y;
+    short  cx;
+    short  cy;    
+    WORD   menu;                         // name or ordinal of a menu resource
+    WORD   windowClass;                  // name or ordinal of a window class
+    WCHAR  wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
+    short  pointsize;                    // only if DS_SETFONT flag is set
+    WCHAR  wszFont[NUMCHARS(DLGFONT)];   // typeface name, if DS_SETFONT is set
+} dlgTemp =
+{
+    WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
+    | DS_MODALFRAME | DS_SETFONT,
+    0x0,                     // exStyle;
+    0,                       // ccontrols
+    0, 0, 0, 0,              // x,y,w,h
+    0,                       // menu: none
+    0,                       // window class: none
+    DLGTITLE,                // Window caption
+    8,                       // font pointsize
+    DLGFONT                  // font name
+};
+//---------------------------------------------------------------------------------------------
+// ** END: Dialog Template
+//---------------------------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------------------------
+// ** Create Dialogbox - this creates a dialogbox from the template
+//---------------------------------------------------------------------------------------------
+// This is the function you use to create your dialogs.
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc)
 {
@@ -24,8 +67,12 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
     int xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
     int yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
 
-    HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
-    
+    // ** Not using this since we create template with code above
+    //HWND hDlg = CreateDialog(hInstance, MAKEINTRESOURCE(ID_DIALOG_TEMPLATE), hWndParent, DlgProc);
+
+    // ** Using this instead with template above
+    HWND hDlg = CreateDialogIndirectParam(hInstance, (LPCDLGTEMPLATE)&dlgTemp, hWndParent, DlgProc, 0);
+   
     if (hDlg == NULL)
     {
         MessageBox(NULL, "Dialog creation failed!", "Error", MB_ICONEXCLAMATION);
@@ -56,6 +103,7 @@ HWND CreateDialogBox(HWND hWndParent, HINSTANCE hInstance, const char *sTitle, i
 //         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h", if so you of course then
 //         need to include it (#include "MyDlg.h") wherever you are going to use it.
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //---------------------------------------------------------------------------------------------
 // ** Dialog procedure (message handler)
@@ -112,9 +160,14 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //---------------------------------------------------------------------------------------------
 
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // STEP 2: DO THIS IN YOUR MAIN WINDOW PROCEDURE (usually in "WinMain.cpp" or "main.cpp")
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+HWND g_hMyDlg;          // global handle to your dialog window
+HINSTANCE g_hInstance;  // global handle to the application hInstance (WinMain)
 
 //---------------------------------------------------------------------------------------------
 // ** Main window procedure (message handler)
@@ -130,9 +183,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 case ID_FIND: // some menu item with control id: ID_FIND
 
-                    // ** Create and open dialog when menu item is clicked, g_hMyDlg is GLOBAL handle to dialog (HWND g_hMyDlg)
+                    // ** Create and open dialog when menu item is clicked
 
-                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this, "g_hInstance" is GLOBAL handle to instance
+                    g_hMyDlg = CreateDialogBox(hWnd, g_hInstance, "My find dialog", 238, 130, MyDlgProc);  // <-------  add this to create and open your dialog
 
                     break;
             }
@@ -145,11 +198,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             switch (wParam)
             {
                 case SIZE_MINIMIZED:
-                    ShowWindow(g_hMyDlg, SW_HIDE);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
+                    ShowWindow(g_hMyDlg, SW_HIDE);  // <-------  add this, if you want the dialog to follow parent when window is minimized
                     break;
 
                 case SIZE_RESTORED:
-                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, "g_hMyDlg" is GLOBAL handle to dialog (HWND g_hMyDlg)
+                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, if you want the dialog to follow parent when window is restored
                     break;
             }
             break;
