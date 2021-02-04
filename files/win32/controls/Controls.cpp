@@ -393,7 +393,7 @@ HWND CreateRadioButtonCtrl(HWND hParentWnd, long long int ctrlID, const char szT
 //---------------------------------------------------------------------------------------------
 // ** Create groupbox control
 //---------------------------------------------------------------------------------------------
-HWND CreateGroupBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateGroupBoxCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -411,7 +411,7 @@ HWND CreateGroupBoxCtrl(HWND hParentWnd, long long int ctrlID, const char szText
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_GROUP1)
+        (HMENU)ctrlID,  //  Static controls usually have ID = -1   (This can also be an id (IDC_GROUP1))
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
