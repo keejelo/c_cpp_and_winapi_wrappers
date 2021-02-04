@@ -117,12 +117,13 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog OK (also works in EditBox)
+                case IDOK:      // <-- This captures ENTER key, default dialog OK (also works in EditBox) "submits form"
                     // do something here
                     return 1;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
                     EndDialog(hWnd, 0);
+                    DestroyWindow(hWnd);
                     return 1;
 
                 case ID_BUTTON1:
@@ -137,14 +138,15 @@ BOOL CALLBACK MyDlgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case WM_CLOSE:
             EndDialog(hWnd, 0);
+            DestroyWindow(hWnd);            
             return 1;
 
         case WM_INITDIALOG:
         {
             // ** Create some controls when dialog starts
             HWND hEdit = CreateEditCtrl(hWnd, ID_EDITBOX, "", 10, 10, 100);
-            CreateButtonCtrl(hWnd, ID_BUTTON1, "OK", 10, 50);
-            CreateButtonCtrl(hWnd, ID_BUTTON2, "Cancel", 130, 50);
+            CreateButtonCtrl(hWnd, ID_BUTTON1, "Hello", 10, 50);
+            CreateButtonCtrl(hWnd, ID_BUTTON2, "World", 130, 50);
 
             SetFocus(hEdit);  // Set focus to edit control when opening
             ShowWindow(hWnd, SW_SHOW);  // Show dialog
