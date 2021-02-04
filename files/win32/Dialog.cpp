@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog.cpp
 //---------------------------------------------------------------------------------------------
-// This creates a dialog template to be used as an empty skeleton dialog.
+// This creates a dialog template to be used as an empty dialog.
 // The dialog content are created in their own custom dialog procedure in "WM_INITDIALOG".
 // Each dialog needs to have its own dialog procedure and handle all its action there.
 // See bottom of this file on how to implement and use.
