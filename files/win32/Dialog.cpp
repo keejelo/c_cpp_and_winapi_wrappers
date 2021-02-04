@@ -310,10 +310,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     break;
 
                 case SIZE_RESTORED:
-                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, if you want the dialog to follow parent when window is restored
-                    break;
-            }
-            break;
+                    ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, if you want the dialog to follow parent when window is restored.
+                    break;                                       //  Be sure to close the dialog with "DestroyWindow()" in addition to "EndDialog()"
+            }                                                    //  or else the dialog can popup again on "SIZE_RESTORED" even if you closed it.
+            break;                                               //  Since the dialog window remains in memory if only using "EndDialog()".
         }
         break;
 
