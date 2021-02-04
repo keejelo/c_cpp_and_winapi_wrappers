@@ -14,7 +14,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Create static text control
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticTextCtrl(HWND hParentWnd, long long int ctrlID, const char szText[], int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticTextCtrl(HWND hParentWnd, const char szText[], int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -33,7 +33,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, long long int ctrlID, const char szTe
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_STATIC_TEXT1)
+        (HMENU)ctrlID,  // Static controls usually have ID = -1  (This can also be an id (IDC_STATIC_TEXT1))
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
@@ -45,7 +45,7 @@ HWND CreateStaticTextCtrl(HWND hParentWnd, long long int ctrlID, const char szTe
 //---------------------------------------------------------------------------------------------
 // ** Create static line horizontal
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineHoriz(HWND hParentWnd, long long int ctrlID, int x, int y, int w, int h, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineHoriz(HWND hParentWnd, int x, int y, int w, int h, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -63,7 +63,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, long long int ctrlID, int x, int y, 
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_STATIC_LINE1)
+        (HMENU)ctrlID,  // Static controls usually have ID = -1   (This can also be an id (IDC_STATIC_LINE1))
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
@@ -75,7 +75,7 @@ HWND CreateStaticLineHoriz(HWND hParentWnd, long long int ctrlID, int x, int y, 
 //---------------------------------------------------------------------------------------------
 // ** Create static line vertical
 //---------------------------------------------------------------------------------------------
-HWND CreateStaticLineVert(HWND hParentWnd, long long int ctrlID, int x, int y, int h, int w, DWORD dwStyle, DWORD dwExStyle)
+HWND CreateStaticLineVert(HWND hParentWnd, int x, int y, int h, int w, long long int ctrlID, DWORD dwStyle, DWORD dwExStyle)
 {
     LONG units = GetDialogBaseUnits();
     w = MulDiv(LOWORD(units), w, 4);
@@ -93,7 +93,7 @@ HWND CreateStaticLineVert(HWND hParentWnd, long long int ctrlID, int x, int y, i
         w,              // Width
         h,              // Height
         hParentWnd,     // Handle to parent window
-        (HMENU)ctrlID,  // Handle to a menu. This can also be an id (IDC_STATIC_LINE2)
+        (HMENU)ctrlID,  // Static controls usually have ID = -1   (This can also be an id (IDC_STATIC_LINE2))
         (HINSTANCE)GetWindowLongPtr(hParentWnd, GWLP_HINSTANCE),    // Handle to the instance of the module
         NULL);          // No pointer
 };
