@@ -17,8 +17,8 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
-#define DLGTITLE  L"DIALOG TEMPLATE"
-#define DLGFONT   L"MS Sans Serif"
+#define DLGTITLE  "DIALOG TEMPLATE"
+#define DLGFONT   "MS Sans Serif"
 #define NUMCHARS(aa) (sizeof(aa)/sizeof((aa)[0]))
 
 #pragma pack(push, 4)
@@ -33,9 +33,9 @@ struct DialogTemplate
     short  cy;
     WORD   menu;                         // name of menu resource
     WORD   windowClass;                  // name of window class
-    WCHAR  wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
+    CHAR  wszTitle[NUMCHARS(DLGTITLE)]; // title string of the dialog box
     short  pointsize;                    // only if DS_SETFONT flag is set
-    WCHAR  wszFont[NUMCHARS(DLGFONT)];   // typeface name, if DS_SETFONT is set
+    CHAR  wszFont[NUMCHARS(DLGFONT)];   // typeface name, if DS_SETFONT is set
 } dlgTemp =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU  // style  0x94c800c4
