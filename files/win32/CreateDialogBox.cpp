@@ -91,19 +91,21 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     }
     else
     {
-        // ** Create a dialog with the template above
+        // ** Create a modeless dialog with the template above
         hDlg = CreateDialogIndirect((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dt, hWndParent, DlgProc);
-    }
 
-    if (hDlg == NULL)
-    {
-        MessageBox(NULL, "Dialog creation failed!\n\nReturn value: NULL", "Error", MB_ICONEXCLAMATION);
-        return 0;
+        if (hDlg != NULL)
+        {
+            // ** If dialog is not modal, then we set title, position and size here
+            SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
+            SetWindowText(hDlg, sTitle);
+        }
+        else
+        {
+            MessageBox(NULL, "Dialog creation failed!\n\nReturn value: NULL", "Error", MB_ICONEXCLAMATION);
+            return 0;
+        }
     }
-
-    // ** If dialog is not modal, then we set title, position and size here
-    SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
-    SetWindowText(hDlg, sTitle);
 
     // ** Return window handle
     return hDlg;
