@@ -29,10 +29,12 @@ struct MODALINFO { const char *title; int x; int y; int w; int h; };
 //---------------------------------------------------------------------------------------------
 
 // ** CreateDialogBox | shorthand: DlgBox( ... ) 
-HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
+HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc,
+                     bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 // ** DlgBox | shorthand for: CreateDialogBox ( ... )
-HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
+HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc,
+            bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 
 
