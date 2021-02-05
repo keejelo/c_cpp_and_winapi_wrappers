@@ -163,7 +163,7 @@ HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPRO
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // STEP 1: Create a dialog procedure, here you tell what the dialog is going to do.
-//         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h", if so you of course then
+//         This can be in its own file i.e. "MyDlg.cpp" and "MyDlg.h", if so, you
 //         need to include it (#include "MyDlg.h") wherever you are going to use it.
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -319,6 +319,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// DONE! Good luck!
+// DONE!
 ///////////////////////////////////////////////////////////////////////////////////////////////
 */
