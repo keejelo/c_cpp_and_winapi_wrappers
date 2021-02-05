@@ -9,7 +9,7 @@
 // The thought behind this is to have a common template for smaller dialogs and then create
 // all the dialog controls by code. Of course it can be used for larger dialogs too, with lots
 // of controls etc., if you like to code alot, then you can do it!  :)
-// If so you can use "Controls.cpp" to create controls quick and easy!
+// If so, you can use "Controls.cpp" to create controls quick and easy!
 //
 // See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
