@@ -19,6 +19,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
+
 // ** CreateDialogBox | shorthand: DlgBox( ... ) 
 HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
