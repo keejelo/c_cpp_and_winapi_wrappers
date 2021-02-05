@@ -74,7 +74,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     // ** Check if modal
     if (bModal)
     {
-        // ** Create a modal dialog with the template above
+        // ** Create a modal dialog with the template above (read below about modal dialog creation)
         INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
 
         if (nDlg == -1)
@@ -111,7 +111,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
 
     /*//-------------------------------------------------------------------
-    // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION:
+    // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION
     //---------------------------------------------------------------------
     // Since modal dialogs do not return a window handle: we have to set
     // the dialogs size, position, title caption etc. ourselves in the 
