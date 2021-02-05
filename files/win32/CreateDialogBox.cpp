@@ -174,7 +174,7 @@ HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPRO
 
 
 //---------------------------------------------------------------------------------------------
-// ** Dialog procedure (non modal example)
+// ** Dialog procedure (non modal example)(modal is exactly the same but more code in "WM_INITDIALOG")
 //---------------------------------------------------------------------------------------------
 INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
