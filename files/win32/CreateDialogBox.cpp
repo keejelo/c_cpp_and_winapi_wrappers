@@ -59,7 +59,7 @@ struct DialogTemplate
 
 
 //---------------------------------------------------------------------------------------------
-// ** Create Dialogbox - this creates a dialogbox from the template | shorthand: DlgBox( ... ) 
+// ** Create Dialogbox - this creates a dialogbox from the template | shorthand: DlgBox( ... )
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, int xPos, int yPos, bool bCenterWindow)
 {
@@ -121,8 +121,12 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     //-------------------------------------------------------------------
         case WM_INITDIALOG:
         {
+            //------------------------------------------------------------------------------------
+            // ** Since this is a modal dialog, we have to set size, pos, and title with MODALINFO
+            //------------------------------------------------------------------------------------
             MODALINFO *mi = (MODALINFO*)lParam; SetWindowText(hDlgWnd, mi->title);
             SetWindowPos(hDlgWnd, 0, mi->x, mi->y, mi->w, mi->h, 0);
+            //------------------------------------------------------------------------------------
 
 
             // ..your other code to create controls and other stuff etc.
