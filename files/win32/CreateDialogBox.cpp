@@ -117,7 +117,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     // position and title in the dialogs own procedure, "WM_INITDIALOG" like below with 
     // MODALINFO, just copy/paste it and you'll be fine. Just check that you use your
     // correct window handle (HWND), if "hDlgWnd" is not your dialogs window handle.
-    // Also be sure to #include "CreatDialogBox.h" to be able to use MODALINFO struct.
+    // Also be sure to #include "CreatDialogBox.h" to be able to use the MODALINFO struct.
     //------------------------------------------------------------------------------------
         case WM_INITDIALOG:
         {
