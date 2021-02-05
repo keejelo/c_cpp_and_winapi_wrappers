@@ -3,7 +3,8 @@
 //---------------------------------------------------------------------------------------------
 // This is just the dialog procedure (dialog message handler).
 // The actual dialog is created with the function CreateDialogBox (CreateDialogBox.cpp)
-// invoked from another place.
+// invoked from another place like this:
+// DlgBox(hWndParent, "About", 300, 130, AboutDlgProc, true); // <-- true = modal
 //---------------------------------------------------------------------------------------------
 
 
@@ -48,8 +49,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             //---------------------------------------------------------------------------------------------
             // ** Since this is a modal dialog, we have to set size, pos, and title with MODALINFO
             //---------------------------------------------------------------------------------------------
-            MODALINFO *mi = (MODALINFO*)lParam;
-            SetWindowText(hDlgWnd, mi->title);
+            MODALINFO *mi = (MODALINFO*)lParam; SetWindowText(hDlgWnd, mi->title);
             SetWindowPos(hDlgWnd, 0, mi->x, mi->y, mi->w, mi->h, 0);
             //---------------------------------------------------------------------------------------------
 

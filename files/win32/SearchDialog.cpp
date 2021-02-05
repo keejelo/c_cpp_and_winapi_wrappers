@@ -3,7 +3,7 @@
 //---------------------------------------------------------------------------------------------
 // This is just the dialog procedure (dialog message handler).
 // The actual dialog is created with the function CreateDialogBox (CreateDialogBox.cpp)
-// invoked from another place.
+// invoked from another place like this: DlgBox(hWndParent, "Find", 238, 130, SearchDlgProc);
 //---------------------------------------------------------------------------------------------
 
 
