@@ -2,7 +2,8 @@
 // ** SearchDialog.cpp
 //---------------------------------------------------------------------------------------------
 // This is just the dialog procedure (dialog message handler).
-// The actual dialog is created with CreateDialogBox (Dialog.cpp) invoked from another place.
+// The actual dialog is created with the function CreateDialogBox (CreateDialogBox.cpp)
+// invoked from another place.
 //---------------------------------------------------------------------------------------------
 
 
