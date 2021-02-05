@@ -20,7 +20,7 @@
 // ** Variables
 //---------------------------------------------------------------------------------------------
 
-// ** Struct to hold modal dialog info for passing it by REFERENCE as LPARAM ( (LPARAM)&modalinfo )
+// ** Struct to hold modal dialog info
 struct MODALINFO { const char *title; int x; int y; int w; int h; };
 
 
