@@ -4,7 +4,14 @@
 // This creates a dialog template which is used as an empty skeleton dialog (without content).
 // The dialog content must be created, dynamically with code, within its own Dialog Procedure
 // in its "WM_INITDIALOG". Each dialog needs to have its own Dialog Procedure and handle all 
-// its action there, as you normally do. See bottom of this file on how to implement and use.
+// its action there, as you normally do.
+//
+// The thought behind this is to have a common template for smaller dialogs and then create
+// all the dialog controls by code. Of course it can be used for larger dialogs too,with lots
+// of controls etc., if you like to code alot, then you can do it!  :)
+// If so you can use "Controls.cpp" to create controls quick and easy!
+//
+// See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
 
 
