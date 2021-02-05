@@ -235,7 +235,7 @@ HWND g_hMyDlg;      // <--- Global handle to your dialog window, somewhere in a 
 
 
 //---------------------------------------------------------------------------------------------
-// ** Main window procedure (message handler)
+// ** Main window procedure (WinMain message handler)
 //---------------------------------------------------------------------------------------------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -283,7 +283,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return DefWindowProcW(hWnd, msg, wParam, lParam);
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Main window procedure (message handler)
+// ** END: Main window procedure (WinMain message handler)
 //---------------------------------------------------------------------------------------------
 
 
@@ -292,9 +292,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //          (usually at the bottom in "WinMain.cpp" or "main.cpp")
 ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    // above here (WinMain function) is window created etc.
+    // ...above this is the window creation code etc. as usual. (WinMain function)
 
-    // ** The message loop
+    // ** The message loop  (WinMain function)
 
     while (GetMessage(&msg, NULL, 0, 0) > 0) 
     {
