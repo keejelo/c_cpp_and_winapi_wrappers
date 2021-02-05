@@ -109,16 +109,15 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     return hDlg;
 
 
-    /*//-------------------------------------------------------------------
+    /*//----------------------------------------------------------------------------------
     // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION
-    //---------------------------------------------------------------------
-    // Since modal dialogs do not return a window handle: we have to set
-    // the dialogs size, position and title in the dialogs own procedure, 
-    // "WM_INITDIALOG" like below with MODALINFO, just copy/paste it and
-    // you'll be fine, just check that you use the correct window name
-    // handle, if "hDlgWnd" is not your dialog window name HWND handle.
-    // Also be sure to #include "CreatDialogBox.h" to be able to use it.
-    //-------------------------------------------------------------------
+    //------------------------------------------------------------------------------------
+    // Since modal dialogs do not return a window handle: we have to set the dialogs size, 
+    // position and title in the dialogs own procedure, "WM_INITDIALOG" like below with 
+    // MODALINFO, just copy/paste it and you'll be fine. Just check that you use your
+    // correct window handle (HWND), if "hDlgWnd" is not your dialogs window handle.
+    // Also be sure to #include "CreatDialogBox.h" to be able to use MODALINFO struct.
+    //------------------------------------------------------------------------------------
         case WM_INITDIALOG:
         {
             MODALINFO *mi = (MODALINFO*)lParam; SetWindowText(hDlgWnd, mi->title); 
@@ -129,7 +128,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
             return 1;
         }
-    *///--------------------------------------------------------------------
+    *///----------------------------------------------------------------------------------
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
