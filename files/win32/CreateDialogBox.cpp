@@ -1,6 +1,9 @@
 //---------------------------------------------------------------------------------------------
 // ** CreateDialogBox.cpp
 //---------------------------------------------------------------------------------------------
+// Author: Keejelo
+// Github: https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
+//---------------------------------------------------------------------------------------------
 // This creates a dialog template which is used as an empty skeleton dialog (without content).
 // The dialog content must be created, dynamically with code, within its own Dialog Procedure
 // in its "WM_INITDIALOG". Each dialog needs to have its own Dialog Procedure and handle all 
