@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
-#define DLGTITLE     "EMPTY_DIALOG_TEMPLATE"
+#define DLGTITLE    "EMPTY_DIALOG_TEMPLATE"
 #define NUMCHARS(a) (sizeof(a)/sizeof((a)[0]))
 
 struct DialogTemplate
