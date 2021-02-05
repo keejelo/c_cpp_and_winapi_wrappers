@@ -2,9 +2,9 @@
 // ** CreateDialogBox.cpp
 //---------------------------------------------------------------------------------------------
 // This creates a dialog template which is used as an empty skeleton dialog (without content).
-// The dialog content must be created within its own Dialog Procedure in its "WM_INITDIALOG".
-// Each dialog needs to have its own Dialog Procedure and handle all its action there.
-// See bottom of this file on how to implement and use.
+// The dialog content must be created, dynamically with code, within its own Dialog Procedure
+// in its "WM_INITDIALOG". Each dialog needs to have its own Dialog Procedure and handle all 
+// its action there, as you normally do. See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
 
 
