@@ -8,7 +8,7 @@
 //
 // The thought behind this is to have a common template for smaller dialogs and then create
 // all the dialog controls by code. Of course it can be used for larger dialogs too, with lots
-// of controls etc., if you like to code, then you can do it!  :)
+// of controls etc., if you enjoy coding then you can do it!  :)
 // If so, you can use "Controls.cpp" to create controls quick and easy!
 //
 // See bottom of this file on how to implement and use.
@@ -26,36 +26,30 @@
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
 #define DLGTITLE     "EMPTY_DIALOG_TEMPLATE"
-#define DLGFONT      "MS Shell Dlg"
-#define NUMCHARS(aa) (sizeof(aa)/sizeof((aa)[0]))
+#define NUMCHARS(a) (sizeof(a)/sizeof((a)[0]))
 
-#pragma pack(push, 4)
 struct DialogTemplate
 {
     DWORD style;
     DWORD dwExtendedStyle;
-    WORD  ccontrols;
+    WORD  cDlgItems;
     short x;
     short y;
-    short cx;
-    short cy;
-    WORD  menu;                         // menu resource name
-    WORD  windowClass;                  // window 'class' name
-    CHAR  szTitle[NUMCHARS(DLGTITLE)];  // dialog window title
-    short pointsize;                    // only if DS_SETFONT flag is set
-    CHAR  szFont[NUMCHARS(DLGFONT)];    // typeface name, if DS_SETFONT is set
+    short w;
+    short h;
+    WORD  menu;                         
+    WORD  windowClass;
+    CHAR  szTitle[NUMCHARS(DLGTITLE)];
 } dlgTpl =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-    | DS_MODALFRAME | DS_SHELLFONT | DS_SETFONT | DS_SETFOREGROUND /*| DS_CENTER*/,
-    0x0,                     // exStyle
-    0,                       // number of ccontrols in dialog
-    0, 0, 0, 0,              // x, y, w, h (pos and size of dialog)
-    0,                       // no menu
-    0,                       // no window class
-    DLGTITLE,                // caption (we override this later)
-    8,                       // font size (have no effect on future created controls)
-    DLGFONT                  // font name (have no effect on future created controls)
+    | DS_MODALFRAME | DS_SETFOREGROUND,
+    0x0,         // exStyle
+    0,           // number of controls in dialog
+    0, 0, 0, 0,  // x, y, w, h (pos and size of dialog)
+    0,           // no menu
+    0,           // no window class (0 = dialog)
+    DLGTITLE     // dialog window title (default)
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog template
