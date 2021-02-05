@@ -25,7 +25,7 @@
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
-#define DLGTITLE    "EMPTY_DIALOG_TEMPLATE"
+#define DLGTITLE    L"EMPTY_DIALOG_TEMPLATE"
 #define NUMCHARS(a) (sizeof(a)/sizeof((a)[0]))
 
 struct DialogTemplate
@@ -39,7 +39,7 @@ struct DialogTemplate
     short h;
     WORD  menu;                         
     WORD  windowClass;
-    CHAR  szTitle[NUMCHARS(DLGTITLE)];
+    WCHAR wszTitle[NUMCHARS(DLGTITLE)];
 } dlgTpl =
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
