@@ -63,7 +63,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             
             // ** Create some controls
             HWND hText = CreateStaticTextCtrl(hDlgWnd, "This is the about dialog!", 20, 20);
-            HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", 210, 55, 30);
+            HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", w - 87, h - 75, 30);
 
             // ** Set default gui font to controls
             HFONT hFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
