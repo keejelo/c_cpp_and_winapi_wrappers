@@ -14,7 +14,8 @@
 // of controls etc., if you enjoy coding then you can do it!  :)
 // If so, you can use "Controls.cpp" to create controls quick and easy!
 //
-// See bottom of this file on how to implement and use.
+//---------------------------------------------------------------------------------------------
+// NOTE: See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
 
 
@@ -128,7 +129,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
             return 1;
         }
-    *///----------------------------------------------------------------------------------
+    *///----------------------------------------------------------------------------------                     
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Create Dialogbox
