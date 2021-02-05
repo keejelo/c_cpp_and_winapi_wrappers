@@ -14,7 +14,6 @@
 // of controls etc., if you enjoy coding then you can do it!  :)
 // If so, you can use "Controls.cpp" to create controls quick and easy!
 //
-//---------------------------------------------------------------------------------------------
 // NOTE: See bottom of this file on how to implement and use.
 //---------------------------------------------------------------------------------------------
 
