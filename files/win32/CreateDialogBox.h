@@ -17,6 +17,14 @@
 
 
 //---------------------------------------------------------------------------------------------
+// ** Variables
+//---------------------------------------------------------------------------------------------
+
+// ** Struct to hold modal dialog info for passing in LPARAM pointer ( (LPARAM)&modalinfo )
+struct MODALINFO { const char *title; int x; int y; int w; int h; };
+
+
+//---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 
@@ -25,6 +33,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
 // ** DlgBox | shorthand for: CreateDialogBox ( ... )
 HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
+
 
 
 //---------------------------------------------------------------------------------------------

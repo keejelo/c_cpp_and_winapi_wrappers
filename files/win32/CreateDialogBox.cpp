@@ -15,6 +15,8 @@
 //---------------------------------------------------------------------------------------------
 
 
+
+
 //---------------------------------------------------------------------------------------------
 // ** Include files
 //---------------------------------------------------------------------------------------------
@@ -55,6 +57,7 @@ struct DialogTemplate
 //---------------------------------------------------------------------------------------------
 
 
+
 //---------------------------------------------------------------------------------------------
 // ** Create Dialogbox - this creates a dialogbox from the template | shorthand: DlgBox( ... ) 
 //---------------------------------------------------------------------------------------------
@@ -64,30 +67,6 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 {
     HWND hDlg = NULL;
 
-    // ** Check if modal
-    if (bModal)
-    {
-        // ** Create a modal dialog with the template above (read below about modal dialog creation)
-        INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
-
-        if (nDlg == -1)
-        {
-            MessageBox(NULL, "Modal Dialog creation failed!\n\nError: -1", "Error", MB_ICONEXCLAMATION);
-        }
-        return 0; // we have to return zero because return type is HWND and we come from INT_PTR and we cannot use that, so we use zero.
-    }
-    else
-    {
-        // ** Create a dialog with the template above
-        hDlg = CreateDialogIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, 0);
-    }
-
-    if (hDlg == NULL)
-    {
-        MessageBox(NULL, "Dialog creation failed!\n\nError: NULL", "Error", MB_ICONEXCLAMATION);
-        return 0;
-    }
-
     // ** Get parent window dimensions, position dialog in parent center
     if (bCenterWindow)
     {
@@ -95,6 +74,33 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
         GetWindowRect(hWndParent, &rc);
         xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
         yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
+    }
+
+    // ** Is modal set?
+    if (bModal)
+    {
+        // ** Since this is a modal we have to pass this struct along with the LPARAM below ( (LPARAM)&modalinfo) )
+        MODALINFO modalinfo{sTitle, xPos, yPos, iWidth, iHeight};
+
+        // ** Create a modal dialog with the template above (read below about modal dialog creation)
+        INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc, (LPARAM)&modalinfo);
+
+        if (nDlg == -1)
+        {
+            MessageBox(NULL, "Modal Dialog creation failed!\n\nReturn value: -1", "Error", MB_ICONEXCLAMATION);
+        }
+        return 0; // we have to return zero because return type is HWND and we come from INT_PTR and we cannot use that, so we use zero.
+    }
+    else
+    {
+        // ** Create a dialog with the template above
+        hDlg = CreateDialogIndirect((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dlgTpl, hWndParent, DlgProc);
+    }
+
+    if (hDlg == NULL)
+    {
+        MessageBox(NULL, "Dialog creation failed!\n\nReturn value: NULL", "Error", MB_ICONEXCLAMATION);
+        return 0;
     }
 
     SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
@@ -107,28 +113,18 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     // IMPORTANT NOTICE ABOUT MODAL DIALOG CREATION
     //---------------------------------------------------------------------
     // Since modal dialogs do not return a window handle: we have to set
-    // the dialogs size, position, title caption etc. ourselves in the 
-    // dialogs own procedure, "WM_INITDIALOG" like below:
+    // the dialogs size, position and title in the dialogs own procedure, 
+    // "WM_INITDIALOG" like below with MODALINFO, just copy/paste it.
+    // Also be sure to #include "CreatDialogBox.h" to be able to use it.
     //-------------------------------------------------------------------
         case WM_INITDIALOG:
         {
-            // ** Dialogs title
-            SetWindowText(hDlgWnd, "My dialog");
+            MODALINFO *mi = (MODALINFO*)lParam;
+            SetWindowText(hDlgWnd, mi->title);
+            SetWindowPos(hDlgWnd, 0, mi->x, mi->y, mi->w, mi->h, 0);
 
-            // ** Dialog size
-            int w = 238;
-            int h = 130;
 
-            // ** Calculate parent window center position
-            RECT rc = { 0 };
-            GetWindowRect(GetParent(hDlgWnd), &rc);
-            int x = ((rc.left + rc.right) / 2) - (w / 2);
-            int y = ((rc.top + rc.bottom) / 2) - (h / 2);
-
-            // ** Set dialog position and size
-            SetWindowPos(hDlgWnd, 0, x, y, w, h, 0);
-
-            // ..other code if any
+            // ..your other code to create controls and other stuff etc.
 
             return 1;
         }
@@ -202,7 +198,7 @@ INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
         case WM_INITDIALOG:
         {
-            // (If this was a modal dialog we'd have to set size, pos. and title ourselves here, see above notice!)
+            // (If this was a modal dialog we'd have to use MODALINFO struct here also, see above notice!)
 
             // ** Create some controls when dialog starts
             HWND hEdit = CreateEditCtrl(hDlgWnd, ID_EDITBOX, "", 10, 10, 100);

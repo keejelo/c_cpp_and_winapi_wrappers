@@ -11,7 +11,9 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "AboutDialog.h"
-#include "Controls.h"      // <---- create controls easier
+#include "CreateDialogBox.h"  // <--- for using MODALINFO struct
+#include "Controls.h"         // <--- create controls easier
+
 
 
 //---------------------------------------------------------------------------------------------
@@ -43,27 +45,17 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
 
         case WM_INITDIALOG:
         {
-            // ** Since this is a modal dialog, we have to set size, pos. and title ourselves here, so let's do it:
-            
-            // ** Dialogs title
-            SetWindowText(hDlgWnd, "About");
-            
-            // ** Dialog size
-            int w = 300;
-            int h = 130;
+            //---------------------------------------------------------------------------------------------
+            // ** Since this is a modal dialog, we have to set size, pos, and title with MODALINFO
+            //---------------------------------------------------------------------------------------------
+            MODALINFO *mi = (MODALINFO*)lParam;
+            SetWindowText(hDlgWnd, mi->title);
+            SetWindowPos(hDlgWnd, 0, mi->x, mi->y, mi->w, mi->h, 0);
+            //---------------------------------------------------------------------------------------------
 
-            // ** Calculate parent window center position
-            RECT rc = { 0 };
-            GetWindowRect(GetParent(hDlgWnd), &rc);
-            int x = ((rc.left + rc.right) / 2) - (w / 2);
-            int y = ((rc.top + rc.bottom) / 2) - (h / 2);
-
-            // ** Set dialog position and size
-            SetWindowPos(hDlgWnd, 0, x, y, w, h, 0);
-            
             // ** Create some controls
             HWND hText = CreateStaticTextCtrl(hDlgWnd, "This is the about dialog!", 20, 20);
-            HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", w - 87, h - 75, 30);
+            HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", mi->w - 87, mi->h - 75, 30);
 
             // ** Set default gui font to controls
             HFONT hFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
