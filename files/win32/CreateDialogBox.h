@@ -33,7 +33,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
                      bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 // ** DlgBox | shorthand for: CreateDialogBox ( ... )
-HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc,
+HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, 
             bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 
