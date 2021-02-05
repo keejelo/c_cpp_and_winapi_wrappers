@@ -56,10 +56,9 @@ struct DialogTemplate
 
 
 //---------------------------------------------------------------------------------------------
-// ** Create Dialogbox - this creates a dialogbox from the template
+// ** Create Dialogbox - this creates a dialogbox from the template | shorthand: DlgBox( ... ) 
 //---------------------------------------------------------------------------------------------
-// This is the function you use to create your dialogs. 
-// "DlgBox" is an optional shorthand for "CreateDialogBox"
+// This is the function you use to create your dialogs.
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, int xPos, int yPos, bool bCenterWindow)
 {
@@ -141,7 +140,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
 
 //---------------------------------------------------------------------------------------------
-// ** DlgBox (shorthand for CreateDialogBox)
+// ** DlgBox | shorthand for: CreateDialogBox( ... )
 //---------------------------------------------------------------------------------------------
 HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, int xPos, int yPos, bool bCenterWindow)
 {
