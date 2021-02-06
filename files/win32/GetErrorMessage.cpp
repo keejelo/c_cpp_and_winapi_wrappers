@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------------------------
 // ** GetErrorMessage.cpp
 //---------------------------------------------------------------------------------------------
-// Translates "GetLastError()" codes into readable error messages
+// Translates "GetLastError()" code into readable error message and show it
 // Usage:
 // GetErrorMessage(GetLastError());
-// ..or with a title..
-// GetErrorMessage(GetLastError(), "Error");
+// ..or with a custom title..
+// GetErrorMessage(GetLastError(), "My optional error title");
 //---------------------------------------------------------------------------------------------
 
 
@@ -13,41 +13,55 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "GetErrorMessage.h"
+#include <stdio.h>
 
 
 //---------------------------------------------------------------------------------------------
-// ** Translate errorcode to error message
+// ** Translate errorcode to descriptive error message and show it
 //---------------------------------------------------------------------------------------------
-BOOL GetErrorMessage(DWORD err, LPTSTR strTitle)
+BOOL GetErrorMessage(DWORD dwErrorCode, const char *strTitle, bool bShowMessageBox)
 {
-    // DWORD err = GetLastError();
+    LPTSTR strError = NULL;
+    
+    DWORD cchMsg = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_IGNORE_INSERTS,
+        NULL,  // (not used with FORMAT_MESSAGE_FROM_SYSTEM)
+        dwErrorCode,
+        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+        (LPTSTR)&strError,
+        0,
+        NULL);
 
-    // ** Translate errorcode
-    LPTSTR strError = 0;
-    if(::FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-                        NULL,
-                        err,
-                        0,
-                        (LPTSTR)&strError,
-                        0,
-                        NULL) == 0)
+    // ** Failed to translate ?
+    if (cchMsg == 0)
     {
-       return 0; // Failed in translating
+        if (strError)
+        {
+            LocalFree(strError);
+            strError = NULL;
+        }
+        return FALSE;
     }
 
-    // ** Display message
-    MessageBox(NULL, strError, strTitle, MB_OK | MB_ICONEXCLAMATION);
-
-    // ** Free the buffer
-    if( strError )
+    // ** Display errormessage
+    if (bShowMessageBox)
     {
-       ::LocalFree( strError );
-       strError = 0;
+        MessageBox(NULL, strError, strTitle, MB_OK | MB_ICONEXCLAMATION);
+    }
+    else
+    {
+        printf("%s\n%s\n", strTitle, strError);
     }
 
-    return 1;
+    // ** Free buffer
+    if(strError)
+    {
+       LocalFree(strError);
+       strError = NULL;
+    }
+
+    return TRUE;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Translate errorcode to error message
+// ** END: Translate errorcode
 //---------------------------------------------------------------------------------------------
 

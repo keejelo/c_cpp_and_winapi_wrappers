@@ -13,16 +13,11 @@
 
 
 //---------------------------------------------------------------------------------------------
-// ** Variables
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
 // ** Function prototypes
 //---------------------------------------------------------------------------------------------
 
-// ** Translates "GetLastError()" codes into readable error messages
-BOOL GetErrorMessage(DWORD err, LPTSTR strTitle = NULL);
+// ** Translates "GetLastError()" code into readable error message
+BOOL GetErrorMessage(DWORD err, const char *strTitle = "Error", bool bShowMessageBox = true);
 
 
 //---------------------------------------------------------------------------------------------
