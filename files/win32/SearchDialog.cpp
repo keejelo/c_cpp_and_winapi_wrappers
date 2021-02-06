@@ -32,30 +32,30 @@ INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPa
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog OK (also works in EditBox)
+                case IDOK:      // <-- IDOK captures ENTER key, default dialog OK (also works in EditBox)
                     ValidateSearch(hDlgWnd);
-                    return 1;
+                    return TRUE;
 
-                case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hDlgWnd, 0);
+                case IDCANCEL:  // <-- IDCANCEL captures ESC key, default dialog CANCEL
+                    EndDialog(hDlgWnd, wParam);
                     DestroyWindow(hDlgWnd);
-                    return 1;
+                    return TRUE;
 
                 case ID_SEARCH_BTN_OK:
                     ValidateSearch(hDlgWnd);
-                    return 1;
+                    return TRUE;
 
                 case ID_SEARCH_BTN_CANCEL:
-                    EndDialog(hDlgWnd, 0);
+                    EndDialog(hDlgWnd, wParam);
                     DestroyWindow(hDlgWnd);
-                    return 1;
+                    return TRUE;
             }
-            return 1;
+            return TRUE;
 
         case WM_CLOSE:
-            EndDialog(hDlgWnd, 0);
+            EndDialog(hDlgWnd, wParam);
             DestroyWindow(hDlgWnd);
-            return 1;
+            return TRUE;
 
         case WM_INITDIALOG:
         {
@@ -67,14 +67,11 @@ INT_PTR CALLBACK SearchDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPa
             SetFocus(hEdit);  // Set focus to edit control when opening
             EnumChildWindows(hDlgWnd, SetCtrlFont, 0);  // Set font to DEFAULT_GUI
 
-            return 1;
+            return TRUE;
         }
-
-        default:
-            return 0;  // Give control back to OS so it can process other messages
     }
 
-    return 0;
+    return FALSE; // Give control back to OS so it can process other messages
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog procedure (message handler)

@@ -46,7 +46,7 @@ struct DialogTemplate
 {
     WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
     | DS_MODALFRAME | DS_SETFOREGROUND,
-    0x0,         // exStyle
+    0,           // exStyle
     0,           // number of controls in dialog
     0, 0, 0, 0,  // x, y, w, h (pos and size of dialog)
     0,           // no menu
@@ -77,7 +77,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     // ** Modal ?
     if (bModal)
     {
-        // ** Since this is a modal we have to pass a struct along with the "LPARAM" in below code ( ... (LPARAM)&modalinfo); )
+        // ** Since this is a modal we have to pass some info along with the "LPARAM" in below code ( ... (LPARAM)&modalinfo); )
         MODALINFO modalinfo{sTitle, xPos, yPos, iWidth, iHeight};
 
         // ** Create a modal dialog with the template above (read below about modal dialog creation)
@@ -87,7 +87,7 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
         {
             MessageBox(NULL, "Modal Dialog creation failed!\n\nReturn value: -1", "Error", MB_ICONEXCLAMATION);
         }
-        return 0; // we have to return zero because outside return type is HWND and we come from INT_PTR and we cannot use that, so we just use zero.
+        return (HWND)nDlg; // we try casting the returned INT_PTR to HWND, so we can return it to the outside, if we need it.
     }
     else
     {
@@ -96,9 +96,9 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
 
         if (hDlg != NULL)
         {
-            // ** If dialog is not modal, then we set title, position and size here
-            SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
+            // ** If dialog is not modal, we can set title, position and size here
             SetWindowText(hDlg, sTitle);
+            SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
         }
         else
         {
@@ -116,8 +116,8 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
     //------------------------------------------------------------------------------------
     // Since modal dialogs do not return a window handle we have to set the dialogs size, 
     // position and title in the dialogs own procedure in the switch case "WM_INITDIALOG".
-    // The function "SetModal()" does this easily for us, just be sure to include it
-    // (#include "CreatDialogBox.h") so you can use the "SetModal" function.
+    // The function "SetModal()" does this easily for us, just be sure to include it.
+    // ( #include "CreatDialogBox.h" )
     //------------------------------------------------------------------------------------
     // Example:
 
@@ -127,18 +127,18 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
         {
             case WM_INITDIALOG:
             {
-                SetModal(hDlgWnd, lParam);   //  <----------------- HERE
+                SetModal(hDlgWnd, lParam);   //  <----------------- PUT THIS HERE !
             
 
                 // ..your other code to create controls and other stuff etc.
 
-                return 1;
+                return TRUE;
             }
 
             // ...other cases
 
         }
-        return 0;
+        return FALSE;
     };
 
     *///----------------------------------------------------------------------------------                     
@@ -191,7 +191,7 @@ void SetModal(HWND hDlgWnd, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Dialog procedure
+// ** Dialog procedure (modeless)
 //---------------------------------------------------------------------------------------------
 INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
@@ -200,29 +200,27 @@ INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_COMMAND:
             switch (wParam)
             {
-                case IDOK:      // <-- This captures ENTER key, default dialog "OK" (also works in EditBox) "submit form"
+                case IDOK:      // <-- IDOK captures ENTER key, default dialog "OK" (also works in EditBox) "submit".
                     // do something here
-                    return 1;
+                    return TRUE;
 
-                case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hDlgWnd, 0);
+                case IDCANCEL:  // <-- IDCANCEL captures ESC key, default dialog CANCEL
                     DestroyWindow(hDlgWnd);
-                    return 1;
+                    return TRUE;
 
                 case ID_BUTTON1:
                     // do something here
-                    return 1;
+                    return TRUE;
 
                 case ID_BUTTON2:
                     // do something here
-                    return 1;
+                    return TRUE;
             }
-            return 1;
+            return TRUE;
 
         case WM_CLOSE:
-            EndDialog(hDlgWnd, 0);
             DestroyWindow(hDlgWnd);
-            return 1;
+            return TRUE;
 
         case WM_INITDIALOG:
         {
@@ -236,14 +234,11 @@ INT_PTR CALLBACK MyDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             SetFocus(hEdit);   // Set focus to edit control when opening
 
-            return 1;
+            return TRUE;
         }
-
-        default:
-            return 0;  // Give control back to OS so it can process other messages
     }
 
-    return 0;
+    return FALSE; // Give control back to OS so it can process other messages
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog procedure
@@ -273,10 +268,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 case ID_OPEN_DIALOG:  // some menu item with control id: ID_OPEN_DIALOG
 
                     // ** Create and open modeless dialog
-                    g_hMyDlg = DlgBox(hWnd, "My find dialog", 238, 130, MyDlgProc);  // <-------  modeless (default false), returns a window handle 
+                    g_hMyDlg = DlgBox(hWnd, "My find dialog", 238, 130, MyDlgProc);  // <-------  modeless (default false), returns a window handle HWND
 
                     // ** Create and open modal dialog
-                    // DlgBox(hWnd, "My find dialog", 238, 130, MyDlgProc, true);    // <-------  true = modal, does not return a window handle 
+                    // DlgBox(hWnd, "My find dialog", 238, 130, MyDlgProc, true);    // <-------  true = modal, returns HWND that you can cast into an integer if you need it
 
                     break;
             }
@@ -294,9 +289,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
                 case SIZE_RESTORED:
                     ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, if you want the dialog to follow parent when window is restored.
-                    break;                                       //  Be sure to close the dialog with "DestroyWindow()" in addition to "EndDialog()"
-            }                                                    //  or else the dialog can popup again on "SIZE_RESTORED" even if you closed it.
-            break;                                               //  Since the dialog window remains in memory if only using "EndDialog()".
+                    break                                        // Be sure to close modeless dialogs with "DestroyWindow()", or else it
+            }                                                    // can popup again on "SIZE_RESTORED", if you closed it with "EndDialog()" alone.
+            break;
         }
         break;
 
@@ -345,5 +340,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // DONE!
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+// SOME FINAL WORDS ABOUT CLOSING DIALOG WINDOWS
+///////////////////////////////////////////////////////////////////////////////////////////////
+//
+// According to some people these rules apply when closing or exiting dialog windows:
+//
+// Modeless should use: DestroyWindow(hDlgWnd);
+//
+// Modal should use: EndDialog(hDlgWnd, wParam);
+//
+// Since modal is "demanding" some action from the user, so it then can respond accordingly to
+// the users action. That is what the "wParam" in EndDialog is intended for.
+//
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 */
 

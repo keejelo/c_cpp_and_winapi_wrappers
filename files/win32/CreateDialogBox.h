@@ -32,11 +32,12 @@ HWND CreateDialogBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeigh
                      bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 // ** DlgBox | shorthand for: CreateDialogBox ( ... )
-HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc, 
-            bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
+HWND DlgBox(HWND hWndParent, const char *sTitle, int iWidth, int iHeight, DLGPROC DlgProc,
+    bool bModal = false, int xPos = 0, int yPos = 0, bool bCenterWindow = true);
 
 // ** SetModal | setting the size, position and title of a modal dialog, use it in: WM_INITDIALOG
 void SetModal(HWND hDlgWnd, LPARAM lParam);
+
 
 //---------------------------------------------------------------------------------------------
 #endif // CREATE_DIALOG_BOX_H

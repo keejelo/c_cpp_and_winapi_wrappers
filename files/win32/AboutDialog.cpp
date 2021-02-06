@@ -27,21 +27,18 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             switch (wParam)
             {
                 case IDOK:      // <-- This captures ENTER key, default dialog OK 
-                    EndDialog(hDlgWnd, 0);
-                    DestroyWindow(hDlgWnd);
-                    return 1;
+                    EndDialog(hDlgWnd, wParam);
+                    return TRUE;
 
                 case IDCANCEL:  // <-- This captures ESC key, default dialog CANCEL
-                    EndDialog(hDlgWnd, 0);
-                    DestroyWindow(hDlgWnd);
-                    return 1;
+                    EndDialog(hDlgWnd, wParam);
+                    return TRUE;
             }
-            return 1;
+            return TRUE;
 
         case WM_CLOSE:
-            EndDialog(hDlgWnd, 0);
-            DestroyWindow(hDlgWnd);
-            return 1;
+            EndDialog(hDlgWnd, wParam);
+            return TRUE;
 
         case WM_INITDIALOG:
         {
@@ -60,14 +57,11 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             // ** Set focus to button
             SetFocus(hOkBtn);
 
-            return 1;
+            return TRUE;
         }
-
-        default:
-            return 0;  // Give control back to OS so it can process other messages
     }
 
-    return 0;
+    return FALSE; // Give control back to OS so it can process other messages
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog procedure (message handler)
