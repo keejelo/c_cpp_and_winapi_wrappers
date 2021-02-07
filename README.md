@@ -17,7 +17,7 @@ To keep it all very simple I'm not using C++ classes. I don't have anything agai
 
 TLDR;<br>
 
-Will try to make the files as easy to use as possible, so all it takes is to just include them in a project and use the functions straight away.<br><br>
+Will try to make the files as easy to use as possible, so all it takes is to just include them in a project and use the functions straight away.<br>
 
 If anyone finds some of this useful that's great! :)<br>
 If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
