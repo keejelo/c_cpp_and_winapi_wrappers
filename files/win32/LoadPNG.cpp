@@ -3,6 +3,8 @@
 //---------------------------------------------------------------------------------------------
 // Load a PNG resource and directly output it as a GDI+ object guarded by a smart pointer
 // Source: https://www.enlyze.com/blog/writing-win32-apps-like-its-2020/part-3/
+//
+// TIP: Have one high-resolution image and then let GDI+ resize it as needed
 //---------------------------------------------------------------------------------------------
 /*
     // USAGE:
