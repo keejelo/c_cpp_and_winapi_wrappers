@@ -20,8 +20,7 @@ TLDR;<br>
 Will try to make the files as easy to use as possible, so all it takes is just to include them in a project and use the functions straight away.<br>
 
 If anyone finds some of this useful that's great! :)<br>
-If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)<br>
-If you have any tips, tricks or suggestions on how to do things, then tell me by creating a "New Issue" or something.
+If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
 
 
 <br><br><br><br>
