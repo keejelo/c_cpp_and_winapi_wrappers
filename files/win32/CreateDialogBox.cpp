@@ -23,6 +23,7 @@
 //---------------------------------------------------------------------------------------------
 #include "CreateDialogBox.h"
 
+#include <stdio.h>
 
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
@@ -48,15 +49,16 @@ struct DialogTemplate
 HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, bool bCenterWindow, int xPos, int yPos)
 {
     HWND hDlg = NULL;
-    
+    int bufSize = 255;
+
     // ** Create dialog template
     DialogTemplate dt;
-    dt.style           = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND;
+    dt.style = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND;
     dt.dwExtendedStyle = 0;
-    dt.cDlgItems       = 0;
-    dt.menu            = 0;
-    dt.windowClass     = 0;
-    dt.wszTitle[255]   = { 0 };
+    dt.cDlgItems = 0;
+    dt.menu = 0;
+    dt.windowClass = 0;
+    dt.wszTitle[bufSize] = { 0 };
 
     // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now.
     // ** Set width and height
@@ -74,13 +76,18 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
         dt.x = xPos;
         dt.y = yPos;
     }
-
+ 
     // ** Set title
-    for (int i = 0; i < *dt.wszTitle; i++)
+    for (int i = 0; i < *sTitle && i < bufSize ; i++)
     {
         dt.wszTitle[i] = sTitle[i];
-    }
 
+        if(sTitle[i] == '\0')
+        {
+            break;
+        }
+    }
+    
     // ** Modal ?
     if (bModal)
     {
