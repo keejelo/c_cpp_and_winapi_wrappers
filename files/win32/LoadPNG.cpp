@@ -4,6 +4,15 @@
 // Load a PNG resource and directly output it as a GDI+ object guarded by a smart pointer
 // Source: https://www.enlyze.com/blog/writing-win32-apps-like-its-2020/part-3/
 //---------------------------------------------------------------------------------------------
+/*
+    // USAGE:
+    // Draw the loaded image onto any Device Context like this:
+
+    Gdiplus::Graphics g(hDC);
+    g.DrawImage(m_pLogoBitmap.get(), x, y, width, height);
+*/
+//---------------------------------------------------------------------------------------------
+
 
 
 //---------------------------------------------------------------------------------------------
