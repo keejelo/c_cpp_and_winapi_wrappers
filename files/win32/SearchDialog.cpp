@@ -2,8 +2,9 @@
 // ** SearchDialog.cpp
 //---------------------------------------------------------------------------------------------
 // This is just the dialog procedure (dialog message handler).
-// The actual dialog is created with the function CreateDialogBox (CreateDialogBox.cpp)
-// invoked from another place like this: DlgBox(hWndParent, "Find", 238, 130, SearchDlgProc);
+// The actual dialog is created with the function "DlgBox" (CreateDialogBox.cpp)
+// Can be invoked like this, which creates and opens the dialog:
+// DlgBox(hWndParent, "Find", 238, 130, SearchDlgProc);
 //---------------------------------------------------------------------------------------------
 
 

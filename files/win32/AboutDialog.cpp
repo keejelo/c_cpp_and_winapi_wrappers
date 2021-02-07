@@ -2,9 +2,9 @@
 // ** AboutDialog.cpp
 //---------------------------------------------------------------------------------------------
 // This is just the dialog procedure (dialog message handler).
-// The actual dialog is created with the function "CreateDialogBox" (CreateDialogBox.cpp)
-// invoked from another place like this:
-// DlgBox(hWndParent, "About", 300, 130, AboutDlgProc, true); // <-- true = modal
+// The actual dialog is created with the function "DlgBox" (CreateDialogBox.cpp)
+// Can be invoked like this, which creates and opens the dialog:
+// DlgBox(hWnd, L"About", 286, 120, AboutDlgProc, true); // <-- true = modal
 //---------------------------------------------------------------------------------------------
 
 
@@ -12,7 +12,6 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "AboutDialog.h"
-#include "CreateDialogBox.h"  // <--- for using "SetModal" function
 #include "Controls.h"         // <--- create controls easier
 
 
@@ -41,10 +40,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             return TRUE;
 
         case WM_INITDIALOG:
-        {
-            // ** Since this is a modal dialog, we have to use "SetModal"
-            SetModal(hDlgWnd, lParam);
-            
+        {            
             // ** Create some controls
             HWND hText = CreateStaticTextCtrl(hDlgWnd, "This is the about dialog!", 20, 20);
             HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", 212, 55, 30);
