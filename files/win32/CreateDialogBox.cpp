@@ -24,19 +24,23 @@
 #include "CreateDialogBox.h"
 
 
-
 //---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
+#define DLGFONT      L"MS Shell Dlg"
+#define NUMCHARS(aa) (sizeof(aa)/sizeof((aa)[0]))
+
 struct DialogTemplate
 {
-    DWORD style;
-    DWORD dwExtendedStyle;
-    WORD  cDlgItems;
-    short x, y, w, h;
-    WORD  menu;
-    WORD  windowClass;
-    WCHAR wszTitle[255];
+    DWORD style = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND | DS_SETFONT;
+    DWORD dwExtendedStyle = 0;
+    WORD  cDlgItems = 0;
+    short x, y, w, h = 0;
+    WORD  menu = 0;
+    WORD  windowClass = 0;
+    WCHAR wszTitle[255] = { 0 };
+    short pointsize = 8;   
+    WCHAR wszFont[NUMCHARS(DLGFONT)];
 };
 //---------------------------------------------------------------------------------------------
 // ** END: Dialog template
@@ -49,50 +53,57 @@ struct DialogTemplate
 HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, bool bCenterWindow, int xPos, int yPos)
 {
     HWND hDlg = NULL;
-    int bufSize = 255;
-
-    // ** Create dialog template
-    DialogTemplate dt;
-    dt.style = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND;
-    dt.dwExtendedStyle = 0;
-    dt.cDlgItems = 0;
-    dt.menu = 0;
-    dt.windowClass = 0;
-    dt.wszTitle[bufSize] = { 0 };
-
-    // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now.
-    // ** Set width and height
-    LONG units = GetDialogBaseUnits();
-    dt.w = MulDiv(LOWORD(units), iWidth, 16);
-    dt.h = MulDiv(HIWORD(units), iHeight, 42);
-
-    // ** Center dialog ?
+    DialogTemplate dt; 
+    
+    // ** Calculate center dialog
     if (bCenterWindow)
     {
-        dt.style |= DS_CENTER;
+        // ** Get parent window dimensions, and set x and y
+        RECT rc = { 0 };
+        GetWindowRect(hWndParent, &rc);
+        xPos = ((rc.left + rc.right) / 2) - (iWidth / 2);
+        yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
     }
-    else
-    {
-        dt.x = xPos;
-        dt.y = yPos;
-    }
- 
-    // ** Set title
-    for (int i = 0; i < *sTitle && i < bufSize ; i++)
-    {
-        dt.wszTitle[i] = sTitle[i];
 
-        if(sTitle[i] == '\0')
-        {
-            break;
-        }
-    }
-    
     // ** Modal ?
     if (bModal)
     {
+        int bufSize = 255;
+        dt.wszTitle[bufSize] = { 0 };
+
+        // ** Set title
+        for (int i = 0; i < *sTitle && i < bufSize; i++)
+        {
+            dt.wszTitle[i] = sTitle[i];
+
+            if (sTitle[i] == '\0')
+            {
+                break;
+            }
+        }
+
+        // ** Center dialog ? (modal way; this centers the dialog in screen center, not parent window center)
+        if (bCenterWindow)
+        {
+            dt.style |= DS_CENTER;
+        }
+        else
+        {
+            dt.x = xPos;
+            dt.y = yPos;
+        }
+
+        // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now for setting width and height,
+        //    Alternatively we can use "SetModal" in dialog proc. WM_INITDIALOG to set this info in an alternative way, but then: #include "CreatDialog.h" in your dialog file.
+        LONG units = GetDialogBaseUnits();
+        dt.w = MulDiv(LOWORD(units), iWidth, 16);
+        dt.h = MulDiv(HIWORD(units), iHeight, 42);
+
+        // ** Since this is a modal we pass a struct along with the "LPARAM" in below code ( ... (LPARAM)&modalinfo); )
+        MODALINFO modalinfo{ sTitle, xPos, yPos, iWidth, iHeight }; // so we can use "SetModal" in dialog proc. WM_INITDIALOG to set this info that way if we want (optional)
+
         // ** Create a modal dialog with the template above
-        INT_PTR nDlg = DialogBoxIndirect((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dt, hWndParent, DlgProc);
+        INT_PTR nDlg = DialogBoxIndirectParam((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dt, hWndParent, DlgProc, (LPARAM)&modalinfo);
 
         if (nDlg == -1)
         {
@@ -106,7 +117,13 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
         // ** Create a modeless dialog with the template above
         hDlg = CreateDialogIndirect((HINSTANCE)GetWindowLongPtr(hWndParent, GWLP_HINSTANCE), (LPCDLGTEMPLATE)&dt, hWndParent, DlgProc);
 
-        if (hDlg == NULL)
+        if (hDlg != NULL)
+        {
+            // ** Since this is not modal and we have a window handle, we can set title, position and size here, much easier.
+            SetWindowTextW(hDlg, sTitle);
+            SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
+        }
+        else
         {
             MessageBox(NULL, "Dialog creation failed!\n\nReturn value: NULL", "Error", MB_ICONEXCLAMATION);
             return 0;
@@ -132,6 +149,21 @@ HWND DlgBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC Dl
 // ** END: DlgBox
 //---------------------------------------------------------------------------------------------
 
+
+//---------------------------------------------------------------------------------------------
+// ** SetModal
+//---------------------------------------------------------------------------------------------
+// Alternative method to set size, position and title to a modal dialog, use it in: WM_INITDIALOG
+// If centering, it sets the dialog center to parent window and not desktop like the default method does.
+void SetModal(HWND hDlgWnd, LPARAM lParam)
+{
+    MODALINFO *mi = (MODALINFO*)lParam;
+    SetWindowTextW(hDlgWnd, mi->s);
+    SetWindowPos(hDlgWnd, 0, mi->x, mi->y, mi->w, mi->h, 0);
+};
+//---------------------------------------------------------------------------------------------
+// ** END: SetModal
+//---------------------------------------------------------------------------------------------
 
 
 /*

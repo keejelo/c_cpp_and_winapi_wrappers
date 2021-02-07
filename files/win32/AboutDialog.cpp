@@ -40,7 +40,7 @@ INT_PTR CALLBACK AboutDlgProc(HWND hDlgWnd, UINT msg, WPARAM wParam, LPARAM lPar
             return TRUE;
 
         case WM_INITDIALOG:
-        {            
+        {   
             // ** Create some controls
             HWND hText = CreateStaticTextCtrl(hDlgWnd, "This is the about dialog!", 20, 20);
             HWND hOkBtn = CreateButtonCtrl(hDlgWnd, IDOK, "OK", 212, 55, 30);
