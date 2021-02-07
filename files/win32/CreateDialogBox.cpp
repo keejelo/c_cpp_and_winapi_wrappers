@@ -59,13 +59,10 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
     dt.wszTitle[255]   = { 0 };
 
     // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now.
-    LONG units = GetDialogBaseUnits();
-    iWidth = MulDiv(LOWORD(units), iWidth, 16);
-    iHeight = MulDiv(HIWORD(units), iHeight, 42);
-
     // ** Set width and height
-    dt.w = iWidth;
-    dt.h = iHeight;
+    LONG units = GetDialogBaseUnits();
+    dt.w = MulDiv(LOWORD(units), iWidth, 16);
+    dt.h = MulDiv(HIWORD(units), iHeight, 42);
 
     // ** Center dialog ?
     if (bCenterWindow)
