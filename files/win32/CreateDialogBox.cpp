@@ -11,7 +11,7 @@
 //
 // The thought behind this is to have a common template for smaller dialogs and then create
 // all the dialog controls by code. Of course it can be used for larger dialogs too, with lots
-// of controls etc., if you enjoy coding then you can do it!  :)
+// of controls etc., if you enjoy coding then go for it!  :)
 // If so, you can use "Controls.cpp" to create controls quick and easy!
 //
 // NOTE: See bottom of this file on how to implement and use.
