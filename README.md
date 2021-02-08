@@ -5,8 +5,6 @@ After many years I'm tired of writing the same code over and over again and "rei
 
 I had to go back and learn C and Win32 (Windows API) from the ground up, not using MFC and other shortcuts, I wanted to learn it all from scratch, using code as much as possible. My goal is to make things easier/faster to write C/C++ WinAPI code, at least for my own use.
 
-TLDR;<br>
-
 If anyone finds some of this useful that's great! :)<br>
 If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
 
