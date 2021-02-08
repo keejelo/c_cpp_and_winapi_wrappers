@@ -70,7 +70,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
     // ** Modal ?
     if (bModal)
     {
-        int bufSize = 255;
+        int bufSize = 256;
         dt.wszTitle[bufSize] = { 0 };
 
         // ** Set title
