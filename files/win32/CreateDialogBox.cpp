@@ -92,8 +92,8 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
             dt.y = yPos;
         }
 
-        // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now for setting width and height,
-        //    Alternatively we can use "SetModal" in dialog proc. WM_INITDIALOG to set this info in an alternative way, but then: #include "CreatDialog.h" in your dialog file.
+        // ** Convert pixels into DLU (dialog units), seems to work ok on different resolutions and systems. It's the best I've got for now for setting width and height.
+        //    Alternatively we can use "SetModal" in dialog proc. WM_INITDIALOG to set this info, but then: #include "CreatDialog.h" in your dialog file.
         LONG units = GetDialogBaseUnits();
         dt.w = MulDiv(LOWORD(units), iWidth, 16);
         dt.h = MulDiv(HIWORD(units), iHeight, 42);
@@ -118,7 +118,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
 
         if (hDlg != NULL)
         {
-            // ** Since this is not modal and we have a window handle, we can set title, position and size here, much easier.
+            // ** Since this is not modal and we have a window handle and we can set title, position and size here, much easier.
             SetWindowTextW(hDlg, sTitle);
             SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
         }
@@ -153,7 +153,9 @@ HWND DlgBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC Dl
 // ** SetModal
 //---------------------------------------------------------------------------------------------
 // Alternative method to set size, position and title to a modal dialog, use it in: WM_INITDIALOG
-// If centering, it sets the dialog center to parent window and not desktop like the default method does.
+// If centering, it sets the dialog center to parent window and not working area of the monitor
+// that contains the owner window, like the other method does.
+//---------------------------------------------------------------------------------------------
 void SetModal(HWND hDlgWnd, LPARAM lParam)
 {
     MODALINFO *mi = (MODALINFO*)lParam;
