@@ -47,7 +47,7 @@ struct DialogTemplate
 
 
 //---------------------------------------------------------------------------------------------
-// ** Create Dialogbox | this creates a dialogbox from the template | shorthand: DlgBox( ... )
+// ** Create Dialogbox | shorthand: DlgBox( ... )
 //---------------------------------------------------------------------------------------------
 HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, bool bCenterWindow, int xPos, int yPos)
 {
