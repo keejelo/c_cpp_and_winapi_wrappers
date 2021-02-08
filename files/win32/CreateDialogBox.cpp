@@ -2,7 +2,7 @@
 // ** CreateDialogBox.cpp
 //---------------------------------------------------------------------------------------------
 // Author: keejelo
-// Github: https://github.com/keejelo/c_cpp_and_winapi_wrappers/tree/master/files/win32
+// https://github.com/keejelo/c_cpp_and_winapi_wrappers/blob/master/files/win32/CreateDialogBox.cpp
 //---------------------------------------------------------------------------------------------
 // This creates a dialog template which is used as an empty skeleton dialog (without content).
 // The dialog content must be created dynamically with code within its own dialog proc.
