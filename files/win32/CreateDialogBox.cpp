@@ -24,6 +24,12 @@
 
 
 //---------------------------------------------------------------------------------------------
+// ** Variables
+//---------------------------------------------------------------------------------------------
+const size_t BUFSIZE = 256;
+
+
+//---------------------------------------------------------------------------------------------
 // ** Dialog template
 //---------------------------------------------------------------------------------------------
 #define DLGFONT      L"MS Shell Dlg"
@@ -37,7 +43,7 @@ struct DialogTemplate
     short x, y, w, h = 0;
     WORD  menu = 0;
     WORD  windowClass = 0;
-    WCHAR wszTitle[255] = { 0 };
+    WCHAR wszTitle[BUFSIZE] = { 0 };
     short pointsize = 8;   
     WCHAR wszFont[NUMCHARS(DLGFONT)];
 };
@@ -67,11 +73,10 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
     // ** Modal?
     if (bModal)
     {
-        int bufSize = 256;
-        dt.wszTitle[bufSize] = { 0 };
+        dt.wszTitle[BUFSIZE] = { 0 };
 
         // ** Set title
-        for (int i = 0; i < bufSize; i++)
+        for (size_t i = 0; i < BUFSIZE; i++)
         {
             dt.wszTitle[i] = sTitle[i];
 
