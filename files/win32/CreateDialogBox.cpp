@@ -31,7 +31,7 @@
 
 struct DialogTemplate
 {
-    DWORD style = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND | DS_SETFONT;
+    DWORD style = WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFOREGROUND | DS_SETFONT | DS_SHELLFONT;
     DWORD dwExtendedStyle = 0;
     WORD  cDlgItems = 0;
     short x, y, w, h = 0;
