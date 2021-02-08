@@ -118,7 +118,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
 
         if (hDlg != NULL)
         {
-            // ** Since this is not modal and we have a window handle and we can set title, position and size here, much easier.
+            // ** Since this is not modal and we have a window handle, we can set title, position and size here, much easier.
             SetWindowTextW(hDlg, sTitle);
             SetWindowPos(hDlg, 0, xPos, yPos, iWidth, iHeight, 0);
         }
