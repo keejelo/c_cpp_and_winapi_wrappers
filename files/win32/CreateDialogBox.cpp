@@ -81,7 +81,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
             }
         }
 
-        // ** Center dialog ? (modal way; this centers the dialog in screen center, not parent window center)
+        // ** Center dialog ? (modal way; centers the dialog box in the working area of the monitor that contains the owner window)
         if (bCenterWindow)
         {
             dt.style |= DS_CENTER;
