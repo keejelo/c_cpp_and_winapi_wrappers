@@ -1,23 +1,12 @@
 # C/C++ and Win32 wrappers
 Simple wrappers for C/C++ and Win32 API (Windows API)
 
-After many years of programming all kinds of languages and stuff, it's tiring to write the same code over and over again, reinventing the wheel, and never ending up doing it in a uniform way.<br>
-I want to collect some of my codefiles here for easier access for myself (for my pet projects) and perhaps for others who might need them or can find them helpful.
-(Not that my code stuff is so great, special, genius and bugfree, but why not share :)
+After many years of programming all kinds of languages and stuff, it's tiring to write the same code over and over again, reinventing the wheel, and never ending up doing it in a uniform way, I want to collect some of my codefiles here, my own library sort of, for easier access for myself.<br>
 
-I also started this because I had to go back and learn C and Win32 (Windows API) from the ground up, still learning.<br>
-After many years of using C/C++, MFC, resource editors, other classes/libraries and shortcuts, I wanted to learn how it is all made from scratch, only using code and no resource editors if possible, I want to know how to code it all from the beginning.
-
-So I went back to basic, reading old C books like: "C programming languange, Kernigan Ritchie", "C The complete reference 4.th.ed., Herbert Schildt", and old Win32 books like: "Windows 2000 programming from the gound up, Herbert Schildt", "Programming Windows: The Definitive Guide To The Win32 Api, Charles Petzold".<br>
-Also searching the web for old and legacy, but still relevant, C and WinAPI code.<br>
-Still looking for more good old C, Win32 books and must reads of these topics.
-
-My goal is to make things easier/faster to write C/C++ code especially WinAPI code (at least for myself), that's why I'm making wrapper functions, my own library sort of.<br>
-To keep it all very simple I'm not using C++ classes. I don't have anything against C++ classes, it's just that "raw" functions can be easier to understand right away, and they can easily be implemented in a C++ class, or in a namespace etc., if one wants to.
+I had to go back and learn C and Win32 (Windows API) from the ground up, still learning.<br>
+After many years of using C/C++, MFC, resource editors, and other shortcuts, I want to learn it all from scratch, using code as much as possible and less resource editors and less shortcuts, if possible. My goal is to make things easier/faster to write C/C++ WinAPI code, at least for my use.
 
 TLDR;<br>
-
-Will try to make the files as easy to use as possible, so all it takes is just to include them in a project and use the functions straight away. At least that's my hope.<br>
 
 If anyone finds some of this useful that's great! :)<br>
 If not, that's ok, you're probably a better programmer than me, or found your own way to do these things, and that's cool :)
