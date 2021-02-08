@@ -138,18 +138,6 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
 
 
 //---------------------------------------------------------------------------------------------
-// ** DlgBox | shorthand for: CreateDialogBox( ... )
-//---------------------------------------------------------------------------------------------
-HWND DlgBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC DlgProc, bool bModal, bool bCenterWindow, int xPos, int yPos)
-{
-    return CreateDialogBox(hWndParent, sTitle, iWidth, iHeight, DlgProc, bModal, bCenterWindow, xPos, yPos);
-};
-//---------------------------------------------------------------------------------------------
-// ** END: DlgBox
-//---------------------------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------------------------
 // ** SetModal
 //---------------------------------------------------------------------------------------------
 // Alternative method to set size, position and title to a modal dialog, use it in the case
