@@ -64,7 +64,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
         yPos = ((rc.top + rc.bottom) / 2) - (iHeight / 2);
     }
 
-    // ** Modal ?
+    // ** Modal?
     if (bModal)
     {
         int bufSize = 256;
@@ -81,7 +81,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
             }
         }
 
-        // ** Center dialog ? (modal way; centers the dialog box in the working area of the monitor that contains the owner window)
+        // ** Center dialog? (modal way; centers the dialog box in the working area of the monitor that contains the owner window)
         if (bCenterWindow)
         {
             dt.style |= DS_CENTER;
