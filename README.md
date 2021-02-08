@@ -1,7 +1,7 @@
 # C/C++ and Win32 wrappers
 Simple wrappers for C/C++ and Win32 API (Windows API)
 
-After many years of programming all kinds of languages and stuff, it's tiring to write the same code over and over again, reinventing the wheel, and never ending up doing it in a uniform way. I want to collect some of my codefiles here, making my own library sort of, for easier use and access.<br>
+After many years of programming all kinds of stuff, it's tiring to write the same code over and over again, reinventing the wheel, and never ending up doing it in a uniform way. I want to collect some of my codefiles here, making my own library sort of, for easier use and access.<br>
 
 I had to go back and learn C and Win32 (Windows API) from the ground up, still learning.<br>
 After many years of using C/C++, MFC, resource editors, and other shortcuts, I want to learn it all from scratch, using code as much as possible and less resource editors and less shortcuts, if possible. My goal is to make things easier/faster to write C/C++ WinAPI code, at least for my use.
