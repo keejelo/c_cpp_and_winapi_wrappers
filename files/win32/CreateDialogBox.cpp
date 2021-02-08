@@ -152,9 +152,10 @@ HWND DlgBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, DLGPROC Dl
 //---------------------------------------------------------------------------------------------
 // ** SetModal
 //---------------------------------------------------------------------------------------------
-// Alternative method to set size, position and title to a modal dialog, use it in: WM_INITDIALOG
-// If centering, it sets the dialog center to parent window and not working area of the monitor
-// that contains the owner window, like the other method does.
+// Alternative method to set size, position and title to a modal dialog, use it in the case
+// WM_INITDIALOG of your modal dialogs procedure.
+// If centering, it sets the dialog center to parent window, and not the working area of the
+// monitor that contains the owner window like the other method does.
 //---------------------------------------------------------------------------------------------
 void SetModal(HWND hDlgWnd, LPARAM lParam)
 {
