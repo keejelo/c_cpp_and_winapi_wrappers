@@ -7,11 +7,11 @@
 // This creates a dialog template which is used as an empty skeleton dialog (without content).
 // The dialog content must be created, dynamically with code, within its own Dialog Procedure
 // in its "WM_INITDIALOG". Each dialog needs to have its own Dialog Procedure and handle all 
-// its action there, as you normally would do.
+// its action there, as you normally do.
 //
 // The thought behind this is to have a common template for smaller dialogs and then create
 // all the dialog controls by code. Of course it can be used for larger dialogs too, with lots
-// of controls etc., if you enjoy coding then go for it!  :)
+// of controls etc., if you enjoy coding then you can do it!  :)
 // If so, you can use "Controls.cpp" to create controls quick and easy!
 //
 // NOTE: See bottom of this file on how to implement and use.
@@ -22,6 +22,8 @@
 // ** Include files
 //---------------------------------------------------------------------------------------------
 #include "CreateDialogBox.h"
+
+#include <stdio.h>
 
 
 //---------------------------------------------------------------------------------------------
@@ -72,7 +74,7 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
         dt.wszTitle[bufSize] = { 0 };
 
         // ** Set title
-        for (int i = 0; i < *sTitle && i < bufSize; i++)
+        for (int i = 0; i < bufSize; i++)
         {
             dt.wszTitle[i] = sTitle[i];
 
@@ -277,9 +279,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
                 case SIZE_RESTORED:
                     ShowWindow(g_hMyDlg, SW_SHOW);  // <-------  add this, if you want the dialog to follow parent window when restored.
-                    break                                        // Be sure to close modeless dialogs with "DestroyWindow()", or else it
+                    break                                        // Be sure to close modeless dialogs with "DestroyWindow", or else it
             }                                                    // can popup again on "SIZE_RESTORED" (if you closed it with just "EndDialog")
-            break;
+            break;                                               // "DestroyWindow" also cleans up after us so we don't leak memory.
         }
         break;
 
