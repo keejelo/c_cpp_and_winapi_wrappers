@@ -43,6 +43,10 @@ HBRUSH g_bgColor = (HBRUSH)GetSysColorBrush(COLOR_3DFACE);  // dialog bgcolor
 // ** Text-color for static controls (custom)
 //const COLORREF g_textColor = RGB(0, 0, 0);  // default is black (0,0,0)
 
+HINSTANCE g_hInstance;     // Global handle to instance
+HWND g_hActiveDlg = NULL;  // Global handle to active dialog window
+
+
 
 //---------------------------------------------------------------------------------------------
 // ** FUNCTION PROTOTYPES
@@ -116,10 +120,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     ShowWindow(hWnd, nCmdShow);  // Display the window
     UpdateWindow(hWnd);          // Cause window client area to be drawn
 
+    g_hInstance = hInstance;     // Set global instance handle
+    
     // ** The message loop
     while(GetMessage(&msg, NULL, 0, 0) > 0)  // Get any messages (prevents returning: -1)
     {
-        if(!IsDialogMessage(hWnd, &msg))  // Enable tabstop for controls (if not a dialog)
+        if (!g_hActiveWindow || !IsDialogMessage(g_hActiveWindow, &msg)) // Enables tabstop and keypresses for controls in dialogs if dialog window handle = g_hActiveWindow
+        if(!IsDialogMessage(hWnd, &msg))
         {
             TranslateMessage(&msg);  // Translate keyboard messages
             DispatchMessage(&msg);   // Return control to Windows (OS)
