@@ -122,8 +122,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // ** The message loop
     while(GetMessage(&msg, NULL, 0, 0) > 0)  // Get any messages (prevents returning: -1)
     {
-        if (!g_hActiveWindow || !IsDialogMessage(g_hActiveWindow, &msg)) // Enables tabstop and keypresses for controls in dialogs if dialog window handle = g_hActiveWindow
-        if(!IsDialogMessage(hWnd, &msg))
+        if (!g_hActiveWindow || !IsDialogMessage(g_hActiveWindow, &msg))  // Enables tabstop and keypresses for controls in dialogs if dialog window handle = g_hActiveWindow
         {
             TranslateMessage(&msg);  // Translate keyboard messages
             DispatchMessage(&msg);   // Return control to Windows (OS)
