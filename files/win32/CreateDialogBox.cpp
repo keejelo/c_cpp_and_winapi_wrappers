@@ -73,18 +73,8 @@ HWND CreateDialogBox(HWND hWndParent, LPCWSTR sTitle, int iWidth, int iHeight, D
     // ** Modal?
     if (bModal)
     {
-        dt.wszTitle[BUFSIZE] = { 0 };
-
         // ** Set title
-        for (size_t i = 0; i < BUFSIZE; i++)
-        {
-            dt.wszTitle[i] = sTitle[i];
-
-            if (sTitle[i] == '\0')
-            {
-                break;
-            }
-        }
+        wcscpy_s(dt.wszTitle, sTitle);
 
         // ** Center dialog? (modal way; centers the dialog box in the working area of the monitor that contains the owner window)
         if (bCenterWindow)
