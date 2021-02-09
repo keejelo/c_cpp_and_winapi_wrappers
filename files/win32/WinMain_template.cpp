@@ -201,19 +201,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 //---------------------------------------------------------------------------------------------
-// ** Enumerates the child windows that belong to the specified parent window
+// ** Set default GUI font on all controls
 //---------------------------------------------------------------------------------------------
 BOOL CALLBACK EnumChildProc(HWND hWnd, LPARAM lParam)
 {
-    // ** Set default GUI font to all controls
     HFONT hfDefault = (HFONT)GetStockObject(DEFAULT_GUI_FONT);
-    SendMessage(hWnd, WM_SETFONT, (WPARAM)hfDefault, MAKELPARAM(TRUE, 0));
-    // ** END: Set default GUI font to all controls
-    
+    SendMessage(hWnd, WM_SETFONT, (WPARAM)hfDefault, MAKELPARAM(TRUE, 0));    
     return TRUE;
 };
 //---------------------------------------------------------------------------------------------
-// ** END: Enumerates the child windows that belong to the specified parent window
+// ** END: Set default GUI font on all controls
 //---------------------------------------------------------------------------------------------
 
 
