@@ -1,5 +1,5 @@
 '-----------------------------------------------------------------------------------------
-' Version_auto_incr_build_number.vbs
+' Version_auto_increment_build_number.vbs
 '-----------------------------------------------------------------------------------------
 ' Auto increments build version number (x.x.x.build) in the "Version.h" file
 ' Run this file in the project "pre-build" event to have auto versioning of buildnumber
